@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 import Script from 'next/script';
+import { LanguageProvider } from '@/context/LanguageContext';
+import { CurrencyProvider } from '@/context/CurrencyContext';
 
 export default function RootLayout({
   children,
@@ -18,26 +20,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div id="google_translate_element" style={{ display: 'none' }}></div>
-        <Script 
-          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" 
-          strategy="afterInteractive" 
-        />
-        <Script id="google-translate-init" strategy="afterInteractive">
-          {`
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement(
-                { pageLanguage: 'en', autoDisplay: false },
-                'google_translate_element'
-              );
-            }
-          `}
-        </Script>
-        <Header />
-        <main style={{ flex: 1 }}>
-          {children}
-        </main>
-        <Footer />
+        <LanguageProvider>
+          <CurrencyProvider>
+            <div id="google_translate_element" style={{ display: 'none' }}></div>
+            <Script 
+              src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" 
+              strategy="afterInteractive" 
+            />
+          <Script id="google-translate-init" strategy="afterInteractive">
+            {`
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  { pageLanguage: 'en', autoDisplay: false },
+                  'google_translate_element'
+                );
+              }
+            `}
+          </Script>
+          <Header />
+          <main style={{ flex: 1 }}>
+            {children}
+          </main>
+          <Footer />
+          </CurrencyProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

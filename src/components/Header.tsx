@@ -1,16 +1,34 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
+import { useCurrency } from '@/context/CurrencyContext';
 
 export default function Header() {
   const pathname = usePathname();
-  const [langCode, setLangCode] = useState('EN');
+  const { langCode, setLangCode } = useLanguage();
+  const { setCurrencyCode } = useCurrency();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [calcDropdownOpen, setCalcDropdownOpen] = useState(false);
 
   const handleLanguageChange = (code: string, googleCode: string) => {
     setLangCode(code);
     setDropdownOpen(false);
+
+    // Map language to currency
+    const langToCurrency: Record<string, string> = {
+      'EN': 'AED',
+      'TA': 'INR',
+      'AR': 'AED',
+      'RU': 'RUB',
+      'DE': 'EUR',
+      'FR': 'EUR',
+      'SI': 'LKR'
+    };
+    if (langToCurrency[code]) {
+      setCurrencyCode(langToCurrency[code]);
+    }
     
     // Trigger Google Translate
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
@@ -71,7 +89,27 @@ export default function Header() {
             <li><Link href="/realty" className={`nav-link ${pathname === '/realty' ? 'active' : ''}`}>AKR Realty</Link></li>
             <li><Link href="/financial" className={`nav-link ${pathname === '/financial' ? 'active' : ''}`}>AKR Financial</Link></li>
             <li><Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About us</Link></li>
-            <li><Link href="/calculators" className={`nav-link ${pathname === '/calculators' ? 'active' : ''}`}>Calculator</Link></li>
+            <li
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setCalcDropdownOpen(true)}
+              onMouseLeave={() => setCalcDropdownOpen(false)}
+            >
+              <Link href="/calculators" className={`nav-link ${pathname === '/calculators' ? 'active' : ''}`}>Calculator</Link>
+              
+              {calcDropdownOpen && (
+                <div className="simple-dropdown-wrapper">
+                  <div className="simple-dropdown">
+                    <Link href="/calculators/mortgage" className="simple-dropdown-item">Mortgage Calculator</Link>
+                    <Link href="/calculators/off-plan" className="simple-dropdown-item">Off-Plan Calculator</Link>
+                    <Link href="/calculators/rental-yield" className="simple-dropdown-item">Rental Yield ROI Calculator</Link>
+                    <Link href="/calculators/xirr" className="simple-dropdown-item">XIRR Calculator</Link>
+                    <Link href="/calculators/mutual-fund" className="simple-dropdown-item">Mutual Fund Calculator</Link>
+                    <Link href="/calculators/child-education" className="simple-dropdown-item">Child Education Calculator</Link>
+                    <Link href="/calculators/retirement" className="simple-dropdown-item">Retirement Calculator</Link>
+                  </div>
+                </div>
+              )}
+            </li>
             <li><Link href="/property" className={`nav-link ${pathname === '/property' ? 'active' : ''}`}>Property</Link></li>
             <li><Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link></li>
             <li 
