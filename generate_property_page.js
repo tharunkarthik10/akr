@@ -1,4 +1,6 @@
-"use client";
+const fs = require('fs');
+
+const code = `"use client";
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
@@ -73,7 +75,7 @@ export default function PropertyDetailPage() {
   // Price Conversion
   const basePriceAED = parseInt(property.price?.toString().replace(/[^0-9]/g, '')) || 0;
   const convertedPrice = convertAmount(basePriceAED, 'AED', currencyCode);
-  const displayPrice = `${currencySymbol} ${convertedPrice.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
+  const displayPrice = \`\${currencySymbol} \${convertedPrice.toLocaleString('en-US', { maximumFractionDigits: 0 })}\`;
   
   // Media Array
   const mediaList = [];
@@ -131,30 +133,29 @@ export default function PropertyDetailPage() {
       </section>
 
       {/* Main Content Layout */}
-      <div className="container" style={{ maxWidth: '1400px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '3rem', margin: '2rem auto' }}>
+      <div className="container" style={{ maxWidth: '1400px', display: 'grid', gridTemplateColumns: '70% 30%', gap: '3rem', marginTop: '2rem' }}>
         
         <div className="property-left-col">
           
           {/* Header */}
           <div style={{ paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem' }}>
+              <div style={{ flex: '1 1 auto' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
                   <span style={{ backgroundColor: 'var(--primary-red)', color: 'white', padding: '0.4rem 1.2rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 700 }}>{property.property_status || 'Ready to Move'}</span>
                   {property.project_status && (
                     <span style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)', color: '#947a26', padding: '0.4rem 1.2rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 700 }}>{property.project_status}</span>
                   )}
                   <span style={{ backgroundColor: '#f0f0f0', color: '#555', padding: '0.4rem 1.2rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 700 }}>{property.type}</span>
                 </div>
-                <h1 style={{ color: 'var(--text-dark)', fontSize: '3.6rem', marginBottom: '1rem', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-1px' }}>{property.title}</h1>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#555', fontSize: '1.15rem' }}>
+                <h1 style={{ color: 'var(--text-dark)', fontSize: '3.2rem', marginBottom: '0.8rem', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-1px' }}>{property.title}</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#555', fontSize: '1.1rem' }}>
                   <PinIcon /> {property.location}
                 </div>
               </div>
-              
-              <div style={{ marginTop: '1.5rem' }}>
-                <div style={{ fontSize: '0.9rem', color: '#888', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 700, letterSpacing: '1.5px' }}>Asking Price</div>
-                <div className="notranslate" style={{ color: 'var(--accent-gold)', fontSize: '3.4rem', fontWeight: 800, letterSpacing: '-1px', lineHeight: 1 }}>{displayPrice}</div>
+              <div style={{ textAlign: 'right', minWidth: 'max-content' }}>
+                <div style={{ fontSize: '1rem', color: '#888', textTransform: 'uppercase', marginBottom: '0.2rem', fontWeight: 600, letterSpacing: '1px' }}>Asking Price</div>
+                <div className="notranslate" style={{ color: 'var(--accent-gold)', fontSize: '2.8rem', fontWeight: 800, letterSpacing: '-1px' }}>{displayPrice}</div>
               </div>
             </div>
 
@@ -219,16 +220,16 @@ export default function PropertyDetailPage() {
 
           {/* Features & Amenities */}
           <div style={{ marginBottom: '4rem' }}>
-            <h2 style={{ color: 'var(--text-dark)', marginBottom: '3rem', fontSize: '2rem', borderBottom: '3px solid var(--accent-gold)', display: 'inline-block', paddingBottom: '0.5rem', fontWeight: 800 }}>Amenities & Features</h2>
+            <h2 style={{ color: 'var(--text-dark)', marginBottom: '3rem', fontSize: '1.8rem', borderBottom: '2px solid var(--accent-gold)', display: 'inline-block', paddingBottom: '0.5rem', fontWeight: 800 }}>Amenities & Features</h2>
             
             {propertyFeatures.length > 0 && (
               <div style={{ marginBottom: '3rem' }}>
-                <h3 style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>Property Features</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                <h3 style={{ fontSize: '1rem', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Property Features</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
                   {propertyFeatures.map((feature: string, idx: number) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.2rem 1.5rem', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(139, 0, 0, 0.05)', color: 'var(--primary-red)', flexShrink: 0 }}><CheckIcon /></div>
-                      <span style={{ fontSize: '1.05rem', color: '#222', fontWeight: 600 }}>{feature}</span>
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem', color: '#222', fontWeight: 500 }}>
+                      <div style={{ color: 'var(--primary-red)', display: 'flex' }}><CheckIcon /></div>
+                      <span>{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -237,12 +238,12 @@ export default function PropertyDetailPage() {
 
             {amenitiesList.length > 0 && (
               <div>
-                <h3 style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>Community Amenities</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                <h3 style={{ fontSize: '1rem', color: '#888', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Community Amenities</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
                   {amenitiesList.map((amenity: string, idx: number) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.2rem 1.5rem', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(212, 175, 55, 0.1)', color: 'var(--accent-gold)', flexShrink: 0 }}><CheckIcon /></div>
-                      <span style={{ fontSize: '1.05rem', color: '#222', fontWeight: 600 }}>{amenity.trim()}</span>
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.1rem', color: '#222', fontWeight: 500 }}>
+                      <div style={{ color: 'var(--accent-gold)', display: 'flex' }}><CheckIcon /></div>
+                      <span>{amenity.trim()}</span>
                     </div>
                   ))}
                 </div>
@@ -257,34 +258,34 @@ export default function PropertyDetailPage() {
           {/* Payment Plan (Progress Bar Visual) */}
           {paymentPlan && (paymentPlan.down_payment || paymentPlan.during_construction || paymentPlan.on_handover) && (
             <div style={{ marginBottom: '4rem' }}>
-              <h2 style={{ color: 'var(--text-dark)', marginBottom: '3rem', fontSize: '2rem', borderBottom: '3px solid var(--accent-gold)', display: 'inline-block', paddingBottom: '0.5rem', fontWeight: 800 }}>Payment Plan</h2>
+              <h2 style={{ color: 'var(--text-dark)', marginBottom: '3rem', fontSize: '1.8rem', borderBottom: '2px solid var(--accent-gold)', display: 'inline-block', paddingBottom: '0.5rem', fontWeight: 800 }}>Payment Plan</h2>
               
-              <div style={{ backgroundColor: 'white', padding: '4rem 2rem', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.03)' }}>
+              <div style={{ backgroundColor: 'white', padding: '3rem 2rem', borderRadius: '16px', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
                 {/* Visual Bar */}
-                <div style={{ display: 'flex', height: '12px', borderRadius: '6px', overflow: 'hidden', marginBottom: '4rem' }}>
-                  {paymentPlan.down_payment > 0 && <div style={{ width: `${paymentPlan.down_payment}%`, backgroundColor: 'var(--primary-red)' }} title="Down Payment"></div>}
-                  {paymentPlan.during_construction > 0 && <div style={{ width: `${paymentPlan.during_construction}%`, backgroundColor: 'var(--accent-gold)' }} title="During Construction"></div>}
-                  {paymentPlan.on_handover > 0 && <div style={{ width: `${paymentPlan.on_handover}%`, backgroundColor: '#333' }} title="On Handover"></div>}
+                <div style={{ display: 'flex', height: '16px', borderRadius: '8px', overflow: 'hidden', marginBottom: '3rem' }}>
+                  {paymentPlan.down_payment > 0 && <div style={{ width: \`\${paymentPlan.down_payment}%\`, backgroundColor: 'var(--primary-red)' }} title="Down Payment"></div>}
+                  {paymentPlan.during_construction > 0 && <div style={{ width: \`\${paymentPlan.during_construction}%\`, backgroundColor: 'var(--accent-gold)' }} title="During Construction"></div>}
+                  {paymentPlan.on_handover > 0 && <div style={{ width: \`\${paymentPlan.on_handover}%\`, backgroundColor: '#333' }} title="On Handover"></div>}
                 </div>
                 
                 {/* Legend */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', textAlign: 'center' }}>
                   {paymentPlan.down_payment > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--primary-red)', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.down_payment}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Down Payment</div>
+                      <div style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--primary-red)', marginBottom: '0.5rem', letterSpacing: '-1px' }}>{paymentPlan.down_payment}%</div>
+                      <div style={{ fontSize: '0.9rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>Down Payment</div>
                     </div>
                   )}
                   {paymentPlan.during_construction > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.during_construction}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>During Construction</div>
+                      <div style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.5rem', letterSpacing: '-1px' }}>{paymentPlan.during_construction}%</div>
+                      <div style={{ fontSize: '0.9rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>During Construction</div>
                     </div>
                   )}
                   {paymentPlan.on_handover > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: '#333', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.on_handover}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>On Handover</div>
+                      <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#333', marginBottom: '0.5rem', letterSpacing: '-1px' }}>{paymentPlan.on_handover}%</div>
+                      <div style={{ fontSize: '0.9rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>On Handover</div>
                     </div>
                   )}
                 </div>
@@ -307,18 +308,13 @@ export default function PropertyDetailPage() {
               )}
 
               {nearbyPlaces.length > 0 && (
-                <div style={{ marginTop: '1rem' }}>
-                  <h3 style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>Nearby Landmarks</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '16px', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: 'var(--primary-red)', fontWeight: 700 }}>Nearby Landmarks</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
                     {nearbyPlaces.map((place: any, idx: number) => (
-                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.2rem 1.5rem', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'rgba(212, 175, 55, 0.1)', color: 'var(--accent-gold)', flexShrink: 0 }}>
-                          <PinIcon />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                          <span style={{ fontWeight: 700, color: '#111', fontSize: '1.1rem' }}>{place.place}</span>
-                          <span style={{ color: '#888', fontSize: '0.9rem', fontWeight: 500 }}>{place.distance}</span>
-                        </div>
+                      <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed #eee', paddingBottom: '0.5rem' }}>
+                        <span style={{ fontWeight: 600, color: '#333' }}>{place.place}</span>
+                        <span style={{ color: 'var(--accent-gold)', fontSize: '0.95rem', fontWeight: 600 }}>{place.distance}</span>
                       </div>
                     ))}
                   </div>
@@ -402,3 +398,7 @@ export default function PropertyDetailPage() {
     </div>
   );
 }
+`
+
+fs.writeFileSync('src/app/property/[id]/page.tsx', code);
+console.log("File written successfully!");

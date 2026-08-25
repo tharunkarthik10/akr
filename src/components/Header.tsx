@@ -4,11 +4,13 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useCurrency } from '@/context/CurrencyContext';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
   const pathname = usePathname();
   const { langCode, setLangCode } = useLanguage();
   const { setCurrencyCode } = useCurrency();
+  const { user, signOut } = useAuth() as any;
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [calcDropdownOpen, setCalcDropdownOpen] = useState(false);
 
@@ -63,8 +65,24 @@ export default function Header() {
               +971 55 884 7365
             </span>
             <span className="divider" style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>|</span>
-            <Link href="/login" className="login-link">Login</Link>
-            <Link href="/dashboard" className="btn-dashboard">Dashboard</Link>
+            <Link href={user ? "/client" : "/login"} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--accent-gold)', fontWeight: 600, textDecoration: 'none', textTransform: 'uppercase', fontSize: '0.8rem' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              {user ? (user.email?.split('@')[0] || 'Client') : 'Login'}
+            </Link>
+            {user && (
+              <>
+                <span className="divider" style={{ marginLeft: '0.5rem', marginRight: '0.5rem' }}>|</span>
+                <button 
+                  onClick={() => signOut()} 
+                  style={{ color: '#888', fontSize: '0.8rem', background: 'none', border: 'none', cursor: 'pointer', textTransform: 'uppercase', fontWeight: 600 }}
+                >
+                  Sign Out
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -84,34 +102,54 @@ export default function Header() {
             </div>
           </Link>
           
-          <ul className="nav-links">
-            <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link></li>
-            <li><Link href="/realty" className={`nav-link ${pathname === '/realty' ? 'active' : ''}`}>AKR Realty</Link></li>
-            <li><Link href="/financial" className={`nav-link ${pathname === '/financial' ? 'active' : ''}`}>AKR Financial</Link></li>
-            <li><Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About us</Link></li>
-            <li
-              style={{ position: 'relative' }}
-              onMouseEnter={() => setCalcDropdownOpen(true)}
-              onMouseLeave={() => setCalcDropdownOpen(false)}
-            >
-              <Link href="/calculators" className={`nav-link ${pathname === '/calculators' ? 'active' : ''}`}>Calculator</Link>
-              
-              {calcDropdownOpen && (
-                <div className="simple-dropdown-wrapper">
-                  <div className="simple-dropdown">
-                    <Link href="/calculators/mortgage" className="simple-dropdown-item">Mortgage Calculator</Link>
-                    <Link href="/calculators/off-plan" className="simple-dropdown-item">Off-Plan Calculator</Link>
-                    <Link href="/calculators/rental-yield" className="simple-dropdown-item">Rental Yield ROI Calculator</Link>
-                    <Link href="/calculators/xirr" className="simple-dropdown-item">XIRR Calculator</Link>
-                    <Link href="/calculators/mutual-fund" className="simple-dropdown-item">Mutual Fund Calculator</Link>
-                    <Link href="/calculators/child-education" className="simple-dropdown-item">Child Education Calculator</Link>
-                    <Link href="/calculators/retirement" className="simple-dropdown-item">Retirement Calculator</Link>
-                  </div>
-                </div>
-              )}
-            </li>
-            <li><Link href="/property" className={`nav-link ${pathname === '/property' ? 'active' : ''}`}>Property</Link></li>
-            <li><Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link></li>
+          <ul className="nav-links" key={user ? 'client' : 'public'}>
+            {!user ? (
+              // PUBLIC NAVIGATION (Logged Out)
+              <>
+                <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link></li>
+                <li><Link href="/realty" className={`nav-link ${pathname === '/realty' ? 'active' : ''}`}>AKR Realty</Link></li>
+                <li><Link href="/financial" className={`nav-link ${pathname === '/financial' ? 'active' : ''}`}>AKR Financial</Link></li>
+                <li><Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About us</Link></li>
+                <li
+                  style={{ position: 'relative' }}
+                  onMouseEnter={() => setCalcDropdownOpen(true)}
+                  onMouseLeave={() => setCalcDropdownOpen(false)}
+                >
+                  <span className={`nav-link ${pathname.startsWith('/calculators') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>Calculator</span>
+                  
+                  {calcDropdownOpen && (
+                    <div className="simple-dropdown-wrapper">
+                      <div className="simple-dropdown">
+                        <Link href="/calculators/mortgage" className="simple-dropdown-item">Mortgage Calculator</Link>
+                        <Link href="/calculators/off-plan" className="simple-dropdown-item">Off-Plan Calculator</Link>
+                        <Link href="/calculators/rental-yield" className="simple-dropdown-item">Rental Yield ROI Calculator</Link>
+                        <Link href="/calculators/xirr" className="simple-dropdown-item">XIRR Calculator</Link>
+                        <Link href="/calculators/mutual-fund" className="simple-dropdown-item">Mutual Fund Calculator</Link>
+                        <Link href="/calculators/child-education" className="simple-dropdown-item">Child Education Calculator</Link>
+                        <Link href="/calculators/retirement" className="simple-dropdown-item">Retirement Calculator</Link>
+                      </div>
+                    </div>
+                  )}
+                </li>
+                <li><Link href="/property" className={`nav-link ${pathname === '/property' ? 'active' : ''}`}>Property</Link></li>
+                <li><Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link></li>
+              </>
+            ) : (
+              // LOGGED IN NAVIGATION
+              user.email?.toLowerCase() === 'tharunkarthikav21@gmail.com' ? (
+                // ADMIN LINKS (Removed as they are in the dashboard tabs)
+                <></>
+              ) : (
+                // CLIENT LINKS
+                <>
+                  <li><Link href="/client/properties" className={`nav-link ${pathname === '/client/properties' ? 'active' : ''}`}>My Properties</Link></li>
+                  <li><Link href="/client/post-property" className={`nav-link ${pathname === '/client/post-property' ? 'active' : ''}`}>Post a Property</Link></li>
+                  <li><Link href="/client/support" className={`nav-link ${pathname === '/client/support' ? 'active' : ''}`}>Raise a Query</Link></li>
+                </>
+              )
+            )}
+
+            {/* Language Selector is always visible */}
             <li 
               className="notranslate"
               translate="no"

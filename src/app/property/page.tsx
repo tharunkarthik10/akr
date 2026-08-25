@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCurrency } from '@/context/CurrencyContext';
+import { supabase } from '@/utils/supabase/client';
 
 const PinIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -65,114 +66,59 @@ const BuildingIcon = () => (
   </svg>
 );
 
-const propertiesData = [
-  {
-    id: 1,
-    title: "Palm Jumeirah Villa",
-    location: "Palm Jumeirah",
-    price: "AED 25.0M",
-    type: "Villa",
-    beds: 6,
-    baths: 7,
-    sqft: "8500",
-    roi: "5.8%",
-    yield: "4.5%",
-    desc: "Luxurious waterfront villa with private beach access and stunning views of Dubai skyline.",
-    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
-  },
-  {
-    id: 2,
-    title: "Emirates Hills Mansion",
-    location: "Emirates Hills",
-    price: "AED 35.0M",
-    type: "Villa",
-    beds: 7,
-    baths: 9,
-    sqft: "12000",
-    roi: "6.2%",
-    yield: "5%",
-    desc: "Ultra-luxury mansion in Dubai's most prestigious community with golf course views.",
-    img: "https://images.unsplash.com/photo-1600607687920-4e2a09c15faa?w=800&q=80"
-  },
-  {
-    id: 3,
-    title: "Downtown Dubai Penthouse",
-    location: "Downtown Dubai",
-    price: "AED 18.5M",
-    type: "Penthouse",
-    beds: 4,
-    baths: 5,
-    sqft: "5500",
-    roi: "7.5%",
-    yield: "6.2%",
-    desc: "Premium penthouse with panoramic views of Burj Khalifa and Dubai Fountain.",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
-  },
-  {
-    id: 4,
-    title: "Dubai Marina Apartment",
-    location: "Dubai Marina",
-    price: "AED 6.5M",
-    type: "Apartment",
-    beds: 3,
-    baths: 4,
-    sqft: "2200",
-    roi: "8.2%",
-    yield: "7%",
-    desc: "Modern apartment with marina views and access to world-class amenities.",
-    img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
-  },
-  {
-    id: 5,
-    title: "Arabian Ranches Villa",
-    location: "Arabian Ranches",
-    price: "AED 9.2M",
-    type: "Villa",
-    beds: 5,
-    baths: 6,
-    sqft: "6000",
-    roi: "6.8%",
-    yield: "5.5%",
-    desc: "Family-oriented villa in gated community with golf course and polo club.",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-  },
-  {
-    id: 6,
-    title: "Jumeirah Lake Towers Apt",
-    location: "JLT",
-    price: "AED 3.8M",
-    type: "Apartment",
-    beds: 2,
-    baths: 2,
-    sqft: "1400",
-    roi: "9.5%",
-    yield: "8%",
-    desc: "Smart investment opportunity with high rental yields in established community.",
-    img: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&q=80"
-  }
-];
-
 export default function PropertiesPage() {
   const { currencyCode, currencySymbol, convertAmount } = useCurrency();
+  const [properties, setProperties] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   
-  const getDisplayPrice = (priceStr: string) => {
-    // Extract numbers, e.g. "AED 25.0M" -> 25000000
-    // But since the mock data is "AED 25.0M", parseFloat("25.0") = 25 * 1,000,000
-    const numMatch = priceStr.match(/[\d.]+/);
-    if (!numMatch) return priceStr;
-    const isMillion = priceStr.includes('M');
-    let baseAED = parseFloat(numMatch[0]);
-    if (isMillion) baseAED *= 1000000;
+  // Filter States
+  const [filterType, setFilterType] = useState('All');
+  const [filterStatus, setFilterStatus] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('properties')
+          .select('*')
+          .eq('status', 'Approved') // ONLY SHOW APPROVED PROPERTIES
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        setProperties(data || []);
+      } catch (error) {
+        console.error("Error fetching properties:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+  const getDisplayPrice = (priceStr: string, baseCurrency: string = 'AED') => {
+    if (!priceStr) return '';
+    // Extract numbers, e.g. "2,500,000" -> 2500000
+    const rawNum = priceStr.toString().replace(/,/g, '');
+    let baseValue = parseFloat(rawNum);
+    if (isNaN(baseValue)) return priceStr;
     
-    const convertedPrice = convertAmount(baseAED, 'AED', currencyCode);
+    const convertedPrice = convertAmount(baseValue, baseCurrency, currencyCode);
     
-    // Format back to compact if it's large (e.g. M for millions)
     if (convertedPrice >= 1000000) {
       return `${currencySymbol} ${(convertedPrice / 1000000).toFixed(1)}M`;
     } else {
       return `${currencySymbol} ${convertedPrice.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
     }
   };
+
+  const filteredProperties = properties.filter(p => {
+    if (searchQuery && !p.title?.toLowerCase().includes(searchQuery.toLowerCase()) && !p.location?.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    if (filterType !== 'All' && p.type !== filterType) return false;
+    if (filterStatus !== 'All' && p.property_status !== filterStatus) return false;
+    return true;
+  });
 
   return (
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '2rem' }}>
@@ -199,78 +145,141 @@ export default function PropertiesPage() {
           </p>
         </div>
 
-        {/* Property Grid */}
-        <div className="property-grid">
-          {propertiesData.map((property) => (
-            <div key={property.id} className="property-card">
-              
-              <div className="property-img-wrapper">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={property.img} 
-                  alt={property.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <span className="property-badge">{property.type}</span>
-                <div className="property-price-overlay notranslate">
-                  {getDisplayPrice(property.price)}
-                </div>
-              </div>
+        {/* Filter Section */}
+        <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', marginBottom: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          
+          <div style={{ flex: '1 1 200px' }}>
+            <input 
+              type="text" 
+              placeholder="Search by title or location..." 
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem' }}
+            />
+          </div>
 
-              <div className="property-content">
-                <h3 className="property-title">{property.title}</h3>
-                <div className="property-location">
-                  <PinIcon />
-                  <span>{property.location}</span>
-                </div>
+          <div style={{ flex: '1 1 150px' }}>
+            <select value={filterType} onChange={e => setFilterType(e.target.value)} style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem', backgroundColor: '#fcfcfc' }}>
+              <option value="All">Any Property Type</option>
+              <option value="Villa">Villa</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Townhouse">Townhouse</option>
+              <option value="Penthouse">Penthouse</option>
+              <option value="Plot">Plot</option>
+            </select>
+          </div>
 
-                <div className="property-stats-grid">
-                  <div className="property-stat-item">
-                    <BedIcon />
-                    <span className="property-stat-val">{property.beds}</span>
-                    <span className="property-stat-label">Beds</span>
-                  </div>
-                  <div className="property-stat-item">
-                    <BathIcon />
-                    <span className="property-stat-val">{property.baths}</span>
-                    <span className="property-stat-label">Baths</span>
-                  </div>
-                  <div className="property-stat-item">
-                    <SqFtIcon />
-                    <span className="property-stat-val">{property.sqft}</span>
-                    <span className="property-stat-label">Sq Ft</span>
-                  </div>
-                </div>
-
-                <div className="property-roi-grid">
-                  <div className="property-roi-box">
-                    <span className="property-roi-label">Projected ROI</span>
-                    <span className="property-roi-val">
-                      <TrendingIcon />
-                      ~ {property.roi}
-                    </span>
-                  </div>
-                  <div className="property-roi-box">
-                    <span className="property-roi-label">Rental Yield</span>
-                    <span className="property-roi-val">{property.yield}</span>
-                  </div>
-                </div>
-
-                <p className="property-desc">{property.desc}</p>
-
-                <Link href={`/property/${property.id}`} style={{ textDecoration: 'none', width: '100%' }}>
-                  <button className="property-btn" style={{ width: '100%' }}>
-                    View Details
-                  </button>
-                </Link>
-              </div>
-
+          <div style={{ flex: '1 1 150px' }}>
+            <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem', backgroundColor: '#fcfcfc' }}>
+              <option value="All">Any Status</option>
+              <option value="Ready to Move">Ready to Move</option>
+              <option value="Off-Plan">Off-Plan</option>
+              <option value="Under Construction">Under Construction</option>
+            </select>
+          </div>
+          
+          {(searchQuery || filterType !== 'All' || filterStatus !== 'All') && (
+            <div style={{ flex: '0 0 auto' }}>
+              <button 
+                onClick={() => { setSearchQuery(''); setFilterType('All'); setFilterStatus('All'); }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--primary-red)', cursor: 'pointer', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'underline' }}
+              >
+                Clear Filters
+              </button>
             </div>
-          ))}
+          )}
         </div>
 
+        {/* Property Grid */}
+        {loading ? (
+          <div style={{ padding: '4rem', textAlign: 'center', fontSize: '1.2rem', color: '#666' }}>
+            Loading available properties...
+          </div>
+        ) : filteredProperties.length === 0 ? (
+          <div style={{ padding: '4rem', textAlign: 'center', fontSize: '1.2rem', color: '#666', backgroundColor: 'white', borderRadius: '8px' }}>
+            No properties found matching your criteria.
+          </div>
+        ) : (
+          <div className="property-grid">
+            {filteredProperties.map((property) => (
+              <div key={property.id} className="property-card" style={{ borderRadius: '12px', overflow: 'hidden', backgroundColor: '#fff', border: '1px solid #eaeaea', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s, box-shadow 0.2s', height: '640px', maxWidth: '380px' }}>
+                
+                <div style={{ position: 'relative', height: '260px', width: '100%', overflow: 'hidden', flexShrink: 0 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img 
+                    src={property.images && property.images.length > 0 ? property.images[0] : "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"} 
+                    alt={property.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+                    className="hover-zoom"
+                  />
+                  <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.5rem' }}>
+                    <span style={{ backgroundColor: 'white', color: '#111', padding: '0.3rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>{property.type}</span>
+                    {property.property_status && (
+                      <span style={{ backgroundColor: 'var(--primary-red)', color: 'white', padding: '0.3rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700, boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>{property.property_status}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <div className="notranslate" style={{ color: 'var(--accent-gold)', fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '0.5rem' }}>
+                    {getDisplayPrice(property.price, property.currency || 'AED')}
+                  </div>
+                  
+                  <h3 style={{ fontSize: '1.25rem', color: '#111', fontWeight: 700, marginBottom: '0.5rem', lineHeight: 1.3, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                    {property.title}
+                  </h3>
+                  
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+                    <PinIcon />
+                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{property.location}</span>
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 0', borderTop: '1px solid #eaeaea', borderBottom: '1px solid #eaeaea', marginBottom: '1.5rem', color: '#444' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 600 }}>
+                      <div style={{ color: '#888', display: 'flex' }}><BedIcon /></div>
+                      <span>{property.bedrooms} Beds</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 600 }}>
+                      <div style={{ color: '#888', display: 'flex' }}><BathIcon /></div>
+                      <span>{property.bathrooms} Baths</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 600 }}>
+                      <div style={{ color: '#888', display: 'flex' }}><SqFtIcon /></div>
+                      <span>{property.size} Sq Ft</span>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: 'auto' }}>
+                    <Link href={`/property/${property.id}`} style={{ textDecoration: 'none', width: '100%' }}>
+                      <button style={{ 
+                        width: '100%', 
+                        padding: '0.8rem', 
+                        backgroundColor: 'transparent', 
+                        border: '2px solid #111', 
+                        color: '#111', 
+                        borderRadius: '6px', 
+                        fontSize: '1rem', 
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        transition: 'all 0.2s',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px'
+                      }}
+                      onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.borderColor = 'var(--primary-red)'; e.currentTarget.style.color = '#fff'; }}
+                      onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = '#111'; e.currentTarget.style.color = '#111'; }}
+                      >
+                        Explore Property
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Investment Guidance Banner */}
-        <div className="guidance-banner">
+        <div className="guidance-banner" style={{ marginTop: '3rem' }}>
           <h2>Looking for Investment Guidance?</h2>
           <p>Our expert advisors can help you identify the best real estate opportunities aligned with your investment goals</p>
           <div className="guidance-actions">
