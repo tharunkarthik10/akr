@@ -29,12 +29,14 @@ function AdminDashboardContent() {
   const [suggestingEditsFor, setSuggestingEditsFor] = useState<any>(null);
   const [adminFeedback, setAdminFeedback] = useState('');
 
-  // Security check: Only allow the specific admin email
+  // Security check: Only allow specific admin emails
+  const ADMIN_EMAILS = ['tharunkarthikav21@gmail.com', 'admin@akrgroupuae.com'];
+
   useEffect(() => {
     if (!authLoading) {
       if (!user) {
         router.push('/login');
-      } else if (user.email?.toLowerCase() !== 'tharunkarthikav21@gmail.com') {
+      } else if (!ADMIN_EMAILS.includes(user.email?.toLowerCase() || '')) {
         router.push('/client/post-property');
       } else {
         fetchData();
@@ -145,11 +147,11 @@ function AdminDashboardContent() {
     }
   };
 
-  if (authLoading || (user?.email?.toLowerCase() === 'tharunkarthikav21@gmail.com' && dataLoading)) {
+  if (authLoading || (ADMIN_EMAILS.includes(user?.email?.toLowerCase() || '') && dataLoading)) {
     return <div style={{ padding: '5rem', textAlign: 'center' }}>Loading Admin Dashboard...</div>;
   }
 
-  if (user?.email?.toLowerCase() !== 'tharunkarthikav21@gmail.com') {
+  if (!ADMIN_EMAILS.includes(user?.email?.toLowerCase() || '')) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#fcfbf8' }}>
         <h1 style={{ fontSize: '2rem', color: 'var(--primary-red)', marginBottom: '1rem' }}>Access Denied</h1>
@@ -174,8 +176,8 @@ function AdminDashboardContent() {
   const otherProperties = properties.filter(p => p.status !== 'Pending Approval' && p.status !== 'Edits Requested');
 
   const renderPropertyCard = (property: any) => (
-    <div key={property.id} style={{ display: 'flex', backgroundColor: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', justifyContent: 'space-between' }}>
-      <div style={{ display: 'flex', gap: '2rem', flex: 1 }}>
+    <div key={property.id} className="client-property-card">
+      <div className="client-property-card-left" style={{ flex: 1 }}>
         {property.images && property.images.length > 0 ? (
           <img 
             src={property.images[0]} 
@@ -208,7 +210,7 @@ function AdminDashboardContent() {
         </div>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', justifyContent: 'center', minWidth: '180px', marginLeft: '1rem' }}>
+      <div className="admin-property-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', justifyContent: 'center', minWidth: '180px' }}>
         <button onClick={() => setEditingProperty(property)} style={{ padding: '0.5rem 1rem', backgroundColor: '#333', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}>
           Make Edit
         </button>
@@ -299,12 +301,12 @@ function AdminDashboardContent() {
 
       <div className="container">
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div className="client-header-flex">
           <div>
             <h1 className="font-serif" style={{ fontSize: '2.5rem', color: 'var(--text-dark)' }}>Admin Portal</h1>
             <p style={{ color: '#666' }}>Welcome back, Admin. Manage all requests here.</p>
           </div>
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center' }}>
             <button 
               onClick={() => {setActiveTab('requests'); router.push('?tab=requests');}}
               className={activeTab === 'requests' ? "btn-red" : "btn-outline-dark"}
@@ -360,7 +362,7 @@ function AdminDashboardContent() {
               queries.map(query => (
                 <div key={query.id} style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
                   
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
+                  <div className="client-header-flex" style={{ marginBottom: '1.5rem', borderBottom: '1px solid #eee', paddingBottom: '1rem' }}>
                     <div>
                       <h3 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem' }}>{query.name}</h3>
                       <p style={{ color: '#666', fontSize: '0.9rem' }}>{query.service} • {query.project}</p>
@@ -382,7 +384,7 @@ function AdminDashboardContent() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
+                  <div className="form-grid-2">
                     <div style={{ fontSize: '0.9rem' }}>
                       <p style={{ marginBottom: '0.5rem' }}><strong>Email:</strong> {query.email}</p>
                       <p style={{ marginBottom: '0.5rem' }}><strong>Mobile:</strong> {query.countryCode} {query.mobile}</p>
@@ -396,7 +398,7 @@ function AdminDashboardContent() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #eee' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid #eee' }}>
                     <a 
                       href={`mailto:${query.email}?subject=Regarding your AKR Group Query: ${query.project}`}
                       className="btn-outline-dark"

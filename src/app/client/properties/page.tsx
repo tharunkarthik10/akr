@@ -72,7 +72,7 @@ export default function MyPropertiesPage() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
+      <div className="client-header-flex">
         <div>
           <h1 className="font-serif" style={{ fontSize: '2.5rem', color: 'var(--text-dark)' }}>My Properties</h1>
           <p style={{ color: '#666', fontSize: '1.1rem' }}>Manage and view the properties you have submitted.</p>
@@ -99,8 +99,8 @@ export default function MyPropertiesPage() {
       ) : (
         <div style={{ display: 'grid', gap: '1.5rem' }}>
           {properties.map(property => (
-            <div key={property.id} style={{ display: 'flex', backgroundColor: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <div key={property.id} className="client-property-card">
+              <div className="client-property-card-left">
                 {property.images && property.images.length > 0 ? (
                   <img 
                     src={property.images[0]} 
@@ -119,7 +119,7 @@ export default function MyPropertiesPage() {
                 </div>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem' }}>
+              <div className="client-property-card-right">
                   <span style={{ 
                     display: 'inline-block', 
                     padding: '0.25rem 1rem', 

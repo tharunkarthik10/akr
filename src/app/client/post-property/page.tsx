@@ -261,7 +261,6 @@ export default function PostPropertyPage() {
   }
 
   // Helper styles
-  const sectionStyle = { backgroundColor: 'white', padding: '3rem', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)', marginBottom: '2rem' };
   const headerStyle = { fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #f0f0f0', paddingBottom: '1rem', color: 'var(--primary-red)' };
   const inputStyle = { width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc', backgroundColor: '#fff', fontSize: '1rem' };
   const labelStyle = { display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: '#333' };
@@ -276,10 +275,10 @@ export default function PostPropertyPage() {
       <form onSubmit={handleSubmit}>
         
         {/* Section 1: Basic Information */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>1. Basic Information</h3>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
             <div>
               <label style={labelStyle}>Project / Property Name *</label>
               <input name="title" value={formData.title} onChange={handleChange} required type="text" placeholder="e.g. Luxury Villa in Palm Jumeirah" style={inputStyle} />
@@ -296,7 +295,7 @@ export default function PostPropertyPage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="form-grid-3" style={{ marginBottom: '2rem' }}>
             <div>
               <label style={labelStyle}>Price *</label>
               <div style={{ display: 'flex' }}>
@@ -323,7 +322,7 @@ export default function PostPropertyPage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem' }}>
+          <div className="form-grid-3">
             <div>
               <label style={labelStyle}>Property Area (Sq.Ft) *</label>
               <input name="size" value={formData.size} onChange={handleChange} required type="number" placeholder="1200" style={inputStyle} />
@@ -343,7 +342,7 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 2: Property Description */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>2. Property Description</h3>
           
           <div style={{ marginBottom: '2rem' }}>
@@ -364,7 +363,7 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 3: Features & Amenities */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>3. Features & Amenities</h3>
           
           <div style={{ marginBottom: '3rem' }}>
@@ -519,11 +518,11 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 4: Payment Plan */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>4. Payment Plan (Optional)</h3>
           <p style={{ color: '#666', marginBottom: '2rem' }}>For off-plan properties, outline the payment structure. Percentages must sum to exactly 100%.</p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2rem' }}>
+          <div className="form-grid-3">
             <div>
               <label style={labelStyle}>Down Payment (%)</label>
               <div style={{ position: 'relative' }}>
@@ -549,7 +548,7 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 5: Location */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>5. Location</h3>
           
           <div style={{ marginBottom: '2rem' }}>
@@ -591,7 +590,7 @@ export default function PostPropertyPage() {
             )}
 
             {formData.nearby_places.map((place, index) => (
-              <div key={index} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '1rem', marginBottom: '1rem' }}>
+              <div key={index} className="form-grid-nearby" style={{ marginBottom: '1rem' }}>
                 <input 
                   type="text" 
                   value={place.place} 
@@ -613,11 +612,11 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 6: Media */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>6. Media & Documents</h3>
           <p style={{ color: '#666', marginBottom: '2rem' }}>High-quality media significantly increases listing engagement.</p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
             <div style={{ padding: '1.5rem', border: '2px dashed #ccc', borderRadius: '8px', backgroundColor: '#fafafa' }}>
               <label style={labelStyle}>Property Images (Max 7) *</label>
               <input 
@@ -639,7 +638,7 @@ export default function PostPropertyPage() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+          <div className="form-grid-2">
             <div style={{ padding: '1.5rem', border: '2px dashed #ccc', borderRadius: '8px', backgroundColor: '#fafafa' }}>
               <label style={labelStyle}>Floor Plans (Images or PDF)</label>
               <input 
@@ -659,10 +658,10 @@ export default function PostPropertyPage() {
         </div>
 
         {/* Section 7: Developer Information */}
-        <div style={sectionStyle}>
+        <div className="form-section-container">
           <h3 className="font-serif" style={headerStyle}>7. Developer Information</h3>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+          <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
             <div>
               <label style={labelStyle}>Developer Name *</label>
               <input name="developer" value={formData.developer} onChange={handleChange} required type="text" placeholder="e.g. Emaar Properties" style={inputStyle} />

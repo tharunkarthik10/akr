@@ -116,11 +116,11 @@ export default function SupportQueryPage() {
         <p style={{ color: '#666', fontSize: '1.1rem' }}>Have a problem, doubt, or need advisory services? Submit your query below.</p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '3rem', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+      <form onSubmit={handleSubmit} className="form-section-container">
         
         <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #f0f0f0', paddingBottom: '1rem' }}>Personal & Project Details</h3>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+        <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Full Name *</label>
             <input name="name" value={formData.name} onChange={handleChange} required type="text" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />
@@ -131,7 +131,7 @@ export default function SupportQueryPage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+        <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Email Address *</label>
             <input name="email" value={formData.email} onChange={handleChange} required type="email" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />
@@ -156,7 +156,7 @@ export default function SupportQueryPage() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
+        <div className="form-grid-2" style={{ marginBottom: '2rem' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Nationality *</label>
             <input name="nationality" value={formData.nationality} onChange={handleChange} required type="text" placeholder="e.g. UAE, UK, India" style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc' }} />

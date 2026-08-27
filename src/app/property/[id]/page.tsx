@@ -131,7 +131,7 @@ export default function PropertyDetailPage() {
       </section>
 
       {/* Main Content Layout */}
-      <div className="container" style={{ maxWidth: '1400px', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '3rem', margin: '2rem auto' }}>
+      <div className="container property-details-layout">
         
         <div className="property-left-col">
           
@@ -159,7 +159,7 @@ export default function PropertyDetailPage() {
             </div>
 
             {/* Quick Stats */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem', marginTop: '3rem', padding: '2rem 3rem', backgroundColor: 'white', borderRadius: '16px', boxShadow: '0 8px 30px rgba(0,0,0,0.04)' }}>
+            <div className="quick-stats-container">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                   <div style={{ color: 'var(--accent-gold)' }}><BedIcon /></div>
                   <div>
@@ -182,7 +182,7 @@ export default function PropertyDetailPage() {
                   </div>
                 </div>
                 {property.handover_date && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', borderLeft: '1px solid #eee', paddingLeft: '3rem' }}>
+                  <div className="handover-stat" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                     <div style={{ color: 'var(--accent-gold)' }}><CalendarIcon /></div>
                     <div>
                       <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-dark)' }}>{formatDate(property.handover_date)}</div>

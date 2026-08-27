@@ -18,26 +18,26 @@ function LoginContent() {
   const searchParams = useSearchParams();
   const isAdminView = searchParams.get('type') === 'admin';
   
-  const [email, setEmail] = useState(isAdminView ? 'tharunkarthikav21@gmail.com' : '');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { user } = useAuth();
 
-  // Ensure email updates if they switch tabs without unmounting
+  // Ensure email clears if they switch tabs without unmounting
   useEffect(() => {
-    if (isAdminView) {
-      setEmail('tharunkarthikav21@gmail.com');
-    } else {
-      setEmail('');
-    }
+    setEmail('');
+    setPassword('');
+    setError('');
   }, [isAdminView]);
+
+  const ADMIN_EMAILS = ['tharunkarthikav21@gmail.com', 'admin@akrgroupuae.com'];
 
   // If already logged in, redirect based on user role/email
   useEffect(() => {
     if (user) {
-      if (user.email?.toLowerCase() === 'tharunkarthikav21@gmail.com') {
+      if (ADMIN_EMAILS.includes(user.email?.toLowerCase() || '')) {
         router.push('/admin/dashboard');
       } else {
         router.push('/client/post-property');
@@ -65,7 +65,7 @@ function LoginContent() {
       }
 
       // Route based on who logged in
-      if (email.toLowerCase() === 'tharunkarthikav21@gmail.com') {
+      if (ADMIN_EMAILS.includes(email.toLowerCase())) {
         router.push('/admin/dashboard');
       } else {
         router.push('/client/post-property');
@@ -111,8 +111,7 @@ function LoginContent() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              readOnly={isAdminView}
-              style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc', fontSize: '1rem', backgroundColor: isAdminView ? '#f5f5f5' : 'white', color: isAdminView ? '#555' : 'inherit' }}
+              style={{ width: '100%', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ccc', fontSize: '1rem', backgroundColor: 'white', color: 'inherit' }}
             />
           </div>
           <div>
@@ -140,9 +139,9 @@ function LoginContent() {
           {!isAdminView ? (
             <>
               <p style={{ color: '#666' }}>Don't have an account?</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '0.5rem' }}>
-                <Link href="/register" style={{ color: 'var(--primary-red)', fontWeight: 600 }}>
-                  Register as a Client
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+                <Link href="/register" className="btn-outline-dark" style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 600 }}>
+                  Register as New Client
                 </Link>
                 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
@@ -151,15 +150,17 @@ function LoginContent() {
                   <div style={{ height: '1px', backgroundColor: '#eee', flex: 1 }}></div>
                 </div>
 
-                <Link href="/login?type=admin" style={{ color: '#333', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                  🛡️ Login as Admin
+                <Link href="/login?type=admin" className="btn-outline-dark" style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', backgroundColor: '#fcfbf8', color: '#333' }}>
+                  🛡️ Admin Login
                 </Link>
               </div>
             </>
           ) : (
-            <Link href="/login" style={{ color: 'var(--primary-red)', fontWeight: 600 }}>
-              ← Back to Client Login
-            </Link>
+            <div style={{ marginTop: '1rem' }}>
+              <Link href="/login" className="btn-outline-dark" style={{ padding: '0.75rem', textAlign: 'center', fontWeight: 600, display: 'block', width: '100%' }}>
+                ← Client Login
+              </Link>
+            </div>
           )}
         </div>
       </div>
