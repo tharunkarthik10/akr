@@ -3273,6 +3273,17 @@ body {
     gap: 1rem !important;
   }
   
+  .slider-labels {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  .slider-labels input {
+    width: 100% !important;
+    text-align: left !important;
+  }
+  
   .client-header-flex {
     flex-direction: column !important;
     align-items: flex-start !important;
