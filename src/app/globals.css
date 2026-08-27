@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -1918,6 +1918,14 @@ select.form-control {
 .simple-dropdown-item:hover {
   background-color: rgba(139, 0, 0, 0.05);
   color: var(--primary-red);
+}
+
+.simple-dropdown-item.active-calc {
+  background-color: rgba(139, 0, 0, 0.05);
+  color: var(--primary-red);
+  font-weight: 700;
+  border-left: 3px solid var(--accent-gold);
+  padding-left: calc(1rem - 3px);
 }
 
 .founder-highlight-quote {

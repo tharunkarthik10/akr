@@ -147,13 +147,13 @@ export default function Header() {
                   {calcDropdownOpen && (
                     <div className="simple-dropdown-wrapper">
                       <div className="simple-dropdown">
-                        <Link href="/calculators/mortgage" className="simple-dropdown-item" onClick={closeMobileMenu}>Mortgage Calculator</Link>
-                        <Link href="/calculators/off-plan" className="simple-dropdown-item" onClick={closeMobileMenu}>Off-Plan Calculator</Link>
-                        <Link href="/calculators/rental-yield" className="simple-dropdown-item" onClick={closeMobileMenu}>Rental Yield ROI Calculator</Link>
-                        <Link href="/calculators/xirr" className="simple-dropdown-item" onClick={closeMobileMenu}>XIRR Calculator</Link>
-                        <Link href="/calculators/mutual-fund" className="simple-dropdown-item" onClick={closeMobileMenu}>Mutual Fund Calculator</Link>
-                        <Link href="/calculators/child-education" className="simple-dropdown-item" onClick={closeMobileMenu}>Child Education Calculator</Link>
-                        <Link href="/calculators/retirement" className="simple-dropdown-item" onClick={closeMobileMenu}>Retirement Calculator</Link>
+                        <Link href="/calculators/mortgage" className={`simple-dropdown-item ${pathname === '/calculators/mortgage' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Mortgage Calculator</Link>
+                        <Link href="/calculators/off-plan" className={`simple-dropdown-item ${pathname === '/calculators/off-plan' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Off-Plan Calculator</Link>
+                        <Link href="/calculators/rental-yield" className={`simple-dropdown-item ${pathname === '/calculators/rental-yield' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Rental Yield ROI Calculator</Link>
+                        <Link href="/calculators/xirr" className={`simple-dropdown-item ${pathname === '/calculators/xirr' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>XIRR Calculator</Link>
+                        <Link href="/calculators/mutual-fund" className={`simple-dropdown-item ${pathname === '/calculators/mutual-fund' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Mutual Fund Calculator</Link>
+                        <Link href="/calculators/child-education" className={`simple-dropdown-item ${pathname === '/calculators/child-education' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Child Education Calculator</Link>
+                        <Link href="/calculators/retirement" className={`simple-dropdown-item ${pathname === '/calculators/retirement' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Retirement Calculator</Link>
                       </div>
                     </div>
                   )}
