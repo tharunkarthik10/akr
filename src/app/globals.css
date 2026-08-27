@@ -3257,6 +3257,30 @@ body {
     border-top: 1px solid #eee !important;
     padding-top: 1.5rem !important;
   }
+  .payment-plan-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+.payment-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.payment-plan-value {
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+.payment-plan-label {
+  font-size: 0.85rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
 }
 
 .quick-stats-container {

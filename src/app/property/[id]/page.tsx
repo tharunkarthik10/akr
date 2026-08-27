@@ -269,23 +269,23 @@ export default function PropertyDetailPage() {
                 </div>
                 
                 {/* Legend */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', textAlign: 'center' }}>
+                <div className="payment-plan-grid">
                   {paymentPlan.down_payment > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--primary-red)', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.down_payment}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>Down Payment</div>
+                      <div className="payment-plan-value" style={{ color: 'var(--primary-red)' }}>{paymentPlan.down_payment}%</div>
+                      <div className="payment-plan-label">Down Payment</div>
                     </div>
                   )}
                   {paymentPlan.during_construction > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.during_construction}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>During Construction</div>
+                      <div className="payment-plan-value" style={{ color: 'var(--accent-gold)' }}>{paymentPlan.during_construction}%</div>
+                      <div className="payment-plan-label">During Construction</div>
                     </div>
                   )}
                   {paymentPlan.on_handover > 0 && (
                     <div>
-                      <div style={{ fontSize: '2.8rem', fontWeight: 800, color: '#333', marginBottom: '0.8rem', letterSpacing: '-1px' }}>{paymentPlan.on_handover}%</div>
-                      <div style={{ fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 700 }}>On Handover</div>
+                      <div className="payment-plan-value" style={{ color: '#333' }}>{paymentPlan.on_handover}%</div>
+                      <div className="payment-plan-label">On Handover</div>
                     </div>
                   )}
                 </div>
