@@ -57,13 +57,13 @@ export default function MortgageCalculator() {
             <div className="calc-controls">
               {/* Property Value */}
               <div className="slider-group">
-                <div className="slider-labels flex justify-between mb-2 items-center">
-                  <span className="text-gray-700 text-sm">Property Value (AED)</span>
+                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
+                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Property Value (AED)</span>
                   <input 
                     type="text" 
                     value={propertyValue.toLocaleString()}
                     onChange={(e) => setPropertyValue(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-48 text-right text-gray-900 font-bold focus:outline-none"
+                    className="w-full sm:w-48 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
                     style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
                   />
                 </div>
@@ -85,13 +85,13 @@ export default function MortgageCalculator() {
 
               {/* Down Payment */}
               <div className="slider-group mt-6">
-                <div className="slider-labels flex justify-between mb-2 items-center">
-                  <span className="text-gray-700 text-sm">Down Payment (AED)</span>
+                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
+                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Down Payment (AED)</span>
                   <input 
                     type="text" 
                     value={downPayment.toLocaleString()}
                     onChange={(e) => setDownPayment(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-48 text-right text-gray-900 font-bold focus:outline-none"
+                    className="w-full sm:w-48 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
                     style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
                   />
                 </div>
@@ -113,13 +113,13 @@ export default function MortgageCalculator() {
 
               {/* Loan Period */}
               <div className="slider-group mt-6">
-                <div className="slider-labels flex justify-between mb-2 items-center">
-                  <span className="text-gray-700 text-sm">Loan Period (Years)</span>
+                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
+                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Loan Period (Years)</span>
                   <input 
                     type="text" 
                     value={loanPeriod.toLocaleString()}
                     onChange={(e) => setLoanPeriod(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-40 text-right text-gray-900 font-bold focus:outline-none"
+                    className="w-full sm:w-40 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
                     style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
                   />
                 </div>
@@ -141,13 +141,13 @@ export default function MortgageCalculator() {
 
               {/* Interest Rate */}
               <div className="slider-group mt-6">
-                <div className="slider-labels flex justify-between mb-2 items-center">
-                  <span className="text-gray-700 text-sm">Interest Rate (%)</span>
+                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
+                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Interest Rate (%)</span>
                   <input 
                     type="text" 
                     value={interestRate}
                     onChange={(e) => setInterestRate(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-40 text-right text-gray-900 font-bold focus:outline-none"
+                    className="w-full sm:w-40 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
                     style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
                   />
                 </div>
