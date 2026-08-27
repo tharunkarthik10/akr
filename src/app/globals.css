@@ -3060,6 +3060,13 @@ select.form-control {
 @media (max-width: 900px) {
   .calc-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .calc-box {
+    padding: 1.25rem !important;
+  }
+  .calc-dark-card {
+    padding: 1.25rem !important;
   }
 }
 
@@ -3273,24 +3280,7 @@ body {
     gap: 1rem !important;
   }
   
-  .slider-labels, .calc-input-header {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 0.75rem !important;
-  }
-  
-  .slider-labels input, .calc-input-header input {
-    width: 100% !important;
-    text-align: center !important;
-  }
-  
-  .calc-input-value-display {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-  
+
   .client-header-flex {
     flex-direction: column !important;
     align-items: flex-start !important;
