@@ -2954,6 +2954,7 @@ select.form-control {
 .calc-result-box.main .result-value {
   font-size: 2.5rem;
   font-weight: 700;
+  word-break: break-word;
 }
 
 .calc-result-box.secondary {
@@ -2971,6 +2972,7 @@ select.form-control {
   color: var(--primary-red);
   font-size: 1.25rem;
   font-weight: 700;
+  word-break: break-word;
 }
 
 .calc-result-box.secondary .result-hint {
@@ -3087,14 +3089,12 @@ select.form-control {
   /* Make the input box take full width */
   .calc-input-value-display {
     width: 100% !important;
-    justify-content: space-between !important;
   }
   
   /* Let the input field fill the remaining space inside the full-width box */
   .calc-text-input-raw {
     width: 100% !important;
     flex: 1;
-    text-align: right !important;
   }
 }
 
@@ -3116,6 +3116,10 @@ select.form-control {
   padding: 0.25rem 0.5rem;
   font-weight: 600;
   color: var(--primary-red);
+}
+
+.calc-input-value-display.percentage-mode {
+  justify-content: center;
 }
 
 .calc-text-input-raw {
