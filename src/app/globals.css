@@ -3273,15 +3273,22 @@ body {
     gap: 1rem !important;
   }
   
-  .slider-labels {
+  .slider-labels, .calc-input-header {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.5rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
   }
   
-  .slider-labels input {
+  .slider-labels input, .calc-input-header input {
     width: 100% !important;
-    text-align: left !important;
+    text-align: center !important;
+  }
+  
+  .calc-input-value-display {
+    width: 100% !important;
+    justify-content: center !important;
   }
   
   .client-header-flex {
