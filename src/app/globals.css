@@ -3068,6 +3068,26 @@ select.form-control {
   .calc-dark-card {
     padding: 1.25rem !important;
   }
+  
+  /* Stack labels and inputs vertically on mobile to prevent overflow */
+  .calc-input-header, .slider-labels {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Make the input box take full width */
+  .calc-input-value-display {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  
+  /* Let the input field fill the remaining space inside the full-width box */
+  .calc-text-input-raw {
+    width: 100% !important;
+    flex: 1;
+    text-align: right !important;
+  }
 }
 
 
