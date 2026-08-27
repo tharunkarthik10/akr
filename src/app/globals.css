@@ -114,9 +114,9 @@ button {
 /* HEADER STYLES */
 .header-container {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 

@@ -13,7 +13,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   return (
     <>
       <Header />
-      <main style={{ flex: 1, backgroundColor: isAdminRoute ? '#fcfbf8' : 'transparent', minHeight: isAdminRoute ? '100vh' : 'auto' }}>
+      <main style={{ flex: 1, paddingTop: '110px', backgroundColor: isAdminRoute ? '#fcfbf8' : 'transparent', minHeight: isAdminRoute ? '100vh' : 'auto' }}>
         {children}
       </main>
       <Footer />
