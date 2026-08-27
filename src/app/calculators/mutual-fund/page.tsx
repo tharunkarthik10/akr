@@ -5,6 +5,7 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import { useCurrency } from '@/context/CurrencyContext';
 import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
 
 export default function MutualFundCalculatorPage() {
   const { currencySymbol, convertAmount } = useCurrency();
@@ -125,6 +126,8 @@ export default function MutualFundCalculatorPage() {
                   </ResponsiveContainer>
                 </div>
               </div>
+              
+              <CalculatorCTAs />
             </div>
           </div>
         </div>

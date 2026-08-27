@@ -27,9 +27,8 @@ export default function FormattedSliderInput({
 }: FormattedSliderInputProps) {
   const { currencySymbol } = useCurrency();
   
-  // Format numeric value for text input (e.g. 1000000 -> "1,000,000")
   const formatNumber = (num: number) => {
-    return num.toLocaleString('en-US');
+    return isPercentage ? `${num}%` : num.toLocaleString('en-US');
   };
 
   const [displayValue, setDisplayValue] = useState(formatNumber(value));
@@ -40,7 +39,7 @@ export default function FormattedSliderInput({
   }, [value]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawVal = e.target.value.replace(/,/g, '');
+    const rawVal = e.target.value.replace(/,/g, '').replace(/%/g, '');
     setDisplayValue(e.target.value); // Allow typing temporarily without snapping to commas immediately if mid-edit
 
     const numVal = parseFloat(rawVal);
@@ -68,16 +67,16 @@ export default function FormattedSliderInput({
     <div className="calc-input-group">
       <div className="calc-input-header">
         <label>{label}</label>
-        <div className="calc-input-value-display notranslate">
+        <div className={`calc-input-value-display notranslate ${isPercentage ? 'percentage-mode' : ''}`}>
           {isCurrency && <span className="calc-symbol">{currencySymbol}</span>}
           <input
             type="text"
             className="calc-text-input-raw"
+            style={{ textAlign: isPercentage ? 'center' : undefined }}
             value={displayValue}
             onChange={handleTextChange}
             onBlur={handleBlur}
           />
-          {isPercentage && <span className="calc-symbol">%</span>}
         </div>
       </div>
 

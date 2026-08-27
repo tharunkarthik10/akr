@@ -5,6 +5,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import { useCurrency } from '@/context/CurrencyContext';
 import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
 
 // Basic XIRR approximation
 const calculateXIRR = (cashflows: {amount: number, date: Date}[]) => {
@@ -103,9 +104,9 @@ export default function XirrCalculatorPage() {
               <FormattedSliderInput
                 label="Initial Investment"
                 value={initialInvestment}
-                min={0}
+                min={1000}
                 max={bounds.invMax}
-                step={bounds.invStep || 1}
+                step={bounds.invStep}
                 onChange={setInitialInvestment}
                 isCurrency={true}
               />
@@ -132,7 +133,7 @@ export default function XirrCalculatorPage() {
               <div className="calc-results-grid">
                 <div className="calc-result-box main">
                   <span className="result-label">XIRR (Annualized Return)</span>
-                  <span className="result-value notranslate">{isFinite(xirrValue) ? xirrValue.toFixed(2) : 0}%</span>
+                  <span className="result-value notranslate" style={{ wordBreak: 'break-all' }}>{isFinite(xirrValue) ? xirrValue.toFixed(2) : 0}%</span>
                 </div>
                 <div className="calc-result-box secondary">
                   <span className="result-label">Absolute ROI</span>
@@ -159,6 +160,9 @@ export default function XirrCalculatorPage() {
                   </ResponsiveContainer>
                 </div>
               </div>
+              
+              <CalculatorCTAs />
+
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recha
 import { useCurrency } from '@/context/CurrencyContext';
 import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
 
 export default function ChildEducationCalculatorPage() {
   const { currencySymbol, convertAmount } = useCurrency();
@@ -136,6 +137,9 @@ export default function ChildEducationCalculatorPage() {
                   </ResponsiveContainer>
                 </div>
               </div>
+
+              <CalculatorCTAs />
+
             </div>
           </div>
         </div>

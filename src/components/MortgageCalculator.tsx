@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 
 export default function MortgageCalculator() {
   const [propertyValue, setPropertyValue] = useState(1000000);
@@ -54,117 +55,50 @@ export default function MortgageCalculator() {
             <div className="text-center mb-6">
               <h3 className="font-sans font-bold text-2xl text-gray-900" style={{ letterSpacing: '1px', marginTop: '-3px' }}>MORTGAGE CALCULATOR</h3>
             </div>
-            <div className="calc-controls">
-              {/* Property Value */}
-              <div className="slider-group">
-                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
-                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Property Value (AED)</span>
-                  <input 
-                    type="text" 
-                    value={propertyValue.toLocaleString()}
-                    onChange={(e) => setPropertyValue(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-full sm:w-48 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
-                    style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
-                  />
-                </div>
-                <input 
-                  type="range" 
-                  min="200000" 
-                  max="35000000" 
-                  step="100000"
-                  value={propertyValue} 
-                  onChange={(e) => setPropertyValue(Number(e.target.value))}
-                  className="custom-range"
+            <div className="calc-controls" style={{ padding: '0 1rem' }}>
+              <FormattedSliderInput
+                label="Property Value"
+                value={propertyValue}
+                min={200000}
+                max={35000000}
+                step={100000}
+                onChange={setPropertyValue}
+                isCurrency={true}
+              />
+
+              <div style={{ marginTop: '2rem' }}>
+                <FormattedSliderInput
+                  label="Down Payment"
+                  value={downPayment}
+                  min={0}
+                  max={propertyValue}
+                  step={50000}
+                  onChange={setDownPayment}
+                  isCurrency={true}
                 />
-                <div className="slider-limits flex justify-between text-xs text-gray-500 mt-2">
-                  <span>200K</span>
-                  <span className="border-b border-gray-400 pb-1">1,000,000</span>
-                  <span>35M</span>
-                </div>
               </div>
 
-              {/* Down Payment */}
-              <div className="slider-group mt-6">
-                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
-                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Down Payment (AED)</span>
-                  <input 
-                    type="text" 
-                    value={downPayment.toLocaleString()}
-                    onChange={(e) => setDownPayment(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-full sm:w-48 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
-                    style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
-                  />
-                </div>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max={propertyValue} 
-                  step="50000"
-                  value={downPayment} 
-                  onChange={(e) => setDownPayment(Number(e.target.value))}
-                  className="custom-range"
+              <div style={{ marginTop: '2rem' }}>
+                <FormattedSliderInput
+                  label="Loan Period (Years)"
+                  value={loanPeriod}
+                  min={1}
+                  max={30}
+                  step={1}
+                  onChange={setLoanPeriod}
                 />
-                <div className="slider-limits flex justify-between text-xs text-gray-500 mt-2">
-                  <span>0%</span>
-                  <span>50%</span>
-                  <span>100%</span>
-                </div>
               </div>
 
-              {/* Loan Period */}
-              <div className="slider-group mt-6">
-                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
-                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Loan Period (Years)</span>
-                  <input 
-                    type="text" 
-                    value={loanPeriod.toLocaleString()}
-                    onChange={(e) => setLoanPeriod(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-full sm:w-40 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
-                    style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
-                  />
-                </div>
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="30" 
-                  step="1"
-                  value={loanPeriod} 
-                  onChange={(e) => setLoanPeriod(Number(e.target.value))}
-                  className="custom-range"
+              <div style={{ marginTop: '2rem' }}>
+                <FormattedSliderInput
+                  label="Interest Rate"
+                  value={interestRate}
+                  min={1}
+                  max={20}
+                  step={0.1}
+                  onChange={setInterestRate}
+                  isPercentage={true}
                 />
-                <div className="slider-limits flex justify-between text-xs text-gray-500 mt-2">
-                  <span>1 Year</span>
-                  <span>15 Years</span>
-                  <span>30 Years</span>
-                </div>
-              </div>
-
-              {/* Interest Rate */}
-              <div className="slider-group mt-6">
-                <div className="slider-labels flex flex-col sm:flex-row justify-between mb-2 items-start sm:items-center">
-                  <span className="text-gray-700 text-sm mb-1 sm:mb-0">Interest Rate (%)</span>
-                  <input 
-                    type="text" 
-                    value={interestRate}
-                    onChange={(e) => setInterestRate(Number(e.target.value.replace(/[^0-9.]/g, '')) || 0)}
-                    className="w-full sm:w-40 text-left sm:text-right text-gray-900 font-bold focus:outline-none"
-                    style={{ border: 'none', outline: 'none', background: 'transparent', boxShadow: 'none', fontSize: '1.6rem' }}
-                  />
-                </div>
-                <input 
-                  type="range" 
-                  min="1" 
-                  max="20" 
-                  step="0.1"
-                  value={interestRate} 
-                  onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="custom-range"
-                />
-                <div className="slider-limits flex justify-between text-xs text-gray-500 mt-2">
-                  <span>1%</span>
-                  <span>10%</span>
-                  <span>20%</span>
-                </div>
               </div>
 
               <div className="text-center pt-6 mt-6 border-b border-gray-300 pb-2">

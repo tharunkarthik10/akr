@@ -146,15 +146,16 @@ export default function PropertyDetailPage() {
                   )}
                   <span style={{ backgroundColor: '#f0f0f0', color: '#555', padding: '0.4rem 1.2rem', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 700 }}>{property.type}</span>
                 </div>
-                <h1 style={{ color: 'var(--text-dark)', fontSize: '3.6rem', marginBottom: '1rem', lineHeight: 1.1, fontWeight: 800, letterSpacing: '-1px' }}>{property.title}</h1>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#555', fontSize: '1.15rem' }}>
-                  <PinIcon /> {property.location}
+                <h1 className="prop-title font-serif">{property.title}</h1>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', color: '#555', fontSize: '1.15rem' }}>
+                  <div style={{ marginTop: '0.2rem' }}><PinIcon /></div>
+                  <div style={{ lineHeight: '1.4' }}>{property.location}</div>
                 </div>
               </div>
               
               <div style={{ marginTop: '1.5rem' }}>
                 <div style={{ fontSize: '0.9rem', color: '#888', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 700, letterSpacing: '1.5px' }}>Asking Price</div>
-                <div className="notranslate" style={{ color: 'var(--accent-gold)', fontSize: '3.4rem', fontWeight: 800, letterSpacing: '-1px', lineHeight: 1 }}>{displayPrice}</div>
+                <div className="notranslate prop-price">{displayPrice}</div>
               </div>
             </div>
 

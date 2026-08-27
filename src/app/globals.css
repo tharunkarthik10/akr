@@ -122,8 +122,8 @@ button {
 
 .top-bar {
   background-color: var(--primary-red);
-  color: var(--accent-gold); /* Changed from var(--text-light) to gold */
-  padding: 0.5rem 0;
+  color: var(--accent-gold);
+  padding: 0.25rem 0; /* Reduced from 0.5rem */
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -189,8 +189,8 @@ button {
 
 /* MAIN NAV */
 .main-nav {
-  background-color: #fcfbf8; /* Cream/off-white background */
-  padding: 0.75rem 0;
+  background-color: #fcfbf8;
+  padding: 0.4rem 0; /* Reduced from 0.75rem */
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
@@ -1204,7 +1204,7 @@ button {
   .nav-container {
     flex-direction: column;
     gap: 0;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1rem;
     align-items: stretch;
   }
   
@@ -1254,7 +1254,7 @@ button {
   }
 
   .logo-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
   .logo-subtitle {
     font-size: 0.5rem;
@@ -3268,6 +3268,22 @@ body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.04);
 }
 
+.prop-title {
+  color: var(--text-dark);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.prop-price {
+  color: var(--accent-gold);
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+}
 .handover-stat {
   border-left: 1px solid #eee;
 }

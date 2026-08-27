@@ -5,6 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } fro
 import { useCurrency } from '@/context/CurrencyContext';
 import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
 
 export default function OffPlanCalculatorPage() {
   const { currencySymbol, convertAmount } = useCurrency();
@@ -165,6 +166,8 @@ export default function OffPlanCalculatorPage() {
                   <button className="btn-calc-secondary">Email Us</button>
                 </div>
               </div>
+
+              <CalculatorCTAs />
 
             </div>
           </div>

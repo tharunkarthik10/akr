@@ -104,11 +104,11 @@ export default function Header() {
               <img 
                 src="/logo/akrlogo.png" 
                 alt="AKR Group UAE Logo" 
-                style={{ height: '55px', width: 'auto', objectFit: 'contain' }} 
+                style={{ height: '42px', width: 'auto', objectFit: 'contain' }} 
               />
               <div className="logo-text ml-2">
-                <div className="logo-title font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.4rem', fontWeight: 'bold', lineHeight: '1.2' }}>AKR GROUP UAE</div>
-                <div className="logo-subtitle" style={{ color: '#c59b27', fontSize: '0.65rem', letterSpacing: '1px', fontWeight: '600' }}>FINANCIAL & REAL ESTATE INVESTMENT ARCHITECTS</div>
+                <div className="logo-title font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.2rem', fontWeight: 'bold', lineHeight: '1.1' }}>AKR GROUP UAE</div>
+                <div className="logo-subtitle" style={{ color: '#c59b27', fontSize: '0.6rem', letterSpacing: '0.5px', fontWeight: '600' }}>FINANCIAL & REAL ESTATE INVESTMENT ARCHITECTS</div>
               </div>
             </Link>
             <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
