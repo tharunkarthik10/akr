@@ -148,8 +148,8 @@ export default function PropertyDetailPage() {
                 </div>
                 <h1 className="prop-title font-serif">{property.title}</h1>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', color: '#555', fontSize: '1.15rem' }}>
-                  <div style={{ marginTop: '0.2rem' }}><PinIcon /></div>
-                  <div style={{ lineHeight: '1.4' }}>{property.location}</div>
+                  <div style={{ marginTop: '0.2rem', flexShrink: 0 }}><PinIcon /></div>
+                  <div style={{ lineHeight: '1.4', flex: 1, wordBreak: 'break-word', overflowWrap: 'anywhere' }}>{property.location}</div>
                 </div>
               </div>
               
@@ -199,7 +199,7 @@ export default function PropertyDetailPage() {
           {/* Description & Lifestyle */}
           <div style={{ marginBottom: '4rem' }}>
             {property.short_description && (
-              <h3 style={{ fontSize: '1.6rem', color: 'var(--primary-red)', marginBottom: '1.5rem', lineHeight: 1.4, fontWeight: 500 }}>
+              <h3 style={{ fontSize: '1.6rem', color: 'var(--primary-red)', marginBottom: '1.5rem', lineHeight: 1.4, fontWeight: 500, wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                 "{property.short_description}"
               </h3>
             )}
@@ -211,7 +211,7 @@ export default function PropertyDetailPage() {
             {property.lifestyle_overview && (
               <>
                 <h3 style={{ color: 'var(--text-dark)', marginBottom: '1rem', fontSize: '1.3rem' }}>Lifestyle & Community</h3>
-                <p style={{ lineHeight: '1.8', color: '#555', fontSize: '1.05rem', backgroundColor: 'white', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #ddd' }}>
+                <p style={{ lineHeight: '1.8', color: '#555', fontSize: '1.05rem', backgroundColor: 'white', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #ddd', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                   {property.lifestyle_overview}
                 </p>
               </>
@@ -225,7 +225,7 @@ export default function PropertyDetailPage() {
             {propertyFeatures.length > 0 && (
               <div style={{ marginBottom: '3rem' }}>
                 <h3 style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>Property Features</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
                   {propertyFeatures.map((feature: string, idx: number) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.2rem 1.5rem', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(139, 0, 0, 0.05)', color: 'var(--primary-red)', flexShrink: 0 }}><CheckIcon /></div>
@@ -239,7 +239,7 @@ export default function PropertyDetailPage() {
             {amenitiesList.length > 0 && (
               <div>
                 <h3 style={{ fontSize: '0.9rem', color: '#888', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 800 }}>Community Amenities</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
                   {amenitiesList.map((amenity: string, idx: number) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', padding: '1.2rem 1.5rem', backgroundColor: 'white', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'rgba(212, 175, 55, 0.1)', color: 'var(--accent-gold)', flexShrink: 0 }}><CheckIcon /></div>
