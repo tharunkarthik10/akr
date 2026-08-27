@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   // Extract Supabase session cookie
   const session = request.cookies.get('session')?.value
 

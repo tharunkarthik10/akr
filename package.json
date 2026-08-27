@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint"
   },
@@ -19,11 +20,13 @@
     "recharts": "^3.10.1"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.127.0"
   }
 }
