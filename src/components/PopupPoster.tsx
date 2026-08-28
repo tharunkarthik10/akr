@@ -50,25 +50,25 @@ export default function PopupPoster() {
   // Trigger confetti effect when the poster is shown
   useEffect(() => {
     if (show) {
-      const duration = 2.5 * 1000;
+      const duration = 1.0 * 1000;
       const end = Date.now() + duration;
 
       const frame = () => {
         // Left side
         confetti({
-          particleCount: 4,
+          particleCount: 5,
           angle: 60,
           spread: 55,
-          origin: { x: 0 },
+          origin: { x: 0, y: 0.9 },
           colors: ['#8b0000', '#d4af37', '#ffffff'], // Gold, Red, White theme
           zIndex: 10001
         });
         // Right side
         confetti({
-          particleCount: 4,
+          particleCount: 5,
           angle: 120,
           spread: 55,
-          origin: { x: 1 },
+          origin: { x: 1, y: 0.9 },
           colors: ['#8b0000', '#d4af37', '#ffffff'],
           zIndex: 10001
         });
