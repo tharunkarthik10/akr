@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/utils/supabase/client';
+import confetti from 'canvas-confetti';
 
 export default function PopupPoster() {
   const [show, setShow] = useState(false);
@@ -42,6 +43,41 @@ export default function PopupPoster() {
     setShow(false);
     sessionStorage.setItem('hasSeenPoster', 'true');
   };
+
+  // Trigger confetti effect when the poster is shown
+  useEffect(() => {
+    if (show) {
+      const duration = 2.5 * 1000;
+      const end = Date.now() + duration;
+
+      const frame = () => {
+        // Left side
+        confetti({
+          particleCount: 4,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#8b0000', '#d4af37', '#ffffff'], // Gold, Red, White theme
+          zIndex: 10001
+        });
+        // Right side
+        confetti({
+          particleCount: 4,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#8b0000', '#d4af37', '#ffffff'],
+          zIndex: 10001
+        });
+
+        if (Date.now() < end && show) {
+          requestAnimationFrame(frame);
+        }
+      };
+
+      frame();
+    }
+  }, [show]);
 
   if (!show || !posterUrl) return null;
 
