@@ -3,10 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/utils/supabase/client';
 import confetti from 'canvas-confetti';
+import Link from 'next/link';
 
 export default function PopupPoster() {
   const [show, setShow] = useState(false);
   const [posterUrl, setPosterUrl] = useState<string | null>(null);
+  const [posterLink, setPosterLink] = useState<string | null>(null);
 
   useEffect(() => {
     // Only show once per session
@@ -17,7 +19,7 @@ export default function PopupPoster() {
       try {
         const { data, error } = await supabase
           .from('posters')
-          .select('image_url')
+          .select('image_url, link_url')
           .eq('is_active', true);
         
         if (error) {
@@ -29,6 +31,7 @@ export default function PopupPoster() {
           // Pick a random poster
           const randomIndex = Math.floor(Math.random() * data.length);
           setPosterUrl(data[randomIndex].image_url);
+          setPosterLink(data[randomIndex].link_url);
           setShow(true);
         }
       } catch (err) {
@@ -117,17 +120,34 @@ export default function PopupPoster() {
         >
           &times;
         </button>
-        <img 
-          src={posterUrl} 
-          alt="Promotional Poster" 
-          style={{ 
-            maxWidth: '100%', 
-            maxHeight: '90vh', 
-            objectFit: 'contain',
-            borderRadius: '8px',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
-          }} 
-        />
+        {posterLink ? (
+          <Link href={posterLink} onClick={handleClose} style={{ display: 'block', cursor: 'pointer' }}>
+            <img 
+              src={posterUrl} 
+              alt="Promotional Poster" 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '90vh', 
+                objectFit: 'contain',
+                borderRadius: '8px',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+                display: 'block'
+              }} 
+            />
+          </Link>
+        ) : (
+          <img 
+            src={posterUrl} 
+            alt="Promotional Poster" 
+            style={{ 
+              maxWidth: '100%', 
+              maxHeight: '90vh', 
+              objectFit: 'contain',
+              borderRadius: '8px',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+            }} 
+          />
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
   const [posters, setPosters] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [newLink, setNewLink] = useState('');
 
   useEffect(() => {
     fetchPosters();
@@ -75,7 +76,8 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
       
       const { data, error } = await supabase.from('posters').insert([{
         image_url: imageUrl,
-        is_active: true
+        is_active: true,
+        link_url: newLink || null
       }]).select();
 
       if (error) throw error;
@@ -89,6 +91,7 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
     } finally {
       setUploading(false);
       if (e.target) e.target.value = ''; // reset input
+      setNewLink(''); // reset link
     }
   };
 
@@ -123,7 +126,14 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600 }}>Popup Posters</h2>
           <p style={{ color: '#666', fontSize: '0.9rem' }}>Manage posters that appear as a popup on the home page (max 5). 1 will be chosen randomly.</p>
         </div>
-        <div>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <input 
+            type="text" 
+            placeholder="Destination Link (optional)" 
+            value={newLink} 
+            onChange={(e) => setNewLink(e.target.value)}
+            style={{ padding: '0.6rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '250px' }}
+          />
           <label className="btn-red" style={{ cursor: uploading ? 'not-allowed' : 'pointer', opacity: uploading ? 0.7 : 1, padding: '0.75rem 2rem', display: 'inline-block' }}>
             {uploading ? 'Uploading...' : 'Upload New Poster'}
             <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileUpload} disabled={uploading} />
@@ -142,6 +152,11 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
               <div style={{ height: '200px', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={poster.image_url} alt="Poster" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               </div>
+              {poster.link_url && (
+                <div style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', color: '#0066cc', borderTop: '1px solid #eee', wordBreak: 'break-all' }}>
+                  <strong>Link:</strong> {poster.link_url}
+                </div>
+              )}
               <div style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fcfbf8', borderTop: '1px solid #eee' }}>
                 <button 
                   onClick={() => toggleStatus(poster)}
