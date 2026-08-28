@@ -12,17 +12,11 @@ type Mode = 'UAE' | 'India' | 'Manual';
 
 export default function InflationRateSelector({ value, onChange }: InflationRateSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [mode, setMode] = useState<Mode>('Manual');
-
-  useEffect(() => {
-    if (value === 4 && mode !== 'UAE') {
-      setMode('UAE');
-    } else if (value === 7 && mode !== 'India') {
-      setMode('India');
-    } else if (value !== 4 && value !== 7) {
-      setMode('Manual');
-    }
-  }, [value]);
+  const [mode, setMode] = useState<Mode>(() => {
+    if (value === 4) return 'UAE';
+    if (value === 7) return 'India';
+    return 'Manual';
+  });
 
   const handleSelect = (newMode: Mode) => {
     setMode(newMode);
@@ -125,12 +119,7 @@ export default function InflationRateSelector({ value, onChange }: InflationRate
           min={1}
           max={15}
           step={0.5}
-          onChange={(val) => {
-            onChange(val);
-            if (val !== 4 && val !== 7) {
-              setMode('Manual');
-            }
-          }}
+          onChange={onChange}
           isPercentage={true}
         />
       )}
