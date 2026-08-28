@@ -8,7 +8,21 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
   const [posters, setPosters] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
-  const [newLink, setNewLink] = useState('');
+
+  const PAGE_OPTIONS = [
+    { label: 'No Link', value: '' },
+    { label: 'Home', value: '/' },
+    { label: 'Properties / Opportunities', value: '/client/properties' },
+    { label: 'Post a Property', value: '/client/post-property' },
+    { label: 'Raise a Query', value: '/client/support' },
+    { label: 'Mortgage Calculator', value: '/calculators/mortgage' },
+    { label: 'Child Education Calculator', value: '/calculators/child-education' },
+    { label: 'Retirement Calculator', value: '/calculators/retirement' },
+    { label: 'Mutual Fund Calculator', value: '/calculators/mutual-fund' },
+    { label: 'Rental Yield Calculator', value: '/calculators/rental-yield' },
+    { label: 'About Us', value: '/about' },
+    { label: 'Contact Us', value: '/contact' }
+  ];
 
   useEffect(() => {
     fetchPosters();
@@ -76,8 +90,7 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
       
       const { data, error } = await supabase.from('posters').insert([{
         image_url: imageUrl,
-        is_active: true,
-        link_url: newLink || null
+        is_active: true
       }]).select();
 
       if (error) throw error;
@@ -91,7 +104,6 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
     } finally {
       setUploading(false);
       if (e.target) e.target.value = ''; // reset input
-      setNewLink(''); // reset link
     }
   };
 
@@ -105,6 +117,19 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
       setPosters(posters.map(p => p.id === poster.id ? { ...p, is_active: !poster.is_active } : p));
     } catch (err: any) {
       alert("Failed to update status: " + err.message);
+    }
+  };
+
+  const updatePosterLink = async (poster: any, newLink: string) => {
+    try {
+      const { error } = await supabase.from('posters')
+        .update({ link_url: newLink || null })
+        .eq('id', poster.id);
+      
+      if (error) throw error;
+      setPosters(posters.map(p => p.id === poster.id ? { ...p, link_url: newLink || null } : p));
+    } catch (err: any) {
+      alert("Failed to update link: " + err.message);
     }
   };
 
@@ -127,13 +152,6 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
           <p style={{ color: '#666', fontSize: '0.9rem' }}>Manage posters that appear as a popup on the home page (max 5). 1 will be chosen randomly.</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <input 
-            type="text" 
-            placeholder="Destination Link (optional)" 
-            value={newLink} 
-            onChange={(e) => setNewLink(e.target.value)}
-            style={{ padding: '0.6rem', borderRadius: '4px', border: '1px solid #ccc', minWidth: '250px' }}
-          />
           <label className="btn-red" style={{ cursor: uploading ? 'not-allowed' : 'pointer', opacity: uploading ? 0.7 : 1, padding: '0.75rem 2rem', display: 'inline-block' }}>
             {uploading ? 'Uploading...' : 'Upload New Poster'}
             <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileUpload} disabled={uploading} />
@@ -152,12 +170,7 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
               <div style={{ height: '200px', backgroundColor: '#f9f9f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={poster.image_url} alt="Poster" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               </div>
-              {poster.link_url && (
-                <div style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', color: '#0066cc', borderTop: '1px solid #eee', wordBreak: 'break-all' }}>
-                  <strong>Link:</strong> {poster.link_url}
-                </div>
-              )}
-              <div style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fcfbf8', borderTop: '1px solid #eee' }}>
+              <div style={{ padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fcfbf8', borderTop: '1px solid #eee', gap: '0.5rem', flexWrap: 'wrap' }}>
                 <button 
                   onClick={() => toggleStatus(poster)}
                   style={{ 
@@ -172,6 +185,24 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
                 >
                   {poster.is_active ? 'Active' : 'Inactive'}
                 </button>
+
+                <select 
+                  value={poster.link_url || ''} 
+                  onChange={(e) => updatePosterLink(poster, e.target.value)}
+                  style={{ 
+                    flex: 1, 
+                    padding: '0.4rem', 
+                    borderRadius: '4px', 
+                    border: '1px solid #ccc', 
+                    fontSize: '0.8rem',
+                    minWidth: '120px'
+                  }}
+                >
+                  {PAGE_OPTIONS.map(opt => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+
                 <button 
                   onClick={() => deletePoster(poster.id)}
                   style={{ padding: '0.4rem 0.8rem', borderRadius: '4px', border: '1px solid #dc3545', backgroundColor: 'transparent', color: '#dc3545', cursor: 'pointer', fontWeight: 600 }}
