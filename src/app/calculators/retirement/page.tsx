@@ -6,6 +6,7 @@ import { useCurrency } from '@/context/CurrencyContext';
 import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
 import CurrencySelector from '@/components/calculator/CurrencySelector';
 import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
+import InflationRateSelector from '@/components/calculator/InflationRateSelector';
 
 export default function RetirementCalculatorPage() {
   const { currencySymbol, convertAmount } = useCurrency();
@@ -123,14 +124,9 @@ export default function RetirementCalculatorPage() {
                 onChange={setMonthlyExpenses}
                 isCurrency={true}
               />
-              <FormattedSliderInput
-                label="Expected Inflation Rate (%)"
+              <InflationRateSelector
                 value={inflationRate}
-                min={1}
-                max={15}
-                step={0.5}
                 onChange={setInflationRate}
-                isPercentage={true}
               />
               <FormattedSliderInput
                 label="Expected Return on Investment (%)"
