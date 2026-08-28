@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import MortgageCalculator from '@/components/MortgageCalculator';
+import PopupPoster from '@/components/PopupPoster';
 
 export default function Home() {
   return (
     <div>
+      <PopupPoster />
       {/* 1. Hero Section */}
       <section className="hero-section">
         <div className="hero-overlay">

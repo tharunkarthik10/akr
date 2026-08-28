@@ -4,19 +4,20 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { supabase } from '@/utils/supabase/client';
+import PostersAdminTab from './PostersAdminTab';
 
 function AdminDashboardContent() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialTab = (searchParams.get('tab') as 'properties' | 'queries' | 'requests') || 'requests';
-  const [activeTab, setActiveTab] = useState<'properties' | 'queries' | 'requests'>(initialTab);
+  const initialTab = (searchParams.get('tab') as 'properties' | 'queries' | 'requests' | 'posters') || 'requests';
+  const [activeTab, setActiveTab] = useState<'properties' | 'queries' | 'requests' | 'posters'>(initialTab);
 
   // Sync state if URL changes
   useEffect(() => {
     const tab = searchParams.get('tab');
-    if (tab === 'properties' || tab === 'queries' || tab === 'requests') {
-      setActiveTab(tab);
+    if (tab === 'properties' || tab === 'queries' || tab === 'requests' || tab === 'posters') {
+      setActiveTab(tab as any);
     }
   }, [searchParams]);
   
@@ -328,6 +329,13 @@ function AdminDashboardContent() {
             >
               Support Queries ({queries.filter(q => q.status === 'Open').length} Open)
             </button>
+            <button 
+              onClick={() => {setActiveTab('posters'); router.push('?tab=posters');}}
+              className={activeTab === 'posters' ? "btn-red" : "btn-outline-dark"}
+              style={{ padding: '0.75rem 2rem' }}
+            >
+              Posters
+            </button>
           </div>
         </div>
 
@@ -422,6 +430,11 @@ function AdminDashboardContent() {
               ))
             )}
           </div>
+        )}
+
+        {/* POSTERS TAB */}
+        {activeTab === 'posters' && user && (
+          <PostersAdminTab userId={user.id} />
         )}
       </div>
     </div>
