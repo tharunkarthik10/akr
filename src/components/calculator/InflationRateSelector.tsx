@@ -44,18 +44,18 @@ export default function InflationRateSelector({ value, onChange }: InflationRate
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.2rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '1.5rem' }}>
       <div style={{ position: 'relative' }}>
         <button 
           onClick={() => setIsOpen(!isOpen)}
           style={{
             width: '100%',
-            background: '#faf8f2', // light cream background
-            border: '1px solid #eedc9a', // light gold border
+            background: '#fcfbf8', // standard calc input background
+            border: '1px solid #e3cc96', // slightly darker gold border to match screenshot
             padding: '0.8rem 1rem',
-            borderRadius: '6px',
+            borderRadius: '4px', // slightly less rounded
             color: 'var(--primary-red)',
-            fontWeight: 600,
+            fontWeight: 700,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -65,7 +65,7 @@ export default function InflationRateSelector({ value, onChange }: InflationRate
           }}
         >
           <span>{getModeLabel(mode)}</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a0a0a0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </button>
