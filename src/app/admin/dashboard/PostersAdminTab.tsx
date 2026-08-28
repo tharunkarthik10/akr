@@ -12,18 +12,18 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
   const PAGE_OPTIONS = [
     { label: 'No Link', value: '' },
     { label: 'Home', value: '/' },
-    { label: 'About Us', value: '/about' },
-    { label: 'Advisory Team', value: '/advisory-team' },
-    { label: 'FAQ', value: '/faq' },
-    { label: 'Imperial Legacy', value: '/imperial-legacy' },
-    { label: 'Investment Tools', value: '/investment-tools' },
-    { label: 'Journals & Insights', value: '/journals-insights' },
+    { label: 'AKR Realty', value: '/realty' },
+    { label: 'AKR Financial', value: '/financial' },
+    { label: 'About us', value: '/about' },
+    { label: 'Property', value: '/property' },
+    { label: 'Contact', value: '/contact' },
     { label: 'Mortgage Calculator', value: '/calculators/mortgage' },
-    { label: 'Child Education Calculator', value: '/calculators/child-education' },
-    { label: 'Retirement Calculator', value: '/calculators/retirement' },
+    { label: 'Off-Plan Calculator', value: '/calculators/off-plan' },
+    { label: 'Rental Yield ROI Calculator', value: '/calculators/rental-yield' },
+    { label: 'XIRR Calculator', value: '/calculators/xirr' },
     { label: 'Mutual Fund Calculator', value: '/calculators/mutual-fund' },
-    { label: 'Rental Yield Calculator', value: '/calculators/rental-yield' },
-    { label: 'Contact Us', value: '/contact' }
+    { label: 'Child Education Calculator', value: '/calculators/child-education' },
+    { label: 'Retirement Calculator', value: '/calculators/retirement' }
   ];
 
   useEffect(() => {
