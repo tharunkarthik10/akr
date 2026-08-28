@@ -12,15 +12,17 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
   const PAGE_OPTIONS = [
     { label: 'No Link', value: '' },
     { label: 'Home', value: '/' },
-    { label: 'Properties / Opportunities', value: '/client/properties' },
-    { label: 'Post a Property', value: '/client/post-property' },
-    { label: 'Raise a Query', value: '/client/support' },
+    { label: 'About Us', value: '/about' },
+    { label: 'Advisory Team', value: '/advisory-team' },
+    { label: 'FAQ', value: '/faq' },
+    { label: 'Imperial Legacy', value: '/imperial-legacy' },
+    { label: 'Investment Tools', value: '/investment-tools' },
+    { label: 'Journals & Insights', value: '/journals-insights' },
     { label: 'Mortgage Calculator', value: '/calculators/mortgage' },
     { label: 'Child Education Calculator', value: '/calculators/child-education' },
     { label: 'Retirement Calculator', value: '/calculators/retirement' },
     { label: 'Mutual Fund Calculator', value: '/calculators/mutual-fund' },
     { label: 'Rental Yield Calculator', value: '/calculators/rental-yield' },
-    { label: 'About Us', value: '/about' },
     { label: 'Contact Us', value: '/contact' }
   ];
 
