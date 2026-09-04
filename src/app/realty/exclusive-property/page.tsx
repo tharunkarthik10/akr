@@ -24,7 +24,7 @@ const BedIcon = () => (
 
 const BathIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="property-stat-icon">
-    <path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>
+    <path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>
     <line x1="10" x2="8" y1="5" y2="7"/>
     <line x1="2" x2="22" y1="12" y2="12"/>
     <line x1="7" x2="7" y1="19" y2="21"/>
@@ -35,13 +35,6 @@ const BathIcon = () => (
 const SqFtIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="property-stat-icon">
     <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-  </svg>
-);
-
-const TrendingIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-    <polyline points="16 7 22 7 22 13"/>
   </svg>
 );
 
@@ -67,29 +60,93 @@ const BuildingIcon = () => (
   </svg>
 );
 
-export default function PropertiesPage() {
+const curatatedExclusiveProperties = [
+  {
+    id: 'exc-1',
+    title: "The Royal Penthouse — Palm Jumeirah",
+    price: "45000000",
+    currency: "AED",
+    type: "Penthouse",
+    property_status: "Off-Market",
+    location: "Palm Jumeirah, Dubai",
+    bedrooms: 6,
+    bathrooms: 7,
+    size: "14,500",
+    images: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"],
+    tag: "TROPHY ASSET"
+  },
+  {
+    id: 'exc-2',
+    title: "Emirates Hills Sovereign Villa",
+    price: "72000000",
+    currency: "AED",
+    type: "Villa",
+    property_status: "By Invitation",
+    location: "Emirates Hills, Dubai",
+    bedrooms: 8,
+    bathrooms: 10,
+    size: "22,000",
+    images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"],
+    tag: "INVITATION ONLY"
+  },
+  {
+    id: 'exc-3',
+    title: "Downtown Sky Mansion",
+    price: "38000000",
+    currency: "AED",
+    type: "Penthouse",
+    property_status: "Off-Market",
+    location: "Downtown Dubai",
+    bedrooms: 5,
+    bathrooms: 6,
+    size: "11,200",
+    images: ["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"],
+    tag: "OFF-MARKET"
+  },
+  {
+    id: 'exc-4',
+    title: "Jumeirah Bay Island Waterfront Estate",
+    price: "95000000",
+    currency: "AED",
+    type: "Villa",
+    property_status: "Exclusive",
+    location: "Jumeirah Bay Island, Dubai",
+    bedrooms: 7,
+    bathrooms: 9,
+    size: "18,000",
+    images: ["https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80"],
+    tag: "PRIVATE ISLAND"
+  }
+];
+
+export default function ExclusivePropertyPage() {
   const { currencyCode, currencySymbol, convertAmount } = useCurrency();
   const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Filter States
   const [filterType, setFilterType] = useState('All');
   const [filterStatus, setFilterStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   useEffect(() => {
     const fetchProperties = async () => {
       try {
         const { data, error } = await supabase
           .from('properties')
           .select('*')
-          .eq('status', 'Approved') // ONLY SHOW APPROVED PROPERTIES
+          .eq('status', 'Approved')
           .order('created_at', { ascending: false });
 
         if (error) throw error;
-        setProperties(data || []);
+
+        // Combine DB properties with curated exclusive properties
+        const dbListings = data || [];
+        const combined = [...curatatedExclusiveProperties, ...dbListings];
+        setProperties(combined);
       } catch (error) {
         console.error("Error fetching properties:", error);
+        setProperties(curatatedExclusiveProperties);
       } finally {
         setLoading(false);
       }
@@ -99,14 +156,13 @@ export default function PropertiesPage() {
   }, []);
 
   const getDisplayPrice = (priceStr: string, baseCurrency: string = 'AED') => {
-    if (!priceStr) return '';
-    // Extract numbers, e.g. "2,500,000" -> 2500000
+    if (!priceStr) return 'By Private Inquiry';
     const rawNum = priceStr.toString().replace(/,/g, '');
     let baseValue = parseFloat(rawNum);
     if (isNaN(baseValue)) return priceStr;
-    
+
     const convertedPrice = convertAmount(baseValue, baseCurrency, currencyCode);
-    
+
     if (convertedPrice >= 1000000) {
       return `${currencySymbol} ${(convertedPrice / 1000000).toFixed(1)}M`;
     } else {
@@ -121,13 +177,32 @@ export default function PropertiesPage() {
     return true;
   });
 
+  const exclusiveFaqs = [
+    {
+      question: "What defines an 'Exclusive Off-Market Property' at AKR Group UAE?",
+      answer: "Exclusive properties are unlisted, confidential real estate assets—including triplex penthouses, private island estates, and trophy commercial buildings—offered directly by sovereign owners and elite developers without public advertising."
+    },
+    {
+      question: "How does AKR Group maintain non-disclosure and privacy for UHNW buyers?",
+      answer: "We mandate strict non-disclosure agreements (NDAs) and proof-of-funds verification prior to sharing private prospectus documentation, floor plans, or arranging confidential on-site viewings."
+    },
+    {
+      question: "What custom services are included for Exclusive Property clients?",
+      answer: "Clients receive dedicated senior partner advisory, private jet/chopper viewing transfers, bespoke legal & tax structuring, asset management, and direct developer VIP allocation access."
+    },
+    {
+      question: "Can institutional funds acquire entire luxury towers off-market through AKR?",
+      answer: "Yes, our advisory team regularly facilitates bulk institutional transactions, joint venture acquisitions, and entire tower acquisitions across prime UAE financial and residential hubs."
+    }
+  ];
+
   return (
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '2rem' }}>
       
       {/* Hero Section */}
       <section className="properties-hero">
-        <h1>Exclusive Properties</h1>
-        <p>Investment-Grade Real Estate in Dubai</p>
+        <h1>Exclusive Off-Market Properties</h1>
+        <p>Confidential Luxury Real Estate & Trophy Assets in Dubai</p>
       </section>
 
       <div className="properties-container">
@@ -136,13 +211,13 @@ export default function PropertiesPage() {
         <div className="advisory-box">
           <div className="advisory-header">
             <BuildingIcon />
-            <h3>Advisory-Led Property Service</h3>
+            <h3>Advisory-Led Exclusive Property Service</h3>
           </div>
           <p className="license-text">
-            <strong>AKR Realty LLC</strong> - Licensed by RERA (Real Estate Regulatory Agency). License No: XXXXX
+            <strong>AKR Realty LLC</strong> - Licensed by RERA (Real Estate Regulatory Agency). License No: 57750
           </p>
           <p className="desc-text">
-            All property listings are curated for investment advisory purposes. For detailed information, property viewings, or investment consultation, please contact our licensed advisors. <strong>Direct client-lister contact is not permitted as per regulatory requirements.</strong>
+            Exclusive off-market properties are accessible confidentially under strict Non-Disclosure Agreements (NDAs). For detailed prospectus documentation, private viewings, or sovereign asset consultations, please speak to your dedicated senior advisor. <strong>Direct client-lister contact is strictly restricted as per regulatory guidelines.</strong>
           </p>
         </div>
 
@@ -152,7 +227,7 @@ export default function PropertiesPage() {
           <div style={{ flex: '1 1 200px' }}>
             <input 
               type="text" 
-              placeholder="Search by title or location..." 
+              placeholder="Search off-market title or location..." 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem' }}
@@ -163,19 +238,20 @@ export default function PropertiesPage() {
             <select value={filterType} onChange={e => setFilterType(e.target.value)} style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem', backgroundColor: '#fcfcfc' }}>
               <option value="All">Any Property Type</option>
               <option value="Villa">Villa</option>
+              <option value="Penthouse">Penthouse</option>
               <option value="Apartment">Apartment</option>
               <option value="Townhouse">Townhouse</option>
-              <option value="Penthouse">Penthouse</option>
-              <option value="Plot">Plot</option>
             </select>
           </div>
 
           <div style={{ flex: '1 1 150px' }}>
             <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} style={{ width: '100%', padding: '0.8rem 1rem', borderRadius: '6px', border: '1px solid #eaeaea', fontSize: '0.95rem', backgroundColor: '#fcfcfc' }}>
               <option value="All">Any Status</option>
+              <option value="Off-Market">Off-Market</option>
+              <option value="By Invitation">By Invitation</option>
+              <option value="Exclusive">Exclusive</option>
               <option value="Ready to Move">Ready to Move</option>
               <option value="Off-Plan">Off-Plan</option>
-              <option value="Under Construction">Under Construction</option>
             </select>
           </div>
           
@@ -194,11 +270,11 @@ export default function PropertiesPage() {
         {/* Property Grid */}
         {loading ? (
           <div style={{ padding: '4rem', textAlign: 'center', fontSize: '1.2rem', color: '#666' }}>
-            Loading available properties...
+            Loading exclusive off-market portfolio...
           </div>
         ) : filteredProperties.length === 0 ? (
           <div style={{ padding: '4rem', textAlign: 'center', fontSize: '1.2rem', color: '#666', backgroundColor: 'white', borderRadius: '8px' }}>
-            No properties found matching your criteria.
+            No exclusive properties found matching your search criteria.
           </div>
         ) : (
           <div className="property-grid">
@@ -251,25 +327,25 @@ export default function PropertiesPage() {
                   </div>
 
                   <div style={{ marginTop: 'auto' }}>
-                    <Link href={`/property/${property.id}`} style={{ textDecoration: 'none', width: '100%' }}>
+                    <Link href="/contact" style={{ textDecoration: 'none', width: '100%' }}>
                       <button style={{ 
                         width: '100%', 
                         padding: '0.8rem', 
-                        backgroundColor: 'transparent', 
-                        border: '2px solid #111', 
-                        color: '#111', 
+                        backgroundColor: 'var(--primary-red)', 
+                        border: '2px solid var(--primary-red)', 
+                        color: '#fff', 
                         borderRadius: '6px', 
-                        fontSize: '1rem', 
+                        fontSize: '0.95rem', 
                         fontWeight: 700,
                         cursor: 'pointer',
                         transition: 'all 0.2s',
                         textTransform: 'uppercase',
                         letterSpacing: '1px'
                       }}
-                      onMouseOver={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.borderColor = 'var(--primary-red)'; e.currentTarget.style.color = '#fff'; }}
-                      onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = '#111'; e.currentTarget.style.color = '#111'; }}
+                      onMouseOver={(e) => { e.currentTarget.style.backgroundColor = '#4a0000'; e.currentTarget.style.borderColor = '#4a0000'; }}
+                      onMouseOut={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary-red)'; e.currentTarget.style.borderColor = 'var(--primary-red)'; }}
                       >
-                        Explore Property
+                        Request Prospectus
                       </button>
                     </Link>
                   </div>
@@ -279,43 +355,22 @@ export default function PropertiesPage() {
           </div>
         )}
 
-        {/* Property FAQs Section */}
+        {/* Dedicated Exclusive Property FAQs */}
         <FAQAccordion 
-          title="Property Buying & Investment FAQs"
-          subtitle="Clear, accredited answers to standard UAE property acquisition, fees, escrow safety, and residency questions."
-          items={[
-            {
-              question: "What upfront government and registration fees apply when buying Dubai property?",
-              answer: "When purchasing property in Dubai, buyers typically pay a 4% Dubai Land Department (DLD) transfer fee, AED 4,000 + 5% VAT DLD Trustee Registration fee, and a Title Deed issuance fee of AED 580. For mortgaged transactions, mortgage registration is 0.25% of the loan amount + AED 290."
-            },
-            {
-              question: "Can foreigners and non-residents buy freehold property in Dubai?",
-              answer: "Yes. Non-resident individuals of any nationality can purchase 100% freehold properties in designated Dubai freehold zones (such as Downtown Dubai, Palm Jumeirah, Dubai Marina, Business Bay, Dubai Hills, and Creek Harbour)."
-            },
-            {
-              question: "How are my payments protected when buying an Off-Plan property?",
-              answer: "Dubai Law No. 8 of 2007 mandates that all off-plan developer funds must be deposited directly into a RERA-regulated Escrow Account associated specifically with that project. Funds are released to developers in stages only as verified construction milestones are achieved."
-            },
-            {
-              question: "What is the difference between Ready and Off-Plan property investments?",
-              answer: "Ready properties allow immediate occupancy or rental income generation, requiring full payment or standard mortgage financing. Off-Plan properties offer lower entry prices and flexible post-handover payment plans spanning 3 to 7 years, delivering strong capital appreciation prior to completion."
-            },
-            {
-              question: "Can I get a mortgage in the UAE as a non-resident investor?",
-              answer: "Yes, UAE banks offer mortgage financing up to 50% - 60% of property value for non-resident international buyers, and up to 80% for UAE residents purchasing their first home."
-            }
-          ]}
+          title="Exclusive Off-Market Real Estate FAQs"
+          subtitle="Learn more about our confidential acquisition process, non-disclosure protocols, and UHNW services."
+          items={exclusiveFaqs}
         />
 
         {/* Investment Guidance Banner */}
         <div className="guidance-banner" style={{ marginTop: '3rem' }}>
-          <h2>Looking for Investment Guidance?</h2>
-          <p>Our expert advisors can help you identify the best real estate opportunities aligned with your investment goals</p>
+          <h2>Looking for Confidential Advisory?</h2>
+          <p>Connect directly with our senior partners for private off-market viewings and portfolio structuring</p>
           <div className="guidance-actions">
             <Link href="/contact" style={{ textDecoration: 'none' }}>
               <button className="btn-white">
                 <PhoneIcon />
-                Schedule Consultation
+                Schedule Private Consultation
               </button>
             </Link>
           </div>

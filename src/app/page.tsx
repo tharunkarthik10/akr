@@ -62,16 +62,16 @@ export default function Home() {
             
             <div className="sector-list">
               <div className="sector-item">
-                <div className="sector-icon">R</div>
-                <div><strong>Real Estate</strong> — Premium property advisory & investment</div>
-              </div>
-              <div className="sector-item">
                 <div className="sector-icon">F</div>
                 <div><strong>Finance</strong> — Structured financial planning & solutions</div>
               </div>
               <div className="sector-item">
                 <div className="sector-icon">I</div>
                 <div><strong>Insurance</strong> — Comprehensive risk & asset protection</div>
+              </div>
+              <div className="sector-item">
+                <div className="sector-icon">R</div>
+                <div><strong>Real Estate</strong> — Premium property advisory & investment</div>
               </div>
               <div className="sector-item">
                 <div className="sector-icon">M</div>

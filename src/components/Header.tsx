@@ -12,6 +12,8 @@ export default function Header() {
   const { setCurrencyCode } = useCurrency();
   const { user, signOut } = useAuth() as any;
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [realtyDropdownOpen, setRealtyDropdownOpen] = useState(false);
+  const [financialDropdownOpen, setFinancialDropdownOpen] = useState(false);
   const [calcDropdownOpen, setCalcDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -134,9 +136,75 @@ export default function Header() {
               // PUBLIC NAVIGATION (Logged Out)
               <>
                 <li><Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`} onClick={closeMobileMenu}>Home</Link></li>
-                <li><Link href="/realty" className={`nav-link ${pathname === '/realty' ? 'active' : ''}`} onClick={closeMobileMenu}>AKR Realty</Link></li>
-                <li><Link href="/financial" className={`nav-link ${pathname === '/financial' ? 'active' : ''}`} onClick={closeMobileMenu}>AKR Financial</Link></li>
                 <li><Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`} onClick={closeMobileMenu}>About us</Link></li>
+                <li
+                  style={{ position: 'relative' }}
+                  onMouseEnter={() => setRealtyDropdownOpen(true)}
+                  onMouseLeave={() => setRealtyDropdownOpen(false)}
+                >
+                  <Link 
+                    href="/realty" 
+                    className={`nav-link ${pathname.startsWith('/realty') || pathname === '/property' || pathname === '/imperial-legacy' ? 'active' : ''}`} 
+                    onClick={closeMobileMenu}
+                  >
+                    AKR Realty
+                  </Link>
+
+                  {realtyDropdownOpen && (
+                    <div className="simple-dropdown-wrapper">
+                      <div className="simple-dropdown">
+                        <Link href="/property" className={`simple-dropdown-item ${pathname === '/property' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Property</Link>
+                        <Link href="/realty/exclusive-property" className={`simple-dropdown-item ${pathname === '/realty/exclusive-property' || pathname === '/imperial-legacy' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Exclusive Property</Link>
+                        <Link href="/realty/golden-visa" className={`simple-dropdown-item ${pathname === '/realty/golden-visa' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Golden Visa</Link>
+                        <Link href="/realty/faq" className={`simple-dropdown-item ${pathname === '/realty/faq' || pathname === '/faq' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Realty FAQs</Link>
+                      </div>
+                    </div>
+                  )}
+                </li>
+                <li
+                  style={{ position: 'relative' }}
+                  onMouseEnter={() => setFinancialDropdownOpen(true)}
+                  onMouseLeave={() => setFinancialDropdownOpen(false)}
+                >
+                  <Link 
+                    href="/financial" 
+                    className={`nav-link ${pathname.startsWith('/financial') ? 'active' : ''}`} 
+                    onClick={closeMobileMenu}
+                  >
+                    AKR Financial
+                  </Link>
+
+                  {financialDropdownOpen && (
+                    <div className="simple-dropdown-wrapper" style={{ minWidth: '260px' }}>
+                      <div className="simple-dropdown" style={{ minWidth: '260px' }}>
+                        <div style={{ padding: '0.4rem 1rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '1px', textTransform: 'uppercase', backgroundColor: '#FAF8F5', borderBottom: '1px solid rgba(0,0,0,0.03)' }}>
+                          Loans & Credit
+                        </div>
+                        <Link href="/financial/credit-loan" className={`simple-dropdown-item ${pathname === '/financial/credit-loan' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Credit Loan</Link>
+                        <Link href="/financial/personal-loan" className={`simple-dropdown-item ${pathname === '/financial/personal-loan' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Personal Loan</Link>
+                        <Link href="/financial/mortgage-loan" className={`simple-dropdown-item ${pathname === '/financial/mortgage-loan' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Mortgage Loan</Link>
+
+                        <div style={{ padding: '0.4rem 1rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '1px', textTransform: 'uppercase', backgroundColor: '#FAF8F5', borderBottom: '1px solid rgba(0,0,0,0.03)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                          Banking & Investments
+                        </div>
+                        <Link href="/financial/banking" className={`simple-dropdown-item ${pathname === '/financial/banking' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Banking Advisory</Link>
+                        <Link href="/financial/mutual-funds" className={`simple-dropdown-item ${pathname === '/financial/mutual-funds' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Mutual Funds</Link>
+                        <Link href="/financial/child-education" className={`simple-dropdown-item ${pathname === '/financial/child-education' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Child Education Planning</Link>
+
+                        <div style={{ padding: '0.4rem 1rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent-gold)', letterSpacing: '1px', textTransform: 'uppercase', backgroundColor: '#FAF8F5', borderBottom: '1px solid rgba(0,0,0,0.03)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                          Insurance Solutions
+                        </div>
+                        <Link href="/financial/insurance" className={`simple-dropdown-item ${pathname === '/financial/insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>General Insurance</Link>
+                        <Link href="/financial/life-insurance" className={`simple-dropdown-item ${pathname === '/financial/life-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Life Insurance</Link>
+                        <Link href="/financial/motor-insurance" className={`simple-dropdown-item ${pathname === '/financial/motor-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Motor Insurance</Link>
+
+                        <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+                          <Link href="/financial/faq" className={`simple-dropdown-item ${pathname === '/financial/faq' ? 'active-calc' : ''}`} onClick={closeMobileMenu} style={{ fontWeight: 600, color: 'var(--primary-red)' }}>Financial FAQs</Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </li>
                 <li
                   style={{ position: 'relative' }}
                   onMouseEnter={() => setCalcDropdownOpen(true)}
@@ -158,7 +226,7 @@ export default function Header() {
                     </div>
                   )}
                 </li>
-                <li><Link href="/property" className={`nav-link ${pathname === '/property' ? 'active' : ''}`} onClick={closeMobileMenu}>Property</Link></li>
+                <li><Link href="/testimonials" className={`nav-link ${pathname === '/testimonials' ? 'active' : ''}`} onClick={closeMobileMenu}>Testimonials</Link></li>
                 <li><Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`} onClick={closeMobileMenu}>Contact</Link></li>
               </>
             ) : (
