@@ -79,9 +79,12 @@ export default function FinancialPage() {
                 End-to-end protection for corporate assets, keyman life insurance, and comprehensive motor fleet policies across UAE.
               </p>
               <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><Link href="/financial/insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight 600 }}>General Insurance →</Link></li>
-                <li><Link href="/financial/life-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight 600 }}>Life Insurance →</Link></li>
-                <li><Link href="/financial/motor-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight 600 }}>Motor Insurance →</Link></li>
+                <li><Link href="/financial/insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>General Insurance →</Link></li>
+                <li><Link href="/financial/life-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Life Insurance →</Link></li>
+                <li><Link href="/financial/health-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Health Insurance →</Link></li>
+                <li><Link href="/financial/home-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Home Insurance →</Link></li>
+                <li><Link href="/financial/mortgage-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mortgage Insurance →</Link></li>
+                <li><Link href="/financial/motor-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Motor Insurance →</Link></li>
               </ul>
             </div>
           </div>

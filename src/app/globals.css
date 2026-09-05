@@ -1442,7 +1442,8 @@ button {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-radius: 4px;
   width: 150px;
-  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .lang-item {
@@ -1901,7 +1902,30 @@ select.form-control {
   min-width: 250px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.simple-dropdown::-webkit-scrollbar,
+.lang-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.simple-dropdown::-webkit-scrollbar-track,
+.lang-dropdown::-webkit-scrollbar-track {
+  background: #faf8f5;
+  border-radius: 4px;
+}
+
+.simple-dropdown::-webkit-scrollbar-thumb,
+.lang-dropdown::-webkit-scrollbar-thumb {
+  background: var(--accent-gold, #c59b27);
+  border-radius: 4px;
+}
+
+.simple-dropdown::-webkit-scrollbar-thumb:hover,
+.lang-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-red, #8b0000);
 }
 
 .simple-dropdown-item {

@@ -196,6 +196,9 @@ export default function Header() {
                         </div>
                         <Link href="/financial/insurance" className={`simple-dropdown-item ${pathname === '/financial/insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>General Insurance</Link>
                         <Link href="/financial/life-insurance" className={`simple-dropdown-item ${pathname === '/financial/life-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Life Insurance</Link>
+                        <Link href="/financial/health-insurance" className={`simple-dropdown-item ${pathname === '/financial/health-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Health Insurance</Link>
+                        <Link href="/financial/home-insurance" className={`simple-dropdown-item ${pathname === '/financial/home-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Home Insurance</Link>
+                        <Link href="/financial/mortgage-insurance" className={`simple-dropdown-item ${pathname === '/financial/mortgage-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Mortgage Insurance</Link>
                         <Link href="/financial/motor-insurance" className={`simple-dropdown-item ${pathname === '/financial/motor-insurance' ? 'active-calc' : ''}`} onClick={closeMobileMenu}>Motor Insurance</Link>
 
                         <div style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>

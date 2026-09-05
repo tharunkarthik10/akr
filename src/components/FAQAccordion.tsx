@@ -62,7 +62,7 @@ export default function FAQAccordion({ items, title, subtitle, className = "" }:
                   width: '100%',
                   padding: '1.25rem 1.5rem',
                   display: 'flex',
-                  justify: 'space-between',
+                  justifyContent: 'space-between',
                   alignItems: 'center',
                   backgroundColor: isOpen ? '#FCFBF8' : '#FFFFFF',
                   border: 'none',
