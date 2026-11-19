@@ -8,7 +8,7 @@ export default function RealtyPage() {
   const realtyFaqs = [
     {
       question: "What licensing does AKR Realty LLC hold in the UAE?",
-      answer: "AKR Realty LLC is fully registered and licensed by RERA (Real Estate Regulatory Agency) and the Dubai Land Department (DLD) under License No. 57750 & BRN 95660. We operate in full compliance with UAE property laws."
+      answer: "AKR Realty LLC is fully registered and licensed by RERA (Real Estate Regulatory Agency) and the Dubai Land Department (DLD) under License No. 57750 & BRN 95660, located at No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. We operate in full compliance with UAE property laws."
     },
     {
       question: "What is the difference between General Property and Exclusive Off-Market Property?",
@@ -38,6 +38,22 @@ export default function RealtyPage() {
       </section>
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
+        
+        {/* Official Entity & Address Banner */}
+        <div style={{ backgroundColor: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '12px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1.25rem', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+          <div style={{ fontSize: '1.75rem', color: 'var(--primary-red)' }}>📍</div>
+          <div>
+            <div style={{ fontWeight: 700, color: 'var(--primary-red)', fontSize: '1.05rem', letterSpacing: '0.02em' }}>
+              AKR REALTY LLC
+            </div>
+            <div style={{ color: '#2a2a2a', fontSize: '0.95rem', marginTop: '0.2rem', fontWeight: 500 }}>
+              No: 104 Sarah Building , Plot No-115-0, AL Garhoud , Dubai , United Arab Emirates
+            </div>
+            <div style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', marginTop: '0.25rem', fontWeight: 600 }}>
+              RERA &amp; Dubai Land Department Registered | ORN: 57750 | BRN: 95660
+            </div>
+          </div>
+        </div>
         
         {/* 3 Main Pillars / Quick Links */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>

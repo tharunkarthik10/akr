@@ -57,9 +57,19 @@ export default function Footer() {
             <ul className="footer-contact">
               <li>
                 <span className="contact-icon">📍</span>
-                Dubai, United Arab Emirates
+                <div>
+                  <span style={{ color: 'var(--accent-gold)', fontWeight: 600, display: 'block', fontSize: '0.75rem' }}>DUBAI OFFICE</span>
+                  No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, UAE
+                </div>
               </li>
-              <li>
+              <li style={{ marginTop: '0.35rem' }}>
+                <span className="contact-icon">📍</span>
+                <div>
+                  <span style={{ color: 'var(--accent-gold)', fontWeight: 600, display: 'block', fontSize: '0.75rem' }}>SHARJAH OFFICE</span>
+                  SHAMS, Sharjah, United Arab Emirates
+                </div>
+              </li>
+              <li style={{ marginTop: '0.35rem' }}>
                 <span className="contact-icon">📞</span>
                 +971 55 884 7365
               </li>
@@ -101,8 +111,8 @@ export default function Footer() {
 
         {/* Legal Disclaimers */}
         <div className="footer-legal">
-          <p><strong>AKR Realty LLC</strong> - AKR Realty LLC is a RERA-Dubai Land Department -registered and licensed real estate brokerage in Dubai-UAE ORN no:57750 & BRN NO:95660 All property transactions are subject to UAE laws and DLD regulations.</p>
-          <p><strong>AKR Financial & Real Estate LLC</strong> - Registered and Licensed by SHAMS, SHARJAH -UAE License no:24286.01 Financial & Real Estate & Marketing advisory services are subject to UAE regulatory requirements and approvals where-ever applicable.</p>
+          <p><strong>AKR Realty LLC</strong> — No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE (ORN: 57750 &amp; BRN: 95660). All property transactions are subject to UAE laws and DLD regulations.</p>
+          <p><strong>AKR Financial and Real Estate Service LLC</strong> — SHAMS, Sharjah, United Arab Emirates. Registered and Licensed by SHAMS, Sharjah - UAE (License no: 24286.01). Financial &amp; Real Estate &amp; Marketing advisory services are subject to UAE regulatory requirements and approvals wherever applicable.</p>
           <p className="text-gold"><strong>Important Disclaimer:</strong> All calculators and estimates provided are for advisory purposes only and do not constitute financial advice. Results are indicative and subject to approval by relevant financial institutions. Past performance does not guarantee future results. This platform does not facilitate direct transactions between clients and property listers.</p>
         </div>
 

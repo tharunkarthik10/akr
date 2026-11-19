@@ -28,7 +28,7 @@ export default function FinancialFAQPage() {
     },
     {
       question: "What licenses does AKR Financial & Real Estate Service LLC hold?",
-      answer: "AKR Financial & Real Estate Service LLC is registered under SHAMS, Sharjah (License No. 24286.01). We provide independent financial, loan structuring, investment advisory, and enterprise risk management services."
+      answer: "AKR Financial and Real Estate Service LLC is registered at SHAMS, Sharjah, United Arab Emirates (License No. 24286.01). We provide independent financial, loan structuring, investment advisory, and enterprise risk management services."
     }
   ];
 

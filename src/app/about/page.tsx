@@ -295,6 +295,9 @@ export default function About() {
                 <h3>AKR Realty LLC</h3>
                 <span className="licensed-pill">RERA - DLD</span>
               </div>
+              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.6rem' }}>
+                📍 No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates
+              </p>
               <p className="licensed-item-desc">A RERA & DLD-registered real estate brokerage in Dubai. Licensed to provide full property transaction and brokerage services in compliance with UAE laws and Dubai Land Department regulations.</p>
               
               <div className="licensed-numbers-grid">
@@ -318,9 +321,12 @@ export default function About() {
             </div>
             <div className="licensed-item-content">
               <div className="licensed-item-header">
-                <h3>AKR Financial & Real Estate Service LLC</h3>
+                <h3>AKR Financial and Real Estate Service LLC</h3>
                 <span className="licensed-pill">SHAMS</span>
               </div>
+              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.6rem' }}>
+                📍 SHAMS, Sharjah, United Arab Emirates
+              </p>
               <p className="licensed-item-desc">Registered under Sharjah Media City (SHAMS), Sharjah. Licensed to provide financial, real estate, and marketing advisory services subject to UAE regulatory requirements and approvals where applicable.</p>
               
               <div className="licensed-numbers-grid">

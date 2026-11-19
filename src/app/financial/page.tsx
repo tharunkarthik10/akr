@@ -8,7 +8,7 @@ export default function FinancialPage() {
   const financialFaqs = [
     {
       question: "What licenses does AKR Financial & Real Estate Service LLC hold?",
-      answer: "AKR Financial & Real Estate Service LLC is registered under SHAMS, Sharjah (License No. 24286.01). We provide independent financial, loan structuring, investment advisory, and enterprise risk management services."
+      answer: "AKR Financial and Real Estate Service LLC is registered at SHAMS, Sharjah, United Arab Emirates (License No. 24286.01). We provide independent financial, loan structuring, investment advisory, and enterprise risk management services."
     },
     {
       question: "Which UAE banking partners does AKR Group work with?",
@@ -29,6 +29,22 @@ export default function FinancialPage() {
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
         
+        {/* Official Entity & Address Banner */}
+        <div style={{ backgroundColor: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '12px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1.25rem', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+          <div style={{ fontSize: '1.75rem', color: 'var(--primary-red)' }}>📍</div>
+          <div>
+            <div style={{ fontWeight: 700, color: 'var(--primary-red)', fontSize: '1.05rem', letterSpacing: '0.02em' }}>
+              AKR Financial and Real Estate Service LLC
+            </div>
+            <div style={{ color: '#2a2a2a', fontSize: '0.95rem', marginTop: '0.2rem', fontWeight: 500 }}>
+              SHAMS , Sharjah United Arab Emirates
+            </div>
+            <div style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', marginTop: '0.25rem', fontWeight: 600 }}>
+              Sharjah Media City (SHAMS) Freezone Licensed | License No: 24286.01
+            </div>
+          </div>
+        </div>
+
         {/* Category Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
           
