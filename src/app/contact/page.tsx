@@ -64,9 +64,20 @@ export default function Contact() {
                   <PhoneIcon />
                 </div>
                 <div className="contact-info-content">
-                  <h3>Phone</h3>
-                  <p>+971 55 884 7365</p>
-                  <span className="highlight">Available 24/7</span>
+                  <h3>Office Direct</h3>
+                  <p><a href="tel:+971558847365" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 55 884 7365</a></p>
+                  <span className="highlight">Head Office &amp; Realty Inquiries</span>
+                </div>
+              </div>
+
+              <div className="contact-info-item">
+                <div className="contact-icon-wrapper">
+                  <PhoneIcon />
+                </div>
+                <div className="contact-info-content">
+                  <h3>AKR Financial Direct</h3>
+                  <p><a href="tel:+971585887864" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 58 588 7864</a></p>
+                  <span className="highlight">Banking, Loans &amp; Investments</span>
                 </div>
               </div>
 
@@ -76,7 +87,7 @@ export default function Contact() {
                 </div>
                 <div className="contact-info-content">
                   <h3>Email</h3>
-                  <p>info@akrgroupuae.com</p>
+                  <p><a href="mailto:info@akrgroupuae.com" style={{ color: 'inherit', textDecoration: 'none' }}>info@akrgroupuae.com</a></p>
                   <span className="highlight">Response within 24 hours</span>
                 </div>
               </div>
@@ -87,7 +98,7 @@ export default function Contact() {
                 </div>
                 <div className="contact-info-content">
                   <h3>WhatsApp</h3>
-                  <p>+971 50 777 2751</p>
+                  <p><a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+971 55 884 7365</a></p>
                   <span className="highlight">Instant messaging</span>
                 </div>
               </div>
@@ -100,7 +111,8 @@ export default function Contact() {
                   <h3>Dubai Office — AKR Realty LLC</h3>
                   <p>No: 104 Sarah Building, Plot No-115-0, AL Garhoud</p>
                   <p>Dubai, United Arab Emirates</p>
-                  <span className="highlight">RERA / DLD Lic: 57750 | ORN: 57750 | BRN: 95660</span>
+                  <p style={{ marginTop: '0.3rem', fontSize: '0.85rem' }}>Direct Tel: <a href="tel:+971558847365" style={{ color: 'var(--primary-red)', fontWeight: 600, textDecoration: 'none' }}>+971 55 884 7365</a></p>
+                  <span className="highlight" style={{ marginTop: '0.35rem', display: 'inline-block' }}>RERA / DLD Lic: 57750 | ORN: 57750 | BRN: 95660</span>
                 </div>
               </div>
 
@@ -112,7 +124,8 @@ export default function Contact() {
                   <h3>Sharjah Office — AKR Financial and Real Estate Service LLC</h3>
                   <p>SHAMS (Sharjah Media City)</p>
                   <p>Sharjah, United Arab Emirates</p>
-                  <span className="highlight">SHAMS Freezone Lic: 24286.01</span>
+                  <p style={{ marginTop: '0.3rem', fontSize: '0.85rem' }}>Financial Tel: <a href="tel:+971585887864" style={{ color: 'var(--primary-red)', fontWeight: 600, textDecoration: 'none' }}>+971 58 588 7864</a></p>
+                  <span className="highlight" style={{ marginTop: '0.35rem', display: 'inline-block' }}>SHAMS Freezone Lic: 24286.01</span>
                 </div>
               </div>
 
@@ -204,6 +217,9 @@ export default function Contact() {
               <p style={{ fontWeight: 600, color: 'var(--accent-gold)', marginBottom: '0.4rem' }}>
                 📍 No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates
               </p>
+              <p style={{ fontSize: '0.85rem', color: '#ffffff', marginBottom: '0.4rem' }}>
+                📞 Office Direct: <a href="tel:+971558847365" style={{ color: 'var(--accent-gold)', fontWeight: 600, textDecoration: 'none' }}>+971 55 884 7365</a>
+              </p>
               <p>AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE ORN no: 57750 & BRN NO: 95660. All property transactions are subject to UAE laws and DLD regulations.</p>
             </div>
 
@@ -211,6 +227,9 @@ export default function Contact() {
               <h3>AKR Financial and Real Estate Service LLC</h3>
               <p style={{ fontWeight: 600, color: 'var(--accent-gold)', marginBottom: '0.4rem' }}>
                 📍 SHAMS, Sharjah, United Arab Emirates
+              </p>
+              <p style={{ fontSize: '0.85rem', color: '#ffffff', marginBottom: '0.4rem' }}>
+                📞 AKR Financial Direct: <a href="tel:+971585887864" style={{ color: 'var(--accent-gold)', fontWeight: 600, textDecoration: 'none' }}>+971 58 588 7864</a>
               </p>
               <p>AKR Financial and Real Estate Service LLC — Registered and Licensed by SHAMS, SHARJAH - UAE License no: 24286.01. Financial, Real Estate & Marketing advisory services are subject to UAE regulatory requirements and approvals wherever applicable.</p>
             </div>

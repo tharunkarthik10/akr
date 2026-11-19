@@ -40,18 +40,25 @@ export default function RealtyPage() {
       <div className="properties-container" style={{ marginTop: '2rem' }}>
         
         {/* Official Entity & Address Banner */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '12px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '1.25rem', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
-          <div style={{ fontSize: '1.75rem', color: 'var(--primary-red)' }}>📍</div>
+        <div style={{ backgroundColor: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '12px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            <div style={{ fontSize: '1.75rem', color: 'var(--primary-red)' }}>📍</div>
+            <div>
+              <div style={{ fontWeight: 700, color: 'var(--primary-red)', fontSize: '1.05rem', letterSpacing: '0.02em' }}>
+                AKR REALTY LLC
+              </div>
+              <div style={{ color: '#2a2a2a', fontSize: '0.95rem', marginTop: '0.2rem', fontWeight: 500 }}>
+                No: 104 Sarah Building , Plot No-115-0, AL Garhoud , Dubai , United Arab Emirates
+              </div>
+              <div style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', marginTop: '0.25rem', fontWeight: 600 }}>
+                RERA &amp; Dubai Land Department Registered | ORN: 57750 | BRN: 95660
+              </div>
+            </div>
+          </div>
           <div>
-            <div style={{ fontWeight: 700, color: 'var(--primary-red)', fontSize: '1.05rem', letterSpacing: '0.02em' }}>
-              AKR REALTY LLC
-            </div>
-            <div style={{ color: '#2a2a2a', fontSize: '0.95rem', marginTop: '0.2rem', fontWeight: 500 }}>
-              No: 104 Sarah Building , Plot No-115-0, AL Garhoud , Dubai , United Arab Emirates
-            </div>
-            <div style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', marginTop: '0.25rem', fontWeight: 600 }}>
-              RERA &amp; Dubai Land Department Registered | ORN: 57750 | BRN: 95660
-            </div>
+            <a href="tel:+971558847365" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'var(--primary-red)', color: '#ffffff', padding: '0.65rem 1.25rem', borderRadius: '8px', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}>
+              📞 Office Direct: +971 55 884 7365
+            </a>
           </div>
         </div>
         

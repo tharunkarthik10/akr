@@ -71,7 +71,17 @@ export default function Footer() {
               </li>
               <li style={{ marginTop: '0.35rem' }}>
                 <span className="contact-icon">📞</span>
-                +971 55 884 7365
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: '#ccc', display: 'block' }}>Office Direct:</span>
+                  <a href="tel:+971558847365" style={{ color: '#ffffff', textDecoration: 'none' }}>+971 55 884 7365</a>
+                </div>
+              </li>
+              <li style={{ marginTop: '0.35rem' }}>
+                <span className="contact-icon">📞</span>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: '#ccc', display: 'block' }}>AKR Financial:</span>
+                  <a href="tel:+971585887864" style={{ color: '#ffffff', textDecoration: 'none' }}>+971 58 588 7864</a>
+                </div>
               </li>
               <li>
                 <span className="contact-icon">✉️</span>

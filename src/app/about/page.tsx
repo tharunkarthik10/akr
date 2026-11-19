@@ -295,8 +295,11 @@ export default function About() {
                 <h3>AKR Realty LLC</h3>
                 <span className="licensed-pill">RERA - DLD</span>
               </div>
-              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.6rem' }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.3rem' }}>
                 📍 No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates
+              </p>
+              <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '0.6rem' }}>
+                📞 Office Direct: <a href="tel:+971558847365" style={{ color: 'var(--primary-red)', fontWeight: 600, textDecoration: 'none' }}>+971 55 884 7365</a>
               </p>
               <p className="licensed-item-desc">A RERA & DLD-registered real estate brokerage in Dubai. Licensed to provide full property transaction and brokerage services in compliance with UAE laws and Dubai Land Department regulations.</p>
               
@@ -324,8 +327,11 @@ export default function About() {
                 <h3>AKR Financial and Real Estate Service LLC</h3>
                 <span className="licensed-pill">SHAMS</span>
               </div>
-              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.6rem' }}>
+              <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.3rem' }}>
                 📍 SHAMS, Sharjah, United Arab Emirates
+              </p>
+              <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '0.6rem' }}>
+                📞 AKR Financial: <a href="tel:+971585887864" style={{ color: 'var(--primary-red)', fontWeight: 600, textDecoration: 'none' }}>+971 58 588 7864</a>
               </p>
               <p className="licensed-item-desc">Registered under Sharjah Media City (SHAMS), Sharjah. Licensed to provide financial, real estate, and marketing advisory services subject to UAE regulatory requirements and approvals where applicable.</p>
               
