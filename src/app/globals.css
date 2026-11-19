@@ -4240,3 +4240,159 @@ body {
   color: rgba(139, 0, 0, 0.75);
   margin-bottom: 1.5rem;
 }
+
+
+/* ==========================================================================
+   MODERN CALCULATORS SPECIFIC STYLING (MATCHING SCREENSHOTS)
+   ========================================================================== */
+.calc-exact-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #8b0000;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+
+.calc-exact-subtitle {
+  font-size: 0.95rem;
+  color: rgba(139, 0, 0, 0.7);
+  line-height: 1.4;
+}
+
+.calc-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.calc-select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b0000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.calc-exact-disclaimer-box {
+  margin-top: 1.5rem;
+  background-color: #fdfbf7;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  font-size: 0.82rem;
+  color: #8b0000;
+  line-height: 1.55;
+  opacity: 0.9;
+}
+
+.calc-breakdown-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.calc-breakdown-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #8b0000;
+  margin-bottom: 0.85rem;
+}
+
+.calc-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.92rem;
+  color: rgba(26, 26, 26, 0.85);
+}
+
+.calc-breakdown-label {
+  font-weight: 500;
+}
+
+.calc-breakdown-val {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.calc-breakdown-row.deduction .calc-breakdown-label,
+.calc-breakdown-row.deduction .calc-breakdown-val {
+  color: #c53030;
+}
+
+.calc-breakdown-row.total {
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.calc-breakdown-row.total .calc-breakdown-label,
+.calc-breakdown-row.total .calc-breakdown-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #8b0000;
+}
+
+.calc-exact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.btn-exact-download {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8b0000;
+  color: #ffffff;
+  padding: 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-exact-download:hover {
+  background-color: #6d0000;
+}
+
+.calc-exact-sub-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.btn-exact-sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #8b0000;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-exact-sub:hover {
+  background-color: #faf7f2;
+  border-color: #d4af37;
+}
