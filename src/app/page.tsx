@@ -297,10 +297,10 @@ export default function Home() {
             <div className="promise-left text-left">
               <div className="promise-tag">OUR PROMISE</div>
               <h3 className="promise-title font-serif">
-                "From first conversation to long-term partnership — we are with you at every stage."
+                &ldquo;One unified ecosystem. Unwavering trust. We don’t sell transactions—we architect wealth to build stronger, enduring legacies.&rdquo;
               </h3>
               <p className="promise-desc">
-                Every step is designed to protect your interests, maximize outcomes, and build a lasting advisory relationship rooted in trust.
+                Backed by 25+ years of India and UAE expertise across Dubai and Sharjah, we unite property, finance, risk, and brand strategy—delivering unbiased guidance, full compliance, and lifelong guardianship.
               </p>
             </div>
             <div className="promise-right">
