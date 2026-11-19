@@ -97,9 +97,9 @@ export default function Contact() {
                   <MessageIcon />
                 </div>
                 <div className="contact-info-content">
-                  <h3>Private Client Desk</h3>
+                  <h3>WhatsApp Primary</h3>
                   <p><a href="https://wa.me/971507772751" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 50 777 2751</a></p>
-                  <span className="highlight">Priority WhatsApp Advisory</span>
+                  <span className="highlight">Primary Instant Messaging</span>
                 </div>
               </div>
 
@@ -108,9 +108,9 @@ export default function Contact() {
                   <MessageIcon />
                 </div>
                 <div className="contact-info-content">
-                  <h3>Corporate &amp; Operations Desk</h3>
+                  <h3>WhatsApp Secondary</h3>
                   <p><a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 55 884 7365</a></p>
-                  <span className="highlight">Alternative WhatsApp Channel</span>
+                  <span className="highlight">Secondary Instant Messaging</span>
                 </div>
               </div>
 
@@ -157,10 +157,10 @@ export default function Contact() {
             <h2>Quick Actions</h2>
             <div className="quick-actions" style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
               <a href="https://wa.me/971507772751" target="_blank" rel="noopener noreferrer" className="btn-whatsapp" style={{ textDecoration: 'none' }}>
-                <MessageIcon /> Private Client Desk — WhatsApp (+971 50 777 2751)
+                <MessageIcon /> WhatsApp Primary (+971 50 777 2751)
               </a>
               <a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" className="btn-whatsapp" style={{ textDecoration: 'none', backgroundColor: '#1e7b34' }}>
-                <MessageIcon /> Corporate Desk — WhatsApp (+971 55 884 7365)
+                <MessageIcon /> WhatsApp Secondary (+971 55 884 7365)
               </a>
               <a href="tel:+971558847365" className="btn-call" style={{ textDecoration: 'none' }}>
                 <PhoneIcon /> Call Head Office (+971 55 884 7365)
