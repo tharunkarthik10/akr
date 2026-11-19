@@ -224,7 +224,7 @@ button {
 }
 
 .logo-img {
-  height: 64px;
+  height: 82px;
   width: auto;
   object-fit: contain;
   transition: transform 0.2s ease;
@@ -247,23 +247,32 @@ button {
 }
 
 .logo-title {
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   letter-spacing: 0.5px;
   line-height: 1.15;
 }
 
 .logo-subtitle {
   color: #c59b27;
-  font-size: 0.62rem;
-  letter-spacing: 0.5px;
+  font-size: 0.68rem;
+  letter-spacing: 0.6px;
   font-weight: 500;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .firm-letter {
   font-weight: 800;
   color: #996515;
   font-size: 1.15em;
+}
+
+.firm-bullet {
+  font-weight: 800;
+  color: #996515;
+  font-size: 1.1em;
+  margin: 0 0.2rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .nav-links {
@@ -1297,14 +1306,14 @@ button {
   }
 
   .logo-img {
-    height: 48px;
+    height: 56px;
   }
 
   .logo-title {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
   }
   .logo-subtitle {
-    font-size: 0.5rem;
+    font-size: 0.52rem;
     letter-spacing: 0.2px;
   }
   

@@ -111,7 +111,7 @@ export default function Header() {
               <div className="logo-text ml-2">
                 <div className="logo-title font-serif" style={{ color: 'var(--primary-red)', fontWeight: 'bold' }}>AKR GROUP UAE</div>
                 <div className="logo-subtitle">
-                  <span className="firm-letter">F</span>INANCE • <span className="firm-letter">I</span>NSURANCE • <span className="firm-letter">R</span>EAL ESTATE • <span className="firm-letter">M</span>ARKETING
+                  <span className="firm-letter">F</span>INANCE <span className="firm-bullet">•</span> <span className="firm-letter">I</span>NSURANCE <span className="firm-bullet">•</span> <span className="firm-letter">R</span>EAL ESTATE <span className="firm-bullet">•</span> <span className="firm-letter">M</span>ARKETING
                 </div>
               </div>
             </Link>
