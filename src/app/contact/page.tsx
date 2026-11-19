@@ -123,7 +123,7 @@ export default function Contact() {
                   <p>No: 104 Sarah Building, Plot No-115-0, AL Garhoud</p>
                   <p>Dubai, United Arab Emirates</p>
                   <p style={{ marginTop: '0.3rem', fontSize: '0.85rem' }}>Direct Tel: <a href="tel:+971558847365" style={{ color: 'var(--primary-red)', fontWeight: 600, textDecoration: 'none' }}>+971 55 884 7365</a></p>
-                  <span className="highlight" style={{ marginTop: '0.35rem', display: 'inline-block' }}>RERA / DLD Lic: 57750 | ORN: 57750 | BRN: 95660</span>
+                  <span className="highlight" style={{ marginTop: '0.35rem', display: 'inline-block' }}>RERA / DLD Lic: 1578426 | ORN: 57750 | BRN: 95660</span>
                 </div>
               </div>
 
@@ -234,7 +234,7 @@ export default function Contact() {
               <p style={{ fontSize: '0.85rem', color: '#ffffff', marginBottom: '0.4rem' }}>
                 📞 Office Direct: <a href="tel:+971558847365" style={{ color: 'var(--accent-gold)', fontWeight: 600, textDecoration: 'none' }}>+971 55 884 7365</a>
               </p>
-              <p>AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE ORN no: 57750 & BRN NO: 95660. All property transactions are subject to UAE laws and DLD regulations.</p>
+              <p>AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE (License no: 1578426, ORN no: 57750 &amp; BRN no: 95660). All property transactions are subject to UAE laws and DLD regulations.</p>
             </div>
 
             <div className="regulated-item">

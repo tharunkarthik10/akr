@@ -8,7 +8,7 @@ export default function RealtyPage() {
   const realtyFaqs = [
     {
       question: "What licensing does AKR Realty LLC hold in the UAE?",
-      answer: "AKR Realty LLC is fully registered and licensed by RERA (Real Estate Regulatory Agency) and the Dubai Land Department (DLD) under License No. 57750 & BRN 95660, located at No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. We operate in full compliance with UAE property laws."
+      answer: "AKR Realty LLC is fully registered and licensed by RERA (Real Estate Regulatory Agency) and the Dubai Land Department (DLD) under License no: 1578426, ORN no: 57750 and BRN no: 95660, located at No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. We operate in full compliance with UAE property laws."
     },
     {
       question: "What is the difference between General Property and Exclusive Off-Market Property?",
@@ -64,7 +64,7 @@ export default function RealtyPage() {
                 No: 104 Sarah Building , Plot No-115-0, AL Garhoud , Dubai , United Arab Emirates
               </div>
               <div style={{ color: 'var(--accent-gold)', fontSize: '0.82rem', marginTop: '0.25rem', fontWeight: 600 }}>
-                RERA &amp; Dubai Land Department Registered | ORN: 57750 | BRN: 95660
+                RERA &amp; Dubai Land Department Registered | License no: 1578426 | ORN: 57750 | BRN: 95660
               </div>
             </div>
           </div>

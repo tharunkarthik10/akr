@@ -50,7 +50,7 @@ export default function GeneralFAQPage() {
   const financialFaqs = [
     {
       question: "What licenses do AKR Group entities hold across the UAE?",
-      answer: "AKR Realty LLC is a RERA & DLD-registered real estate brokerage located at No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates (License No. 57750, ORN: 57750, BRN: 95660). AKR Financial and Real Estate Service LLC is licensed under SHAMS, Sharjah, United Arab Emirates (License No. 24286.01) for financial, real estate, and marketing advisory."
+      answer: "AKR Realty LLC is a RERA & DLD-registered real estate brokerage located at No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates (License no: 1578426, ORN no: 57750, BRN no: 95660). AKR Financial and Real Estate Service LLC is licensed under SHAMS, Sharjah, United Arab Emirates (License No. 24286.01) for financial, real estate, and marketing advisory."
     },
     {
       question: "How does AKR assist with corporate banking and loan structuring?",

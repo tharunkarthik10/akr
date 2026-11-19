@@ -305,6 +305,10 @@ export default function About() {
               
               <div className="licensed-numbers-grid">
                 <div className="licensed-number-box">
+                  <span>LICENSE NO.</span>
+                  <strong>1578426</strong>
+                </div>
+                <div className="licensed-number-box">
                   <span>ORN NO.</span>
                   <strong>57750</strong>
                 </div>

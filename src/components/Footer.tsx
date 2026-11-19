@@ -106,14 +106,18 @@ export default function Footer() {
             <h4 className="footer-heading">REGULATORY COMPLIANCE</h4>
             <div className="compliance-box">
               <div className="comp-title">RERA REGISTERED — DLD</div>
-              <div className="comp-numbers">
+              <div className="comp-numbers" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
                 <div>
-                  <div className="comp-label">BRN NO.</div>
-                  <div className="comp-val">95660</div>
+                  <div className="comp-label">LIC NO.</div>
+                  <div className="comp-val">1578426</div>
                 </div>
                 <div>
                   <div className="comp-label">ORN NO.</div>
                   <div className="comp-val">57750</div>
+                </div>
+                <div>
+                  <div className="comp-label">BRN NO.</div>
+                  <div className="comp-val">95660</div>
                 </div>
               </div>
             </div>
@@ -128,7 +132,7 @@ export default function Footer() {
 
         {/* Legal Disclaimers */}
         <div className="footer-legal">
-          <p><strong>AKR Realty LLC</strong> — No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE (ORN: 57750 &amp; BRN: 95660). All property transactions are subject to UAE laws and DLD regulations.</p>
+          <p><strong>AKR Realty LLC</strong> — No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates. AKR Realty LLC is a RERA-Dubai Land Department registered and licensed real estate brokerage in Dubai-UAE (License no: 1578426, ORN no: 57750 &amp; BRN no: 95660). All property transactions are subject to UAE laws and DLD regulations.</p>
           <p><strong>AKR Financial and Real Estate Service LLC</strong> — SHAMS, Sharjah, United Arab Emirates. Registered and Licensed by SHAMS, Sharjah - UAE (License no: 24286.01). Financial &amp; Real Estate &amp; Marketing advisory services are subject to UAE regulatory requirements and approvals wherever applicable.</p>
           <p className="text-gold"><strong>Important Disclaimer:</strong> All calculators and estimates provided are for advisory purposes only and do not constitute financial advice. Results are indicative and subject to approval by relevant financial institutions. Past performance does not guarantee future results. This platform does not facilitate direct transactions between clients and property listers.</p>
         </div>

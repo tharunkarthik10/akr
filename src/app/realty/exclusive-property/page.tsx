@@ -218,7 +218,7 @@ export default function ExclusivePropertyPage() {
             <h3>Advisory-Led Exclusive Property Service</h3>
           </div>
           <p className="license-text">
-            <strong>AKR Realty LLC</strong> - Licensed by RERA (Real Estate Regulatory Agency). License No: 57750
+            <strong>AKR Realty LLC</strong> - Licensed by RERA (Real Estate Regulatory Agency). License no: 1578426 | ORN no: 57750 | BRN no: 95660
           </p>
           <p className="desc-text">
             Exclusive off-market properties are accessible confidentially under strict Non-Disclosure Agreements (NDAs). For detailed prospectus documentation, private viewings, or sovereign asset consultations, please speak to your dedicated senior advisor. <strong>Direct client-lister contact is strictly restricted as per regulatory guidelines.</strong>
