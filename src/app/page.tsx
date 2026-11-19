@@ -386,15 +386,15 @@ export default function Home() {
         <div className="container text-center">
           <span className="section-tag inline-block">BEGIN YOUR JOURNEY</span>
           <h2 className="cta-title font-serif">
-            Start Your Strategic Journey<br/>
+            Step Forward Together<br/>
             with <span className="font-sans font-bold text-gold">AKR Group UAE</span>
           </h2>
           <p className="cta-desc mx-auto">
-            Connect with our advisory team for tailored solutions across real estate, finance, and investment planning.
+            Schedule a confidential one-on-one session with our senior specialists for custom solutions across real estate, finance, risk protection, and brand architecture.
           </p>
           <div className="cta-buttons" style={{ marginBottom: '3rem', position: 'relative', zIndex: 10 }}>
-            <button className="btn-red">BOOK PRIVATE CONSULTATION</button>
-            <button className="btn-outline-gold text-dark">CONTACT US</button>
+            <Link href="/contact" className="btn-red" style={{ textDecoration: 'none', display: 'inline-block' }}>BOOK PRIVATE CONSULTATION</Link>
+            <Link href="/contact" className="btn-outline-gold text-dark" style={{ textDecoration: 'none', display: 'inline-block' }}>CONTACT US</Link>
           </div>
           
           <div className="cta-tags text-gold-solid" style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', position: 'relative', clear: 'both' }}>
