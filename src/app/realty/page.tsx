@@ -30,7 +30,7 @@ export default function RealtyPage() {
 
   return (
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '3rem' }}>
-      
+
       {/* Hero Header */}
       <section className="properties-hero" style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 1.5rem 1.5rem 1.5rem' }}>
         <h1 className="font-serif" style={{ fontWeight: 700, color: 'var(--primary-red)', marginBottom: '0.65rem', lineHeight: 1.25 }}>
@@ -54,7 +54,7 @@ export default function RealtyPage() {
       </section>
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
-        
+
         {/* Official Entity & Address Banner */}
         <div style={{ backgroundColor: '#ffffff', border: '1px solid rgba(212, 175, 55, 0.4)', borderRadius: '12px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', boxShadow: '0 2px 10px rgba(0,0,0,0.03)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
@@ -77,7 +77,7 @@ export default function RealtyPage() {
             </a>
           </div>
         </div>
-        
+
         {/* 3 Main Pillars / Quick Links */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
           {/* Pillar 1: Property */}
@@ -136,8 +136,8 @@ export default function RealtyPage() {
         </div>
 
         {/* FAQs */}
-        <FAQAccordion 
-          title="AKR Realty — Frequently Asked Questions" 
+        <FAQAccordion
+          title="AKR Realty — Frequently Asked Questions"
           subtitle="Essential insights into Dubai property purchases, off-market investments, and legal regulations."
           items={realtyFaqs}
         />
