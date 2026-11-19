@@ -102,15 +102,17 @@ export default function Header() {
       <nav className="main-nav">
         <div className="nav-container">
           <div className="nav-header">
-            <Link href="/" className="logo-section" onClick={closeMobileMenu}>
+            <Link href="/" className="logo-section" onClick={closeMobileMenu} style={{ textDecoration: 'none' }}>
               <img 
                 src="/logo/akrlogo.png" 
                 alt="AKR Group UAE Logo" 
-                style={{ height: '42px', width: 'auto', objectFit: 'contain' }} 
+                className="logo-img"
               />
               <div className="logo-text ml-2">
-                <div className="logo-title font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.2rem', fontWeight: 'bold', lineHeight: '1.1' }}>AKR GROUP UAE</div>
-                <div className="logo-subtitle" style={{ color: '#c59b27', fontSize: '0.6rem', letterSpacing: '0.5px', fontWeight: '600' }}>FINANCIAL & REAL ESTATE INVESTMENT ARCHITECTS</div>
+                <div className="logo-title font-serif" style={{ color: 'var(--primary-red)', fontWeight: 'bold' }}>AKR GROUP UAE</div>
+                <div className="logo-subtitle">
+                  <span className="firm-letter">F</span>INANCE • <span className="firm-letter">I</span>NSURANCE • <span className="firm-letter">R</span>EAL ESTATE • <span className="firm-letter">M</span>ARKETING
+                </div>
               </div>
             </Link>
             <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle Menu">
