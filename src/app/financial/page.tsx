@@ -72,52 +72,45 @@ export default function FinancialPage() {
         {/* Category Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
           
-          {/* Card 1: Loans & Credit */}
+          {/* Card 1: Finance & Banking Architecture */}
           <div style={{ backgroundColor: '#FFFFFF', padding: '2.5rem', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 16px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
-              <div style={{ fontSize: '2rem', color: 'var(--primary-red)', marginBottom: '1rem' }}>💳</div>
+              <div style={{ fontSize: '2rem', color: 'var(--primary-red)', marginBottom: '1rem' }}>🏛️</div>
               <h3 className="font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.4rem', marginBottom: '0.75rem', fontWeight: 700 }}>
-                Loans & Credit Advisory
+                Finance &amp; Banking Architecture
               </h3>
               <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                Competitive interest rates and structured approval frameworks for Credit Lines, Personal Finance, and Mortgages.
+                Strategic banking consultation across Tier-1 mortgages, executive credit facilities, and structured capital planning—engineered to optimize liquidity, leverage, and long-term returns across the UAE.
               </p>
+              
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>
+                Strategic Consultations:
+              </div>
               <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><Link href="/financial/credit-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Credit Loans & Cards →</Link></li>
-                <li><Link href="/financial/personal-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Personal Loans →</Link></li>
-                <li><Link href="/financial/mortgage-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mortgage Loans →</Link></li>
+                <li><Link href="/financial/mortgage-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Tier-1 Mortgage Loans &amp; Structuring →</Link></li>
+                <li><Link href="/financial/credit-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Credit Loans &amp; Executive Facilities →</Link></li>
+                <li><Link href="/financial/personal-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Personal Finance &amp; Restructuring →</Link></li>
+                <li><Link href="/financial/banking" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Private &amp; Corporate Banking Advisory →</Link></li>
+                <li><Link href="/financial/mutual-funds" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mutual Fund Portfolio Optimization →</Link></li>
+                <li><Link href="/financial/child-education" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Child Education Wealth Planning →</Link></li>
               </ul>
             </div>
           </div>
 
-          {/* Card 2: Banking & Wealth */}
-          <div style={{ backgroundColor: '#FFFFFF', padding: '2.5rem', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 16px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ fontSize: '2rem', color: 'var(--accent-gold)', marginBottom: '1rem' }}>🏛️</div>
-              <h3 className="font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.4rem', marginBottom: '0.75rem', fontWeight: 700 }}>
-                Banking & Investments
-              </h3>
-              <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                Institutional private banking, mutual fund portfolio optimization, and long-term child education wealth planning.
-              </p>
-              <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
-                <li><Link href="/financial/banking" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Banking Advisory →</Link></li>
-                <li><Link href="/financial/mutual-funds" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mutual Funds →</Link></li>
-                <li><Link href="/financial/child-education" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Child Education Planning →</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Card 3: Insurance Solutions */}
+          {/* Card 2: Insurance & Asset Protection */}
           <div style={{ backgroundColor: '#FFFFFF', padding: '2.5rem', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 16px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontSize: '2rem', color: 'var(--primary-red)', marginBottom: '1rem' }}>🛡️</div>
               <h3 className="font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.4rem', marginBottom: '0.75rem', fontWeight: 700 }}>
-                Insurance & Risk Protection
+                Insurance &amp; Asset Protection
               </h3>
               <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                End-to-end protection for corporate assets, keyman life insurance, and comprehensive motor fleet policies across UAE.
+                Independent risk management, life, health, motor, mortgage loan, property protection frameworks designed to insulate your personal wealth, business continuity, and generational family assets.
               </p>
+              
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>
+                Strategic Consultations:
+              </div>
               <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
                 <li><Link href="/financial/insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>General Insurance →</Link></li>
                 <li><Link href="/financial/life-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Life Insurance →</Link></li>
@@ -125,6 +118,33 @@ export default function FinancialPage() {
                 <li><Link href="/financial/home-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Home Insurance →</Link></li>
                 <li><Link href="/financial/mortgage-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mortgage Insurance →</Link></li>
                 <li><Link href="/financial/motor-insurance" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Motor Insurance →</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Card 3: Marketing & Advertising Brand Positioning */}
+          <div style={{ backgroundColor: '#FFFFFF', padding: '2.5rem', borderRadius: '12px', border: '1px solid #eaeaea', boxShadow: '0 4px 16px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <div style={{ fontSize: '2rem', color: 'var(--accent-gold)', marginBottom: '1rem' }}>📢</div>
+              <h3 className="font-serif" style={{ color: 'var(--primary-red)', fontSize: '1.4rem', marginBottom: '0.75rem', fontWeight: 700 }}>
+                Marketing &amp; Advertising Brand Positioning
+              </h3>
+              <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                Strategic, high-impact advertising, personal branding for leaders, corporate brand building, and signature event production—from executive galas and cultural festivals to private gatherings that turn vision into lasting market authority.
+              </p>
+              
+              <div style={{ fontWeight: 700, fontSize: '0.88rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.75rem' }}>
+                Strategic Consultations:
+              </div>
+              <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>1. Advertising &amp; Marketing Campaigns</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>2. Direct / Online Advertising &amp; Marketing</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>3. Digital Media Marketing &amp; Management</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>4. Public Relations (PR)</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>5. Social Media &amp; Sales Promotion</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>6. Signature Events Production</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>7. Festival &amp; Social Events Management</span></li>
+                <li><span style={{ color: 'var(--primary-red)', fontWeight: 600 }}>8. Marketing &amp; Selling Event Tickets</span></li>
               </ul>
             </div>
           </div>
