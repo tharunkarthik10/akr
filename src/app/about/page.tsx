@@ -70,7 +70,7 @@ export default function About() {
       <section className="about-hero">
         <div className="about-container">
           <h1>About AKR Group UAE</h1>
-          <p>Your Trusted Premium Strategic Real Estate, Financial and Investment Architects across the United Arab Emirates</p>
+          <p>Your Trusted Premium Strategic Real Estate, Financial, Risk &amp; Brand Architects across the UAE</p>
         </div>
       </section>
 
@@ -103,7 +103,7 @@ export default function About() {
               <p>When you trust us with your journey, we take it personally. We provide the honest guidance and the stable hands you need to ensure that what you build today becomes a legacy that lasts forever.</p>
 
               <div className="founder-highlight-quote">
-                <p>" We Forward Together. For Life. For Legacy."</p>
+                <p>" Forward Together. For Life. For Legacy."</p>
                 <span>— FOUNDER, AKR GROUP UAE</span>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function About() {
                 <LayersIcon />
               </div>
               <p>As <strong style={{color: 'var(--accent-gold)'}}>Architects</strong> of your financial future, we don't just manage assets; we design the structural integrity of your family's wealth.</p>
-              <p>At <strong style={{color: 'var(--accent-gold)'}}>AKR</strong>, our mission is to ensure that every investment serves as a cornerstone for the <strong style={{color: 'var(--accent-gold)'}}>generations to follow</strong> — because <strong style={{color: 'var(--accent-gold)'}}>We Forward Together. For Life. For Legacy.</strong></p>
+              <p>At <strong style={{color: 'var(--accent-gold)'}}>AKR</strong>, our mission is to ensure that every investment serves as a cornerstone for the <strong style={{color: 'var(--accent-gold)'}}>generations to follow</strong> — <strong style={{color: 'var(--accent-gold)'}}>Forward Together. For Life. For Legacy.</strong></p>
               
               <div className="foundation-quote-box">
                 <p>Every investment, a cornerstone. Every family, a legacy.</p>
@@ -182,14 +182,14 @@ export default function About() {
               <p>At <strong style={{color: 'var(--accent-gold)'}}>AKR</strong>, we bridge the gap between today's ambition and tomorrow's heritage, ensuring your vision becomes a life well-lived and a legacy that never fades.</p>
               
               <div className="foundation-quote-box">
-                <p>We Forward Together. For Life. For Legacy.</p>
+                <p>Forward Together. For Life. For Legacy.</p>
               </div>
             </div>
 
           </div>
 
           <div className="foundation-footer">
-            <h3>" We Forward Together. For Life. For Legacy. "</h3>
+            <h3>" Forward Together. For Life. For Legacy. "</h3>
             <p>— THE AKR LEGACY VISION</p>
           </div>
 
