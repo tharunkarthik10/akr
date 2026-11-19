@@ -90,50 +90,70 @@ export default function Home() {
           <p className="section-subtitle">Four integrated verticals, one singular ecosystem —— engineered for discerning investors across UAE.</p>
           
           <div className="services-grid">
-            <div className="service-card">
-              <div className="service-image placeholder-img">
-                <span>[ Real Estate Image ]</span>
-              </div>
-              <div className="service-content">
-                <div className="service-tag">REAL ESTATE NAVIGATOR</div>
-                <h3 className="service-title font-serif">Property Asset Navigation & Portfolio Guidance</h3>
-                <p className="service-location">Dubai — AKR Realty LLC</p>
-                <p className="service-desc">Delivering premium asset navigation, off-market sourcing, and strategic asset matching tailored to your specific, targeted investment appetite and capital parameters.</p>
-                <ul className="service-bullets">
-                  <li>Premium Asset Navigation & Off-Market Sourcing</li>
-                  <li>Strategic Asset Matching for Investment Appetite</li>
-                </ul>
-              </div>
-            </div>
-            
+            {/* 1. Financial Navigator */}
             <div className="service-card">
               <div className="service-image placeholder-img">
                 <span>[ Finance Image ]</span>
               </div>
               <div className="service-content">
                 <div className="service-tag">FINANCIAL NAVIGATOR</div>
-                <h3 className="service-title font-serif">Strategic Banking, Investment & Insurance Solutions</h3>
-                <p className="service-location">Sharjah — AKR Financial & Real Estate Service LLC</p>
-                <p className="service-desc">Strategic consulting across Tier-1 corporate and personal mortgage structures, capital frameworks, and independent investment & insurance solutions.</p>
+                <h3 className="service-title font-serif">Strategic Banking &amp; Investment Solutions</h3>
+                <p className="service-location">Sharjah — AKR Financial and Real Estate Service LLC</p>
+                <p className="service-desc">Strategic consulting across Tier-1 corporate and personal banking facilities, mortgage structuring, capital frameworks, and independent investment portfolio optimization.</p>
                 <ul className="service-bullets">
-                  <li>Strategic Private Banking Product Consulting</li>
-                  <li>Corporate & Personal Mortgage Structures</li>
+                  <li>Strategic Private Banking &amp; Credit Advisory</li>
+                  <li>Corporate, Personal &amp; Mortgage Capital Structuring</li>
                 </ul>
               </div>
             </div>
-            
+
+            {/* 2. Insurance Navigator */}
+            <div className="service-card">
+              <div className="service-image placeholder-img">
+                <span>[ Insurance Image ]</span>
+              </div>
+              <div className="service-content">
+                <div className="service-tag">INSURANCE NAVIGATOR</div>
+                <h3 className="service-title font-serif">Strategic Insurance — Comprehensive Risk &amp; Assets Protection</h3>
+                <p className="service-location">Sharjah — AKR Financial and Real Estate Service LLC</p>
+                <p className="service-desc">Tailored institutional and personal risk management solutions protecting high-value property holdings, executive keyman liabilities, life security, and group corporate healthcare.</p>
+                <ul className="service-bullets">
+                  <li>Keyman, Corporate &amp; Real Estate Asset Protection</li>
+                  <li>Bespoke Life, Health &amp; General Risk Policies</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 3. Real Estate Navigator */}
+            <div className="service-card">
+              <div className="service-image placeholder-img">
+                <span>[ Real Estate Image ]</span>
+              </div>
+              <div className="service-content">
+                <div className="service-tag">REAL ESTATE NAVIGATOR</div>
+                <h3 className="service-title font-serif">Strategic Property Asset Navigation &amp; Portfolio Guidance</h3>
+                <p className="service-location">Dubai — AKR Realty LLC</p>
+                <p className="service-desc">Delivering premium asset navigation, off-market sourcing, and strategic asset matching tailored to your specific, targeted investment appetite and capital parameters.</p>
+                <ul className="service-bullets">
+                  <li>Premium Asset Navigation &amp; Off-Market Sourcing</li>
+                  <li>Strategic Asset Matching for Investment Appetite</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 4. Marketing Navigator */}
             <div className="service-card">
               <div className="service-image placeholder-img">
                 <span>[ Marketing Image ]</span>
               </div>
               <div className="service-content">
-                <div className="service-tag">STRATEGIC MARKETING NAVIGATOR</div>
-                <h3 className="service-title font-serif">Advertising & Marketing Solutions</h3>
+                <div className="service-tag">MARKETING NAVIGATOR</div>
+                <h3 className="service-title font-serif">Strategic Marketing &amp; Advertising Solutions</h3>
                 <p className="service-location">UAE-Wide Coverage</p>
-                <p className="service-desc">Advanced enterprise visibility navigation, institutional corporate growth campaigns, premium events production, and authoritative brand activation.</p>
+                <p className="service-desc">Advanced enterprise visibility navigation, institutional corporate growth campaigns, premium events production, precision digital media, and authoritative brand activation.</p>
                 <ul className="service-bullets">
                   <li>High-Impact Advertising Campaigns</li>
-                  <li>Precision Digital Media</li>
+                  <li>Precision Digital Media &amp; Brand Activation</li>
                 </ul>
               </div>
             </div>
