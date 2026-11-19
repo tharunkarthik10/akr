@@ -242,8 +242,8 @@ export default function About() {
                   <BuildingIcon />
                 </div>
                 <div className="offer-content">
-                  <h3>Real Estate Advisory</h3>
-                  <p>Expert guidance on property investments, market analysis, ROI calculations, and portfolio optimization in Dubai's dynamic real estate market.</p>
+                  <h3>Real Estate Architecture</h3>
+                  <p>Strategic guidance on prime, off-market, and ready-to-move residential and commercial properties—backed by market intelligence, yield modeling, and portfolio optimization across the UAE.</p>
                 </div>
               </div>
 
@@ -252,8 +252,8 @@ export default function About() {
                   <TrendingUpIcon width="24" height="24" />
                 </div>
                 <div className="offer-content">
-                  <h3>Investment Analysis</h3>
-                  <p>Advanced calculators and analytics tools to evaluate mortgage options, ROI projections, and investment performance using XIRR methodology.</p>
+                  <h3>Investment Intelligence</h3>
+                  <p>Precision financial modeling, XIRR return projections, and smart mortgage structuring—engineered to turn complex numbers into clear, confident investment decisions.</p>
                 </div>
               </div>
 
@@ -262,8 +262,8 @@ export default function About() {
                   <TrendingUpIcon width="24" height="24" />
                 </div>
                 <div className="offer-content">
-                  <h3>Financial Planning</h3>
-                  <p>Comprehensive financial advisory services including investment planning, portfolio management, and wealth optimization strategies.</p>
+                  <h3>Private Wealth Architecture</h3>
+                  <p>Tailored, strategic financial architecture designed to grow your capital, protect your assets, and secure your family’s legacy for generations.</p>
                 </div>
               </div>
 
@@ -272,8 +272,8 @@ export default function About() {
                   <UsersIcon width="24" height="24" />
                 </div>
                 <div className="offer-content">
-                  <h3>Personalized Consultation</h3>
-                  <p>One-on-one sessions with licensed advisors who understand your goals and create tailored strategies for your investment success.</p>
+                  <h3>Private Mandate Consultation</h3>
+                  <p>Dedicated, one-on-one advisory sessions where senior specialists listen first, structure custom wealth and property roadmaps, and stand beside you at every milestone—for your life and for your legacy.</p>
                 </div>
               </div>
 
