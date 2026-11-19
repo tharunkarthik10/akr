@@ -52,11 +52,11 @@ export default function Home() {
             <div className="stats-grid">
               <div className="stat-box">
                 <div className="stat-number">25+</div>
-                <div className="stat-label">YEARS OF EXPERTISE</div>
+                <div className="stat-label">LED BY 25+ YEARS OF EXPERTISE</div>
               </div>
               <div className="stat-box">
                 <div className="stat-number">4</div>
-                <div className="stat-label">ADVISORY SECTORS</div>
+                <div className="stat-label">STRATEGIC VERTICALS</div>
               </div>
             </div>
             
@@ -87,7 +87,7 @@ export default function Home() {
         <div className="container text-center">
           <span className="section-tag inline-block">WHAT WE OFFER</span>
           <h2 className="section-title text-center font-serif">Our Premium Services</h2>
-          <p className="section-subtitle">Three powerful pillars of advisory — unified under one trusted partner across the UAE.</p>
+          <p className="section-subtitle">Four strategic verticals of advisory — unified under one trusted partner across the UAE.</p>
           
           <div className="services-grid">
             <div className="service-card">
