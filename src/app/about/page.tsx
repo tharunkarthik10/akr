@@ -207,7 +207,7 @@ export default function About() {
                 <AwardIcon />
               </div>
               <h3>Excellence</h3>
-              <p>We maintain the highest standards in advisory services, ensuring accuracy and reliability in every recommendation.</p>
+              <p>We maintain the highest standards across everything we build, ensuring accuracy and reliability in every recommendation.</p>
             </div>
 
             <div className="value-card">
@@ -215,7 +215,7 @@ export default function About() {
                 <UsersIcon />
               </div>
               <h3>Client-First</h3>
-              <p>Your financial success is our priority. We build long-term relationships based on trust and results.</p>
+              <p>Your vision, goals and peace of mind come first. We build lasting partnerships rooted in discretion, trust, and proven results.</p>
             </div>
 
             <div className="value-card">
@@ -223,7 +223,7 @@ export default function About() {
                 <TrendingUpIcon />
               </div>
               <h3>Innovation</h3>
-              <p>We leverage advanced analytics and technology to provide data-driven insights for smarter investments.</p>
+              <p>We combine advanced financial analytics with real-time market intelligence to deliver clear, data-driven insights for smarter wealth decisions.</p>
             </div>
           </div>
         </div>
