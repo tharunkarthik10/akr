@@ -162,7 +162,11 @@ export default function About() {
                 <LayersIcon />
               </div>
               <p>As <strong style={{color: 'var(--accent-gold)'}}>Architects</strong> of your financial future, we don't just manage assets; we design the structural integrity of your family's wealth.</p>
-              <p>At <strong style={{color: 'var(--accent-gold)'}}>AKR</strong>, our mission is to ensure that every investment serves as a cornerstone for the <strong style={{color: 'var(--accent-gold)'}}>generations to follow</strong> — <strong style={{color: 'var(--accent-gold)'}}>Forward Together. For Life. For Legacy.</strong></p>
+              <p>
+                At <strong style={{color: 'var(--accent-gold)'}}>AKR</strong>, our mission is to ensure that every investment serves as a cornerstone for the <strong style={{color: 'var(--accent-gold)'}}>generations to follow</strong> —
+                <br />
+                <strong style={{color: 'var(--accent-gold)', display: 'inline-block', marginTop: '0.35rem', whiteSpace: 'nowrap'}}>Forward Together. For Life. For Legacy.</strong>
+              </p>
               
               <div className="foundation-quote-box">
                 <p>Every investment, a cornerstone. Every family, a legacy.</p>
@@ -190,7 +194,7 @@ export default function About() {
 
           <div className="foundation-footer">
             <h3>" Forward Together. For Life. For Legacy. "</h3>
-            <p>— THE AKR LEGACY VISION</p>
+            <p style={{ fontWeight: 800, letterSpacing: '1px' }}>— THE AKR LEGACY VISION</p>
           </div>
 
         </div>
@@ -351,7 +355,12 @@ export default function About() {
           </div>
 
           <div className="important-notice">
-            <p><strong>Important:</strong> AKR Group operates as an advisory firm. We do not facilitate direct transactions, act as brokers, or provide brokerage services beyond our licensed scope. All recommendations are for advisory purposes and subject to regulatory compliance.</p>
+            <p style={{ marginBottom: '0.85rem' }}>
+              <strong>Important Disclaimer :</strong> <strong>Note:1 -</strong> AKR Group UAE - AKR Financial and Real Estate Service LLC (SHAMS, Sharjah, UAE) and AKR Realty LLC (Al Garhoud, Dubai, UAE) operates strictly within the licensed regulatory scope of its respective entities. We do not facilitate direct online transactions or provide services beyond our authorized licenses. All insights and recommendations are provided for strategic consultation purposes and remain subject to UAE regulatory compliance.
+            </p>
+            <p>
+              <strong>Note 2:- Important Disclaimer:</strong> All calculators, tools, and estimates provided are for strategic consultation, clear understanding, and educational purposes only, and do not constitute formal financial advice. Results are indicative and subject to approval by relevant financial institutions. Past performance does not guarantee future results. This platform does not facilitate direct online transactions between clients and property listers.
+            </p>
           </div>
         </div>
       </section>

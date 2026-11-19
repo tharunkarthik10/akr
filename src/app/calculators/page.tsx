@@ -435,14 +435,8 @@ export default function CalculatorsLandingPage() {
           </div>
           <div className="calc-disclaimer-text">
             <p>
-              <strong style={{ color: '#b8962c' }}>AKR Financial and Real Estate Service LLC</strong> (SHAMS, Sharjah, United Arab Emirates) and{' '}
-              <strong style={{ color: '#b8962c' }}>AKR Realty LLC</strong> (No: 104 Sarah Building, Plot No-115-0, AL Garhoud, Dubai, United Arab Emirates) operate as independent, non-custodial advisory entities across the UAE, in line with applicable UAE Central Bank, Insurance Authority, and Real Estate Regulatory Agency (RERA) guidance.
-            </p>
-            <p>
-              All calculator results are for <strong>illustrative and educational purposes only</strong> and do not constitute financial, investment, tax, or real estate advice. Results are indicative estimates based on the figures you enter and do not guarantee actual future performance. Interest rates, inflation rates, service charges, government fees, rental yields, and property appreciation may vary based on market conditions, lender or developer policies, and individual circumstances.
-            </p>
-            <p>
-              For personalized, regulation-compliant advice, please consult one of our licensed advisors before making any financial or real estate decision.
+              <strong style={{ color: '#b8962c' }}>AKR Financial and Real Estate Service LLC</strong> (SHAMS, Sharjah, UAE) and{' '}
+              <strong style={{ color: '#b8962c' }}>AKR Realty LLC</strong> (Al Garhoud, Dubai, UAE) operate within their licensed scopes under UAE regulatory guidelines. All calculator results are for strategic consultation, clear understanding, and educational purposes only—not formal financial or real estate advice. Please schedule a private consultation with our senior specialists for personalized guidance.
             </p>
           </div>
         </div>
