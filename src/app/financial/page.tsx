@@ -40,8 +40,8 @@ export default function FinancialPage() {
   return (
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '3rem' }}>
       <section className="properties-hero">
-        <h1>AKR Financial — Strategic Wealth & Credit Advisory</h1>
-        <p>SHAMS Sharjah Licensed Independent Financial Advisory</p>
+        <h1>AKR Financial and Real Estate Service LLC — Trusted Premium Strategic Financial, Investment &amp; Marketing Architects</h1>
+        <p>SHAMS Sharjah Registered — Backed by Full UAE Regulatory Compliance.</p>
       </section>
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
@@ -88,11 +88,11 @@ export default function FinancialPage() {
               </div>
               <ul style={{ paddingLeft: '1.2rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.8' }}>
                 <li><Link href="/financial/mortgage-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Tier-1 Mortgage Loans &amp; Structuring →</Link></li>
-                <li><Link href="/financial/credit-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Credit Loans &amp; Executive Facilities →</Link></li>
                 <li><Link href="/financial/personal-loan" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Personal Finance &amp; Restructuring →</Link></li>
                 <li><Link href="/financial/banking" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Private &amp; Corporate Banking Advisory →</Link></li>
                 <li><Link href="/financial/mutual-funds" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Mutual Fund Portfolio Optimization →</Link></li>
                 <li><Link href="/financial/child-education" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Child Education Wealth Planning →</Link></li>
+                <li><Link href="/calculators/retirement" style={{ color: 'var(--primary-red)', textDecoration: 'none', fontWeight: 600 }}>Retirement Wealth Planning →</Link></li>
               </ul>
             </div>
           </div>

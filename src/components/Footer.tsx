@@ -15,7 +15,7 @@ export default function Footer() {
               />
             </div>
             <p className="brand-desc">
-              Trusted Premium Strategic, Real Estate, Financial & Investment Architects across the UAE.
+              Trusted Premium Strategic Real Estate, Financial, Risk &amp; Brand Architects across the UAE
             </p>
             <div className="social-links">
               <a href="#" className="social-icon">f</a>
@@ -43,11 +43,11 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="footer-heading">OUR SERVICES</h4>
             <ul className="footer-links">
-              <li><Link href="/services/real-estate">Real Estate Advisory</Link></li>
-              <li><Link href="/services/financial">Financial Advisory</Link></li>
-              <li><Link href="/services/insurance">Insurance Advisory</Link></li>
-              <li><Link href="/services/investment">Investment Advisory</Link></li>
-              <li><Link href="/services/marketing">Marketing Advisory</Link></li>
+              <li><Link href="/realty">• Real Estate Consultation</Link></li>
+              <li><Link href="/financial">• Financial Consultation</Link></li>
+              <li><Link href="/financial/mutual-funds">• Investment Consultation</Link></li>
+              <li><Link href="/financial/insurance">• Insurance Consultation</Link></li>
+              <li><Link href="/contact">• Marketing Consultation</Link></li>
             </ul>
           </div>
 
@@ -97,8 +97,9 @@ export default function Footer() {
               <li>
                 <span className="contact-icon">🕒</span>
                 <div>
-                  <div>Mon – Thu &amp; Sat: 9:00 AM – 6:00 PM</div>
-                  <div style={{ fontSize: '0.78rem', color: '#ccc', marginTop: '0.15rem' }}>Fri: 9:00 AM – 6:00 PM (Jumu&apos;ah Break: 12:30 – 1:30 PM)</div>
+                  <div>Monday – Thursday &amp; Saturday: 9:00 AM – 6:00 PM (GST)</div>
+                  <div style={{ fontSize: '0.78rem', color: '#ccc', marginTop: '0.2rem' }}>Friday: 9:00 AM – 12:30 PM &amp; 1:30 PM – 6:00 PM</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', marginTop: '0.15rem' }}>Jumu&apos;ah Break: 12:30 PM – 1:30 PM</div>
                 </div>
               </li>
             </ul>
