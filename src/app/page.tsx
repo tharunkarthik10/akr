@@ -87,7 +87,7 @@ export default function Home() {
         <div className="container text-center">
           <span className="section-tag inline-block">WHAT WE OFFER</span>
           <h2 className="section-title text-center font-serif">Our Premium Services</h2>
-          <p className="section-subtitle">Four strategic verticals of advisory — unified under one trusted partner across the UAE.</p>
+          <p className="section-subtitle">Four integrated verticals, one singular ecosystem —— engineered for discerning investors across UAE.</p>
           
           <div className="services-grid">
             <div className="service-card">
