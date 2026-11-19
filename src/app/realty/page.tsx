@@ -33,8 +33,11 @@ export default function RealtyPage() {
       
       {/* Hero Header */}
       <section className="properties-hero" style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 1.5rem 1.5rem 1.5rem' }}>
-        <h1 className="font-serif" style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary-red)', marginBottom: '0.65rem' }}>
-          AKR Realty LLC — Real Estate Architecture
+        <h1 className="font-serif" style={{ fontWeight: 700, color: 'var(--primary-red)', marginBottom: '0.65rem', lineHeight: 1.25 }}>
+          <span style={{ fontSize: '2.5rem', display: 'block' }}>AKR Realty LLC</span>
+          <span style={{ fontSize: '1.45rem', display: 'block', fontWeight: 600, marginTop: '0.35rem', letterSpacing: '0.02em' }}>
+            Real Estate Architecture
+          </span>
         </h1>
         <p style={{ fontSize: '1.05rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.03em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
           RERA &amp; DLD Registered — Backed by Full UAE Regulatory Compliance.

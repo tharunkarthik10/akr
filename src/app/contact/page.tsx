@@ -87,7 +87,7 @@ export default function Contact() {
                 </div>
                 <div className="contact-info-content">
                   <h3>Email</h3>
-                  <p><a href="mailto:info@akrgroupuae.com" style={{ color: 'inherit', textDecoration: 'none' }}>info@akrgroupuae.com</a></p>
+                  <p><a href="mailto:info@akrgroupuae.ae" style={{ color: 'inherit', textDecoration: 'none' }}>info@akrgroupuae.ae</a></p>
                   <span className="highlight">Response within 24 hours</span>
                 </div>
               </div>
@@ -146,8 +146,9 @@ export default function Contact() {
                 </div>
                 <div className="contact-info-content">
                   <h3>Business Hours</h3>
-                  <p>Sunday - Thursday</p>
-                  <p>9:00 AM - 6:00 PM GST</p>
+                  <p><strong>Monday – Thursday &amp; Saturday:</strong> 9:00 AM – 6:00 PM (GST)</p>
+                  <p style={{ marginTop: '0.25rem' }}><strong>Friday:</strong> 9:00 AM – 12:30 PM &amp; 1:30 PM – 6:00 PM</p>
+                  <span className="highlight" style={{ marginTop: '0.25rem', display: 'inline-block' }}>Jumu&apos;ah Break: 12:30 PM – 1:30 PM</span>
                 </div>
               </div>
             </div>
@@ -165,8 +166,8 @@ export default function Contact() {
               <a href="tel:+971558847365" className="btn-call" style={{ textDecoration: 'none' }}>
                 <PhoneIcon /> Call Head Office (+971 55 884 7365)
               </a>
-              <a href="mailto:info@akrgroupuae.com" className="btn-email" style={{ textDecoration: 'none' }}>
-                <MailIcon /> Send Email (info@akrgroupuae.com)
+              <a href="mailto:info@akrgroupuae.ae" className="btn-email" style={{ textDecoration: 'none' }}>
+                <MailIcon /> Send Email (info@akrgroupuae.ae)
               </a>
             </div>
           </div>

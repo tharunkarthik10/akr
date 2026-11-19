@@ -11,12 +11,9 @@ export default function Home() {
         <div className="hero-overlay">
           <div className="hero-content">
             <h1 className="hero-title font-serif">
-              Trusted Premium<br/>
-              Strategic,<br/>
-              Real Estate,<br/>
-              Financial &<br/>
-              Investment Architects<br/>
-              across the UAE
+              Trusted Premium Strategic<br/>
+              Real Estate, Financial, Risk &amp; Brand<br/>
+              Architects across the UAE
             </h1>
             <p className="hero-subtitle font-serif text-gold">
               Forward Together. For Life. For Legacy

@@ -92,11 +92,14 @@ export default function Footer() {
               </li>
               <li>
                 <span className="contact-icon">✉️</span>
-                info@akrgroupuae.com
+                <a href="mailto:info@akrgroupuae.ae" style={{ color: '#ffffff', textDecoration: 'none' }}>info@akrgroupuae.ae</a>
               </li>
               <li>
                 <span className="contact-icon">🕒</span>
-                Mon – Sat: 9:00 AM – 7:00 PM
+                <div>
+                  <div>Mon – Thu &amp; Sat: 9:00 AM – 6:00 PM</div>
+                  <div style={{ fontSize: '0.78rem', color: '#ccc', marginTop: '0.15rem' }}>Fri: 9:00 AM – 6:00 PM (Jumu&apos;ah Break: 12:30 – 1:30 PM)</div>
+                </div>
               </li>
             </ul>
           </div>
