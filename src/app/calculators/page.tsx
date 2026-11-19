@@ -151,7 +151,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 1: Mortgage */}
           <div
             onClick={() => scrollToCalculator("mortgage")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'mortgage' ? 'gold-highlight' : ''}`}
           >
             <span className="calc-card-pop-badge">Most Popular</span>
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -160,7 +160,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Mortgage Calculator</h3>
             <p className="calc-card-desc">Calculate monthly mortgage payments, interest and total cost.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'mortgage' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -171,7 +171,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 2: Off-Plan */}
           <div
             onClick={() => scrollToCalculator("offplan")}
-            className="calc-feature-card gold-highlight"
+            className={`calc-feature-card ${activeTab === 'offplan' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
@@ -184,7 +184,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Off-Plan Calculator</h3>
             <p className="calc-card-desc">Evaluate off-plan projects and calculate potential returns and risks.</p>
-            <div className="calc-card-action-btn gold-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'offplan' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -195,7 +195,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 3: Rental Yield ROI */}
           <div
             onClick={() => scrollToCalculator("rental")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'rental' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <line x1="19" x2="5" y1="5" y2="19"></line>
@@ -204,7 +204,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Rental Yield ROI Calculator</h3>
             <p className="calc-card-desc">Calculate rental yield and ROI to analyze property income returns.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'rental' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -215,7 +215,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 4: XIRR */}
           <div
             onClick={() => scrollToCalculator("roi")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'roi' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
@@ -223,7 +223,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">XIRR Calculator</h3>
             <p className="calc-card-desc">Calculate extended internal rate of return for your investments.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'roi' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -234,7 +234,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 5: Mutual Fund */}
           <div
             onClick={() => scrollToCalculator("mutual")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'mutual' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
@@ -242,7 +242,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Mutual Fund Calculator</h3>
             <p className="calc-card-desc">Plan and project your mutual fund returns and corpus value over time.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'mutual' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -253,7 +253,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 6: Child Education */}
           <div
             onClick={() => scrollToCalculator("education")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'education' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path>
@@ -262,7 +262,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Child Education Calculator</h3>
             <p className="calc-card-desc">Plan your child's education and estimate future expenses.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'education' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
@@ -273,7 +273,7 @@ export default function CalculatorsLandingPage() {
           {/* Card 7: Retirement */}
           <div
             onClick={() => scrollToCalculator("retirement")}
-            className="calc-feature-card"
+            className={`calc-feature-card ${activeTab === 'retirement' ? 'gold-highlight' : ''}`}
           >
             <svg className="calc-card-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 12a10.06 10.06 10.06 0 0 0-20 0Z"></path>
@@ -282,7 +282,7 @@ export default function CalculatorsLandingPage() {
             </svg>
             <h3 className="calc-card-name">Retirement Calculator</h3>
             <p className="calc-card-desc">Plan your retirement corpus and monthly income needs.</p>
-            <div className="calc-card-action-btn">
+            <div className={`calc-card-action-btn ${activeTab === 'retirement' ? 'gold-btn' : ''}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>

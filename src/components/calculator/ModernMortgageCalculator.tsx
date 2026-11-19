@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend
+} from 'recharts';
 
 interface Props {
   onShowLeadCapture: () => void;
@@ -33,6 +36,29 @@ export default function ModernMortgageCalculator({ onShowLeadCapture }: Props) {
 
   const downPaymentPercent = propertyValue > 0 ? ((downPayment / propertyValue) * 100).toFixed(1) : "0.0";
   const tenureYears = (tenure / 12).toFixed(1);
+
+  // Yearly breakdown chart data
+  const yearsCount = Math.min(30, Math.ceil(tenure / 12));
+  let balance = principal;
+  const yearlyChartData = [];
+
+  for (let y = 1; y <= yearsCount; y++) {
+    let yearInterest = 0;
+    let yearPrincipal = 0;
+    for (let m = 1; m <= 12; m++) {
+      if (balance <= 0) break;
+      const mInterest = balance * monthlyRate;
+      const mPrincipal = Math.min(balance, roundedEmi - mInterest);
+      yearInterest += mInterest;
+      yearPrincipal += mPrincipal;
+      balance -= mPrincipal;
+    }
+    yearlyChartData.push({
+      year: `Y${y}`,
+      Principal: Math.round(yearPrincipal),
+      Interest: Math.round(yearInterest),
+    });
+  }
 
   return (
     <div>
@@ -141,6 +167,29 @@ export default function ModernMortgageCalculator({ onShowLeadCapture }: Props) {
             <div className="calc-metric-box">
               <div className="calc-metric-box-label">Total Payable</div>
               <div className="calc-metric-box-value">AED {totalPayable.toLocaleString()}</div>
+            </div>
+          </div>
+
+          {/* Payment Breakdown (Yearly) Chart matching Screenshot 3 */}
+          <div className="calc-breakdown-card" style={{ padding: '1.25rem 1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+              <h4 className="calc-breakdown-title" style={{ margin: 0 }}>Payment Breakdown (Yearly)</h4>
+            </div>
+            <div style={{ width: '100%', height: 190 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={yearlyChartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ebd7af" opacity={0.6} />
+                  <XAxis dataKey="year" tick={{ fill: '#8b0000', fontSize: 10 }} axisLine={{ stroke: '#d4af37' }} />
+                  <YAxis tick={{ fill: '#8b0000', fontSize: 10 }} axisLine={{ stroke: '#d4af37' }} />
+                  <Tooltip
+                    contentStyle={{ backgroundColor: '#ffffff', borderColor: '#d4af37', borderRadius: '8px', fontSize: '0.8rem' }}
+                    formatter={(value: any) => [`AED ${Number(value).toLocaleString()}`, '']}
+                  />
+                  <Legend iconType="circle" wrapperStyle={{ fontSize: '0.75rem', paddingTop: '4px' }} />
+                  <Bar dataKey="Principal" fill="#8b0000" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="Interest" fill="#c59b27" radius={[2, 2, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
           </div>
 
