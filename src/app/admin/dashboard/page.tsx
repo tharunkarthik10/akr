@@ -56,7 +56,7 @@ function AdminDashboardContent() {
       if (propsRes.data) setProperties(propsRes.data);
       if (queriesRes.data) setQueries(queriesRes.data);
     } catch (error) {
-      console.error("Error fetching admin data:", error);
+      console.warn("Could not fetch admin data:", error);
     } finally {
       setDataLoading(false);
     }

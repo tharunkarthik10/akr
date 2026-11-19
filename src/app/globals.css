@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,800&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
   --primary-red: #8b0000;      /* Dark red for backgrounds */
@@ -3433,4 +3433,810 @@ body {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
+}
+
+
+/* ==========================================================================
+   CALCULATORS LANDING PAGE STYLES (Red & Gold Theme)
+   ========================================================================== */
+.font-display {
+  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+}
+
+.calc-landing-page {
+  background-color: #faf7f2;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.calc-hero-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #faf7f2;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+.calc-hero-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 55%;
+  z-index: 1;
+}
+
+.calc-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.calc-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #faf7f2 0%, rgba(250, 247, 242, 0.95) 20%, rgba(250, 247, 242, 0.65) 45%, rgba(250, 247, 242, 0.1) 75%, transparent 100%);
+}
+
+@media (max-width: 991px) {
+  .calc-hero-bg {
+    width: 100%;
+    opacity: 0.25;
+  }
+  .calc-hero-gradient {
+    background: linear-gradient(to bottom, rgba(250, 247, 242, 0.9) 0%, #faf7f2 100%);
+  }
+}
+
+.calc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem;
+  width: 100%;
+}
+
+.calc-hero-text-block {
+  max-width: 650px;
+}
+
+.calc-hero-eyebrow {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.calc-hero-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 2.35rem;
+  line-height: 1.18;
+  font-weight: 800;
+  color: #8b0000;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calc-hero-sub-investors {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #b8962c;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.calc-hero-description {
+  color: rgba(26, 26, 26, 0.85);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 580px;
+}
+
+.calc-hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-calc-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #8b0000;
+  color: #ffffff;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-calc-explore:hover {
+  background-color: #a80707;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 0, 0, 0.25);
+}
+
+.btn-calc-consult {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid #d4af37;
+  color: #8b0000;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0.875rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.btn-calc-consult:hover {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: #6d0000;
+  border-color: #b8962c;
+  transform: translateY(-2px);
+}
+
+/* Trust Ribbon */
+.calc-trust-ribbon {
+  background-color: #8b0000;
+  color: #faf7f2;
+}
+
+.calc-trust-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 991px) {
+  .calc-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .calc-trust-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.calc-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .calc-trust-item {
+    justify-content: center;
+  }
+}
+
+.calc-trust-icon {
+  color: #d4af37;
+  flex-shrink: 0;
+}
+
+.calc-trust-text {
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.calc-trust-text .title {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.calc-trust-text .sub {
+  color: rgba(250, 247, 242, 0.75);
+}
+
+/* Powerful Calculators Section */
+.calc-grid-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.calc-section-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.calc-section-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.calc-section-subtitle {
+  font-size: 0.95rem;
+  color: rgba(26, 26, 26, 0.7);
+}
+
+.calc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .calc-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .calc-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-feature-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 1.75rem;
+  padding-bottom: 4.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-feature-card:hover {
+  border-color: #d4af37;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+}
+
+.calc-feature-card.gold-highlight {
+  border: 1.5px solid #d4af37;
+}
+
+.calc-card-pop-badge {
+  position: absolute;
+  top: -11px;
+  right: 1.25rem;
+  background-color: #d4af37;
+  color: #8b0000;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(212, 175, 55, 0.35);
+}
+
+.calc-card-top-icon {
+  width: 36px;
+  height: 36px;
+  color: #8b0000;
+  margin-bottom: 1.25rem;
+}
+
+.calc-card-name {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #8b0000;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.calc-card-desc {
+  font-size: 0.85rem;
+  color: rgba(26, 26, 26, 0.72);
+  line-height: 1.55;
+}
+
+.calc-card-action-btn {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #8b0000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.calc-feature-card:hover .calc-card-action-btn {
+  background-color: #d4af37;
+  color: #8b0000;
+}
+
+.calc-card-action-btn.gold-btn {
+  background-color: #d4af37;
+  color: #8b0000;
+}
+
+.calc-feature-card:hover .calc-card-action-btn.gold-btn {
+  background-color: #c59b27;
+  color: #ffffff;
+}
+
+/* Need Expert Guidance CTA Card */
+.calc-guidance-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8b0000 0%, #6d0000 100%);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calc-guidance-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e5c558;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.calc-guidance-desc {
+  font-size: 0.85rem;
+  color: rgba(250, 247, 242, 0.85);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.calc-guidance-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: #d4af37;
+  color: #6d0000;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.calc-guidance-btn:hover {
+  background-color: #e5c558;
+  color: #4a0000;
+}
+
+/* Interactive Calculator Tabs Section */
+.calc-interactive-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3.5rem 1.5rem;
+  scroll-margin-top: 5rem;
+}
+
+.calc-nav-tabs-bar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+@media (max-width: 991px) {
+  .calc-nav-tabs-bar {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .calc-nav-tabs-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.calc-tab-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8b0000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.calc-tab-pill-btn:hover {
+  background-color: rgba(139, 0, 0, 0.05);
+}
+
+.calc-tab-pill-btn.active {
+  background-color: #8b0000;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.25);
+}
+
+.calc-tab-pill-btn.active .tab-icon {
+  color: #ffffff;
+}
+
+.calc-tab-pill-btn .tab-icon {
+  width: 16px;
+  height: 16px;
+  color: #8b0000;
+}
+
+/* Calculator Card Inside */
+.calc-main-panel-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+}
+
+.calc-main-panel-header {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calc-main-panel-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #8b0000;
+  margin-bottom: 0.35rem;
+}
+
+.calc-main-panel-subtitle {
+  font-size: 0.9rem;
+  color: rgba(139, 0, 0, 0.7);
+}
+
+.calc-panel-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 991px) {
+  .calc-panel-body-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.calc-form-group {
+  margin-bottom: 1.25rem;
+}
+
+.calc-field-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #8b0000;
+  margin-bottom: 0.4rem;
+}
+
+.calc-field-input {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  color: #8b0000;
+  background-color: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.calc-field-input:focus {
+  border-color: #8b0000;
+  box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.15);
+}
+
+.calc-field-hint {
+  font-size: 0.75rem;
+  color: #b8962c;
+  margin-top: 0.3rem;
+}
+
+/* Results Side */
+.calc-gold-hero-metric {
+  background-color: #d4af37;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.calc-gold-hero-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.25rem;
+}
+
+.calc-gold-hero-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.calc-secondary-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-metric-box {
+  background-color: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.calc-metric-box-label {
+  font-size: 0.75rem;
+  color: #b8962c;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.calc-metric-box-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8b0000;
+}
+
+.calc-metric-box-hint {
+  font-size: 0.7rem;
+  color: #b8962c;
+  margin-top: 0.2rem;
+}
+
+.calc-chart-box {
+  background-color: #faf7f2;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-chart-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.calc-chart-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #8b0000;
+}
+
+/* Bottom CTA buttons inside calculator */
+.calc-bottom-action-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-calc-download-pdf {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8b0000;
+  color: #ffffff;
+  padding: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-calc-download-pdf:hover {
+  background-color: #a80707;
+}
+
+.calc-sub-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.btn-calc-sub-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #8b0000;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-calc-sub-action:hover {
+  background-color: #faf7f2;
+  border-color: #d4af37;
+}
+
+/* Disclaimer Box */
+.calc-disclaimer-box {
+  margin-top: 3rem;
+  background-color: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.calc-disclaimer-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #b8962c;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.calc-disclaimer-text {
+  font-size: 0.82rem;
+  color: rgba(139, 0, 0, 0.8);
+  line-height: 1.6;
+}
+
+.calc-disclaimer-text p {
+  margin-bottom: 0.75rem;
+}
+
+.calc-disclaimer-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bottom Value Props Banner */
+.calc-bottom-value-props {
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+  background-color: #ffffff;
+  padding: 2.25rem 1.5rem;
+}
+
+.calc-bottom-value-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .calc-bottom-value-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .calc-bottom-value-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.calc-bottom-val-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.calc-bottom-val-icon {
+  width: 24px;
+  height: 24px;
+  color: #b8962c;
+  flex-shrink: 0;
+}
+
+.calc-bottom-val-text {
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.calc-bottom-val-text .t1 {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.calc-bottom-val-text .t2 {
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* Lead Capture Modal */
+.calc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.calc-modal-box {
+  background-color: #faf7f2;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.calc-modal-title {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8b0000;
+  margin-bottom: 0.35rem;
+}
+
+.calc-modal-desc {
+  font-size: 0.85rem;
+  color: rgba(139, 0, 0, 0.75);
+  margin-bottom: 1.5rem;
 }

@@ -37,7 +37,7 @@ export default function PostersAdminTab({ userId }: { userId: string }) {
       if (error) throw error;
       if (data) setPosters(data);
     } catch (err: any) {
-      console.error("Error fetching posters:", err);
+      console.warn("Could not fetch posters:", err);
     } finally {
       setLoading(false);
     }

@@ -23,7 +23,7 @@ export default function PopupPoster() {
           .eq('is_active', true);
         
         if (error) {
-          console.error("Error fetching posters:", error);
+          console.warn("Could not fetch posters:", error.message || error);
           return;
         }
 
@@ -35,7 +35,7 @@ export default function PopupPoster() {
           setShow(true);
         }
       } catch (err) {
-        console.error("Unexpected error fetching posters:", err);
+        console.warn("Could not load posters:", err);
       }
     };
 

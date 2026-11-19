@@ -41,7 +41,7 @@ export default function MyPropertiesPage() {
         
         setProperties((data as Property[]) || []);
       } catch (error) {
-        console.error("Error fetching properties:", error);
+        console.warn("Could not fetch user properties:", error);
       } finally {
         setLoading(false);
       }

@@ -37,7 +37,7 @@ export default function SupportQueryPage() {
           if (error) throw error;
           setUserProperties(data || []);
         } catch (error) {
-          console.error("Error fetching properties:", error);
+          console.warn("Could not fetch user properties:", error);
         }
       };
       fetchProperties();

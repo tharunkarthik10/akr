@@ -138,14 +138,18 @@ export default function ExclusivePropertyPage() {
           .eq('status', 'Approved')
           .order('created_at', { ascending: false });
 
-        if (error) throw error;
+        if (error) {
+          console.warn("Could not fetch database properties, showing curated exclusives:", error.message || error);
+          setProperties(curatatedExclusiveProperties);
+          return;
+        }
 
         // Combine DB properties with curated exclusive properties
         const dbListings = data || [];
         const combined = [...curatatedExclusiveProperties, ...dbListings];
         setProperties(combined);
       } catch (error) {
-        console.error("Error fetching properties:", error);
+        console.warn("Could not fetch properties, showing curated exclusives:", error);
         setProperties(curatatedExclusiveProperties);
       } finally {
         setLoading(false);

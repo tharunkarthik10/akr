@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useCurrency } from '@/context/CurrencyContext';
 import { supabase } from '@/utils/supabase/client';
+import { curatedExclusiveProperties } from '@/data/properties';
 
 // --- Icons ---
 const PinIcon = () => (
@@ -55,12 +56,24 @@ export default function PropertyDetailPage() {
   useEffect(() => {
     const fetchProperty = async () => {
       if (!id) return;
+      
+      // Check local curated/fallback properties first
+      const curatedMatch = curatedExclusiveProperties.find(p => p.id === id);
+      if (curatedMatch) {
+        setProperty(curatedMatch);
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data, error } = await supabase.from('properties').select('*').eq('id', id).single();
-        if (error) throw error;
-        setProperty(data);
+        if (error) {
+          console.warn("Could not find property in database:", error.message || error);
+        } else if (data) {
+          setProperty(data);
+        }
       } catch (err) {
-        console.error("Error fetching property:", err);
+        console.warn("Error fetching property:", err);
       } finally {
         setLoading(false);
       }

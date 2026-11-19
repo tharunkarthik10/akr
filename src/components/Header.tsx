@@ -213,7 +213,7 @@ export default function Header() {
                   onMouseEnter={() => setCalcDropdownOpen(true)}
                   onMouseLeave={() => setCalcDropdownOpen(false)}
                 >
-                  <span className={`nav-link ${pathname.startsWith('/calculators') ? 'active' : ''}`} style={{ cursor: 'pointer' }}>Calculator</span>
+                  <Link href="/calculators" className={`nav-link ${pathname.startsWith('/calculators') ? 'active' : ''}`} style={{ cursor: 'pointer' }} onClick={closeMobileMenu}>Calculator</Link>
                   
                   {calcDropdownOpen && (
                     <div className="simple-dropdown-wrapper">

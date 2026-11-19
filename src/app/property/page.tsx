@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useCurrency } from '@/context/CurrencyContext';
 import { supabase } from '@/utils/supabase/client';
 import FAQAccordion from '@/components/FAQAccordion';
+import { fallbackProperties } from '@/data/properties';
 
 const PinIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -86,10 +87,15 @@ export default function PropertiesPage() {
           .eq('status', 'Approved') // ONLY SHOW APPROVED PROPERTIES
           .order('created_at', { ascending: false });
 
-        if (error) throw error;
-        setProperties(data || []);
+        if (error) {
+          console.warn("Could not fetch properties from database, using curated listings:", error.message || error);
+          setProperties(fallbackProperties);
+          return;
+        }
+        setProperties(data && data.length > 0 ? data : fallbackProperties);
       } catch (error) {
-        console.error("Error fetching properties:", error);
+        console.warn("Could not fetch properties, using curated listings:", error);
+        setProperties(fallbackProperties);
       } finally {
         setLoading(false);
       }
