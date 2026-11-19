@@ -8,7 +8,24 @@ export default function FinancialPage() {
   const financialFaqs = [
     {
       question: "What licenses does AKR Financial & Real Estate Service LLC hold?",
-      answer: "AKR Financial and Real Estate Service LLC is registered at SHAMS, Sharjah, United Arab Emirates (License No. 24286.01). We provide independent financial, loan structuring, investment advisory, and enterprise risk management services."
+      answer: (
+        <div>
+          <p style={{ marginBottom: '0.75rem' }}>
+            AKR Financial and Real Estate Service LLC is registered at SHAMS, Sharjah, United Arab Emirates (License No. 24286.01):
+          </p>
+          <ul style={{ paddingLeft: '1.25rem', margin: 0, display: 'flex', flexDirection: 'column', gap: '0.65rem', listStyleType: 'disc' }}>
+            <li>
+              <strong>Finance &amp; Banking Architecture</strong> — Strategic banking consultation across Tier-1 mortgages, executive credit facilities, and structured capital planning—engineered to optimize liquidity, leverage, and long-term returns across the UAE.
+            </li>
+            <li>
+              <strong>Insurance &amp; Asset Protection</strong> — Independent risk management, life, health, motor, mortgage loan, property protection frameworks designed to insulate your personal wealth, business continuity, and generational family assets.
+            </li>
+            <li>
+              <strong>Marketing &amp; Advertising Brand Positioning</strong> — Strategic, high-impact advertising, personal branding for leaders, corporate brand building, and signature event production—from executive galas and cultural festivals to private gatherings that turn vision into lasting market authority.
+            </li>
+          </ul>
+        </div>
+      )
     },
     {
       question: "Which UAE banking partners does AKR Group work with?",

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
   category?: string;
 }
 
