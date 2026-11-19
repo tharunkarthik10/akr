@@ -149,7 +149,7 @@ export default function Home() {
               <div className="service-content">
                 <div className="service-tag">MARKETING NAVIGATOR</div>
                 <h3 className="service-title font-serif">Strategic Marketing &amp; Advertising Solutions</h3>
-                <p className="service-location">UAE-Wide Coverage</p>
+                <p className="service-location">Sharjah — AKR Financial and Real Estate Service LLC</p>
                 <p className="service-desc">Advanced enterprise visibility navigation, institutional corporate growth campaigns, premium events production, precision digital media, and authoritative brand activation.</p>
                 <ul className="service-bullets">
                   <li>High-Impact Advertising Campaigns</li>
