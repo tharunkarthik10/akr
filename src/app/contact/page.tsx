@@ -97,9 +97,20 @@ export default function Contact() {
                   <MessageIcon />
                 </div>
                 <div className="contact-info-content">
-                  <h3>WhatsApp</h3>
-                  <p><a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+971 55 884 7365</a></p>
-                  <span className="highlight">Instant messaging</span>
+                  <h3>WhatsApp (Primary)</h3>
+                  <p><a href="https://wa.me/971507772751" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 50 777 2751</a></p>
+                  <span className="highlight">Instant messaging (Primary Line)</span>
+                </div>
+              </div>
+
+              <div className="contact-info-item">
+                <div className="contact-icon-wrapper">
+                  <MessageIcon />
+                </div>
+                <div className="contact-info-content">
+                  <h3>Alternative WhatsApp</h3>
+                  <p><a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>+971 55 884 7365</a></p>
+                  <span className="highlight">Secondary Line</span>
                 </div>
               </div>
 
@@ -144,16 +155,19 @@ export default function Contact() {
 
           <div className="contact-card">
             <h2>Quick Actions</h2>
-            <div className="quick-actions" style={{ marginTop: '1.5rem' }}>
-              <button className="btn-whatsapp">
-                <MessageIcon /> Chat on WhatsApp
-              </button>
-              <button className="btn-call">
-                <PhoneIcon /> Schedule Call
-              </button>
-              <button className="btn-email">
-                <MailIcon /> Send Email
-              </button>
+            <div className="quick-actions" style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <a href="https://wa.me/971507772751" target="_blank" rel="noopener noreferrer" className="btn-whatsapp" style={{ textDecoration: 'none' }}>
+                <MessageIcon /> Primary WhatsApp (+971 50 777 2751)
+              </a>
+              <a href="https://wa.me/971558847365" target="_blank" rel="noopener noreferrer" className="btn-whatsapp" style={{ textDecoration: 'none', backgroundColor: '#1e7b34' }}>
+                <MessageIcon /> Alternative WhatsApp (+971 55 884 7365)
+              </a>
+              <a href="tel:+971558847365" className="btn-call" style={{ textDecoration: 'none' }}>
+                <PhoneIcon /> Call Head Office (+971 55 884 7365)
+              </a>
+              <a href="mailto:info@akrgroupuae.com" className="btn-email" style={{ textDecoration: 'none' }}>
+                <MailIcon /> Send Email (info@akrgroupuae.com)
+              </a>
             </div>
           </div>
         </div>

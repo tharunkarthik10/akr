@@ -83,6 +83,13 @@ export default function Footer() {
                   <a href="tel:+971585887864" style={{ color: '#ffffff', textDecoration: 'none' }}>+971 58 588 7864</a>
                 </div>
               </li>
+              <li style={{ marginTop: '0.35rem' }}>
+                <span className="contact-icon">💬</span>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: '#ccc', display: 'block' }}>WhatsApp Direct:</span>
+                  <a href="https://wa.me/971507772751" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', textDecoration: 'none' }}>+971 50 777 2751</a>
+                </div>
+              </li>
               <li>
                 <span className="contact-icon">✉️</span>
                 info@akrgroupuae.com
