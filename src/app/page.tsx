@@ -273,23 +273,23 @@ export default function Home() {
           <div className="process-steps">
             <div className="step-item">
               <div className="step-box">01</div>
-              <h4 className="step-title font-serif">Consultation</h4>
-              <p className="step-desc">Understanding your financial and investment objectives in depth</p>
+              <h4 className="step-title font-serif">Private Consultation</h4>
+              <p className="step-desc">Confidentially assessing your financial objectives, liquidity appetite, long-term goals, and enduring family vision—to build a strong generational legacy.</p>
             </div>
             <div className="step-item">
               <div className="step-box">02</div>
-              <h4 className="step-title font-serif">Strategy Design</h4>
-              <p className="step-desc">Tailored real estate & financial structuring built around your goals</p>
+              <h4 className="step-title font-serif">Strategic Architecture</h4>
+              <p className="step-desc">Designing tailored real estate, capital, and risk-protection plans—engineered to turn your vision into lasting wealth.</p>
             </div>
             <div className="step-item">
               <div className="step-box">03</div>
-              <h4 className="step-title font-serif">Execution</h4>
-              <p className="step-desc">Seamless coordination with full compliance and transparency</p>
+              <h4 className="step-title font-serif">Compliant Execution</h4>
+              <p className="step-desc">Seamless execution across RERA, DLD, Tier-1 banks, and SHAMS frameworks—handling every detail with complete transparency and zero friction.</p>
             </div>
             <div className="step-item">
               <div className="step-box">04</div>
-              <h4 className="step-title font-serif">Ongoing Advisory</h4>
-              <p className="step-desc">Long-term relationship and portfolio optimization over time</p>
+              <h4 className="step-title font-serif">Dedicated Portfolio Management</h4>
+              <p className="step-desc">Trusted, long-term relationship management and continuous portfolio optimization—built to grow and protect your wealth across generations.</p>
             </div>
           </div>
 
@@ -305,10 +305,10 @@ export default function Home() {
             </div>
             <div className="promise-right">
               <ul className="promise-list">
-                <li><span className="promise-num">01</span> <span className="promise-text">Consultation</span> <div className="promise-line"></div></li>
-                <li><span className="promise-num">02</span> <span className="promise-text">Strategy Design</span> <div className="promise-line"></div></li>
-                <li><span className="promise-num">03</span> <span className="promise-text">Execution</span> <div className="promise-line"></div></li>
-                <li><span className="promise-num">04</span> <span className="promise-text">Ongoing Advisory</span> <div className="promise-line"></div></li>
+                <li><span className="promise-num">01</span> <span className="promise-text">Private Consultation</span> <div className="promise-line"></div></li>
+                <li><span className="promise-num">02</span> <span className="promise-text">Strategic Architecture</span> <div className="promise-line"></div></li>
+                <li><span className="promise-num">03</span> <span className="promise-text">Compliant Execution</span> <div className="promise-line"></div></li>
+                <li><span className="promise-num">04</span> <span className="promise-text">Dedicated Portfolio Management</span> <div className="promise-line"></div></li>
               </ul>
             </div>
           </div>
