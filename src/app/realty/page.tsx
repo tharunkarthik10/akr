@@ -32,9 +32,22 @@ export default function RealtyPage() {
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '3rem' }}>
       
       {/* Hero Header */}
-      <section className="properties-hero">
-        <h1>AKR Realty LLC — Premium Property Advisory</h1>
-        <p>RERA & Dubai Land Department Licensed Real Estate Brokerage</p>
+      <section className="properties-hero" style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 1.5rem 1.5rem 1.5rem' }}>
+        <h1 className="font-serif" style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary-red)', marginBottom: '0.65rem' }}>
+          AKR Realty LLC — Real Estate Architecture
+        </h1>
+        <p style={{ fontSize: '1.05rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.03em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
+          RERA &amp; DLD Registered — Backed by Full UAE Regulatory Compliance.
+        </p>
+        <p style={{ fontSize: '1.15rem', color: '#4a4a4a', lineHeight: 1.7, maxWidth: '820px', margin: '0 auto 1.25rem auto' }}>
+          From high-yield Dubai developments to private off-market estates and 10-year Golden Visa residency—we turn strategic property decisions into lasting family wealth.
+        </p>
+        <p style={{ fontSize: '1.2rem', color: 'var(--primary-red)', fontWeight: 700, marginBottom: '0.65rem' }}>
+          Your Home. Your Investment. Your Legacy for Generations.
+        </p>
+        <p className="font-serif" style={{ fontSize: '1.1rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.04em' }}>
+          Forward Together. For Life. For Legacy.
+        </p>
       </section>
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
