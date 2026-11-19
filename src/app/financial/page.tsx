@@ -39,9 +39,26 @@ export default function FinancialPage() {
 
   return (
     <div style={{ backgroundColor: '#fcfbf8', minHeight: '100vh', paddingBottom: '3rem' }}>
-      <section className="properties-hero">
-        <h1>AKR Financial and Real Estate Service LLC — Trusted Premium Strategic Financial, Investment &amp; Marketing Architects</h1>
-        <p>SHAMS Sharjah Registered — Backed by Full UAE Regulatory Compliance.</p>
+      {/* Hero Header */}
+      <section className="properties-hero" style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 1.5rem 1.5rem 1.5rem' }}>
+        <h1 className="font-serif" style={{ fontWeight: 700, color: 'var(--primary-red)', marginBottom: '0.65rem', lineHeight: 1.25 }}>
+          <span style={{ fontSize: '2.5rem', display: 'block' }}>AKR Financial &amp; Real Estate Service LLC</span>
+          <span style={{ fontSize: '1.45rem', display: 'block', fontWeight: 600, marginTop: '0.35rem', letterSpacing: '0.02em' }}>
+            Trusted Premium Strategic Financial, Investment &amp; Marketing Architects
+          </span>
+        </h1>
+        <p style={{ fontSize: '1.05rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.03em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
+          SHAMS Sharjah Registered — Backed by Full UAE Regulatory Compliance.
+        </p>
+        <p style={{ fontSize: '1.15rem', color: '#4a4a4a', lineHeight: 1.7, maxWidth: '820px', margin: '0 auto 1.25rem auto' }}>
+          From structured mortgages and private banking advisory to comprehensive risk management and brand architecture—we turn strategic financial decisions into lasting family wealth.
+        </p>
+        <p style={{ fontSize: '1.2rem', color: 'var(--primary-red)', fontWeight: 700, marginBottom: '0.65rem' }}>
+          Your Wealth. Your Protection. Your Legacy for Generations.
+        </p>
+        <p className="font-serif" style={{ fontSize: '1.1rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.04em' }}>
+          Forward Together. For Life. For Legacy.
+        </p>
       </section>
 
       <div className="properties-container" style={{ marginTop: '2rem' }}>
