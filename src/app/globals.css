@@ -190,7 +190,7 @@ button {
 /* MAIN NAV */
 .main-nav {
   background-color: #fcfbf8;
-  padding: 0.85rem 0;
+  padding: 2px 0;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -224,9 +224,10 @@ button {
 }
 
 .logo-img {
-  height: 82px;
+  height: 80px;
   width: auto;
   object-fit: contain;
+  display: block;
   transition: transform 0.2s ease;
 }
 
@@ -254,7 +255,7 @@ button {
 
 .logo-subtitle {
   color: #c59b27;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.6px;
   font-weight: 500;
   margin-top: 3px;
@@ -1313,7 +1314,7 @@ button {
     font-size: 1.25rem;
   }
   .logo-subtitle {
-    font-size: 0.52rem;
+    font-size: 0.58rem;
     letter-spacing: 0.2px;
   }
   
