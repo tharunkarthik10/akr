@@ -3,8 +3,12 @@ import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 
 export const metadata: Metadata = {
-  title: "AKR Group | Premium Real Estate Advisory",
-  description: "Red & Gold Edition. Premium real estate and advisory services.",
+  title: {
+    default: "AKR Group UAE | Real Estate, Finance, Risk & Brand Architects",
+    template: "%s",
+  },
+  description:
+    "Unified UAE platform across Dubai & Sharjah offering RERA-licensed real estate, Tier-1 banking consultation, risk protection & brand growth. 25+ years expertise.",
 };
 
 import Script from 'next/script';
