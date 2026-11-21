@@ -213,7 +213,7 @@ export default function Home() {
           <div className="text-center mb-5">
             <span className="section-tag inline-block">OUR DISTINCTION</span>
             <h2 className="section-title text-center font-serif">Why <span className="font-sans font-bold text-gold">AKR Group UAE</span></h2>
-            <p className="mx-auto max-w-800">
+            <p className="mx-auto max-w-800" style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
               A value proposition built for high-net-worth individuals, investors, and business leaders who demand more.
             </p>
           </div>
@@ -221,44 +221,44 @@ export default function Home() {
           <div className="why-grid">
             <div className="why-card">
               <div className="why-number font-serif">01</div>
-              <div className="why-icon-box">I</div>
-              <h3 className="why-card-title font-serif">Integrated Real Estate + Financial Advisory</h3>
-              <p className="why-card-desc">A rare unified platform where property and finance expertise converge — eliminating the need for multiple advisors.</p>
+              <div className="why-icon-box"><span>U</span></div>
+              <h3 className="why-card-title font-serif">Unified Real Estate, Finance, Risk & Brand Architecture</h3>
+              <p className="why-card-desc">A single multi-sector platform where property, capital, risk protection, and brand strategy converge — eliminating the need for multiple firms and consultants.</p>
             </div>
             
             <div className="why-card">
               <div className="why-number font-serif">02</div>
-              <div className="why-icon-box">G</div>
-              <h3 className="why-card-title font-serif">Guided by Vision - Led by 25+ Years of Expertise</h3>
-              <p className="why-card-desc">Decades of deep market knowledge across real estate, banking, insurance, and strategic business advisory.</p>
+              <div className="why-icon-box"><span>G</span></div>
+              <h3 className="why-card-title font-serif">Guided by Vision — Led by 25+ Years of Expertise</h3>
+              <p className="why-card-desc">Decades of collective India and UAE market mastery across real estate, banking, insurance, and strategic brand growth.</p>
             </div>
 
             <div className="why-card">
               <div className="why-number font-serif">03</div>
-              <div className="why-icon-box">U</div>
+              <div className="why-icon-box"><span>U</span></div>
               <h3 className="why-card-title font-serif">UAE Market Specialization</h3>
               <p className="why-card-desc">Rooted in the UAE ecosystem — Dubai, Sharjah, and beyond — with on-the-ground regulatory and market intelligence.</p>
             </div>
 
             <div className="why-card">
               <div className="why-number font-serif">04</div>
-              <div className="why-icon-box">C</div>
+              <div className="why-icon-box"><span>C</span></div>
               <h3 className="why-card-title font-serif">Confidential & Relationship-Driven</h3>
               <p className="why-card-desc">Every client engagement is handled with the utmost discretion, trust, and a long-term partnership mindset.</p>
             </div>
 
             <div className="why-card">
               <div className="why-number font-serif">05</div>
-              <div className="why-icon-box">A</div>
+              <div className="why-icon-box"><span>A</span></div>
               <h3 className="why-card-title font-serif">Access to Exclusive Opportunities</h3>
-              <p className="why-card-desc">Off-market properties, priority investment pipelines, and curated financial products unavailable through standard channels.</p>
+              <p className="why-card-desc">Off-market properties, priority developer allocations, curated investment pipelines, and VIP Tier-1 banking solutions unavailable to walk-in clients.</p>
             </div>
 
             <div className="why-card">
               <div className="why-number font-serif">06</div>
-              <div className="why-icon-box">C</div>
-              <h3 className="why-card-title font-serif">Compliance-Focused Advisory</h3>
-              <p className="why-card-desc">Fully aligned with RERA, DLD, Central Bank, and SHAMS regulations — protecting your interests at every step.</p>
+              <div className="why-icon-box"><span>F</span></div>
+              <h3 className="why-card-title font-serif">Full UAE Regulatory Alignment</h3>
+              <p className="why-card-desc">Fully aligned with RERA, DLD, Central Bank, and SHAMS regulations across the UAE — protecting your interests at every step.</p>
             </div>
           </div>
         </div>
