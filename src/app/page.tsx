@@ -19,8 +19,8 @@ export default function Home() {
               Forward Together. For Life. For Legacy
             </p>
             <div className="hero-buttons">
-              <Link href="/opportunities" className="btn-hero-secondary">Explore Opportunities</Link>
-              <Link href="/contact" className="btn-hero-secondary">Speak To an Advisor</Link>
+              <Link href="#premium-services" className="btn-hero-secondary">Explore AKR&apos;s Strategic Expertise</Link>
+              <Link href="/contact" className="btn-hero-secondary">Connect with AKR</Link>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* 3. Premium Services Section */}
-      <section className="services-section bg-gold-texture">
+      <section className="services-section bg-gold-texture" id="premium-services">
         <div className="container text-center">
           <span className="section-tag inline-block">WHAT WE OFFER</span>
           <h2 className="section-title text-center font-serif">Our Premium Services</h2>
@@ -101,6 +101,9 @@ export default function Home() {
                   <li>Strategic Private Banking &amp; Credit Advisory</li>
                   <li>Corporate, Personal &amp; Mortgage Capital Structuring</li>
                 </ul>
+                <Link href="/financial" className="btn-service-cta">
+                  EXPLORE FINANCIAL STRATEGIES
+                </Link>
               </div>
             </div>
 
@@ -118,6 +121,9 @@ export default function Home() {
                   <li>Keyman, Corporate &amp; Real Estate Asset Protection</li>
                   <li>Bespoke Life, Health &amp; General Risk Policies</li>
                 </ul>
+                <Link href="/financial/insurance" className="btn-service-cta">
+                  EXPLORE RISK PROTECTION
+                </Link>
               </div>
             </div>
 
@@ -135,6 +141,9 @@ export default function Home() {
                   <li>Premium Asset Navigation &amp; Off-Market Sourcing</li>
                   <li>Strategic Asset Matching for Investment Appetite</li>
                 </ul>
+                <Link href="/property" className="btn-service-cta">
+                  EXPLORE PROPERTIES
+                </Link>
               </div>
             </div>
 
@@ -152,6 +161,9 @@ export default function Home() {
                   <li>High-Impact Advertising Campaigns</li>
                   <li>Precision Digital Media &amp; Brand Activation</li>
                 </ul>
+                <Link href="/financial#marketing" className="btn-service-cta">
+                  EXPLORE BUSINESS &amp; BRANDING
+                </Link>
               </div>
             </div>
           </div>
