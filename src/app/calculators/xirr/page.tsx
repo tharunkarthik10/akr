@@ -1,91 +1,178 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import ModernXirrCalculator from '@/components/calculator/ModernXirrCalculator';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useCurrency } from '@/context/CurrencyContext';
+import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
+import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
 
-export default function XirrPage() {
-  const [leadModalOpen, setLeadModalOpen] = useState(false);
-  const [leadForm, setLeadForm] = useState({ name: "", email: "", phone: "" });
+// Basic XIRR approximation
+const calculateXIRR = (cashflows: {amount: number, date: Date}[]) => {
+  if (cashflows.length < 2) return 0;
+  
+  let x0 = 0.1;
+  let x1 = 0.0;
+  let err = 1e+100;
+  
+  const minDate = Math.min(...cashflows.map(cf => cf.date.getTime()));
+  
+  const npv = (rate: number) => {
+    return cashflows.reduce((acc, cf) => {
+      const days = (cf.date.getTime() - minDate) / (1000 * 3600 * 24);
+      return acc + cf.amount / Math.pow(1 + rate, days / 365);
+    }, 0);
+  };
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Thank you ${leadForm.name || 'Valued Client'}! Your detailed report has been sent to ${leadForm.email || 'your email'}.`);
-    setLeadModalOpen(false);
-    setLeadForm({ name: "", email: "", phone: "" });
+  const derivative = (rate: number) => {
+    return cashflows.reduce((acc, cf) => {
+      const days = (cf.date.getTime() - minDate) / (1000 * 3600 * 24);
+      const frac = days / 365;
+      return acc - (cf.amount * frac) / Math.pow(1 + rate, frac + 1);
+    }, 0);
+  };
+
+  for (let i = 0; i < 100; i++) {
+    x1 = x0 - npv(x0) / derivative(x0);
+    err = Math.abs(x1 - x0);
+    if (err < 1e-5) break;
+    x0 = x1;
+  }
+  
+  return x0 * 100;
+};
+
+export default function XirrCalculatorPage() {
+  const { currencySymbol, convertAmount } = useCurrency();
+
+  const [initialInvestment, setInitialInvestment] = useState(1000000);
+  const [finalValue, setFinalValue] = useState(1500000);
+  const [years, setYears] = useState(5);
+
+  const [bounds, setBounds] = useState({
+    invMax: 10000000,
+    invStep: 50000,
+  });
+
+  const handleCurrencyChange = (oldCode: string, newCode: string) => {
+    setInitialInvestment(Math.round(convertAmount(initialInvestment, oldCode, newCode)));
+    setFinalValue(Math.round(convertAmount(finalValue, oldCode, newCode)));
+    setBounds({
+      invMax: Math.round(convertAmount(10000000, 'AED', newCode)),
+      invStep: Math.round(convertAmount(50000, 'AED', newCode))
+    });
+  };
+
+  // Build basic cashflow array for a simplified XIRR
+  const startDate = new Date();
+  const endDate = new Date();
+  endDate.setFullYear(startDate.getFullYear() + years);
+
+  const cashflows = [
+    { amount: -initialInvestment, date: startDate },
+    { amount: finalValue, date: endDate }
+  ];
+
+  const xirrValue = calculateXIRR(cashflows);
+  const totalProfit = finalValue - initialInvestment;
+  const absoluteRoi = initialInvestment > 0 ? (totalProfit / initialInvestment) * 100 : 0;
+
+  const chartData = [
+    { year: 'Year 0', Value: initialInvestment },
+    { year: `Year ${Math.round(years / 2)}`, Value: initialInvestment + (totalProfit / 2) },
+    { year: `Year ${years}`, Value: finalValue }
+  ];
+
+  const formatCurrency = (val: number) => {
+    return val.toLocaleString('en-US', { maximumFractionDigits: 0 });
   };
 
   return (
-    <div className="calc-landing-page" style={{ paddingTop: '2.5rem', paddingBottom: '4.5rem' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <Link href="/calculators" style={{ color: '#8b0000', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-            <span>←</span> Back to All Calculators
-          </Link>
-        </div>
+    <div className="calc-page-wrapper">
+      <div className="container" style={{ paddingTop: '2rem' }}>
+        <div className="calc-box">
+          <div className="calc-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h1>XIRR Calculator</h1>
+              <p>Calculate the Extended Internal Rate of Return for your real estate investments.</p>
+            </div>
+            <CurrencySelector onCurrencyChange={handleCurrencyChange} />
+          </div>
 
-        <div className="calc-main-panel-card">
-          <ModernXirrCalculator onShowLeadCapture={() => setLeadModalOpen(true)} />
-        </div>
+          <div className="calc-grid">
+            <div className="calc-inputs-col">
+              <FormattedSliderInput
+                label="Initial Investment"
+                value={initialInvestment}
+                min={1000}
+                max={bounds.invMax}
+                step={bounds.invStep}
+                onChange={setInitialInvestment}
+                isCurrency={true}
+              />
+              <FormattedSliderInput
+                label="Current / Expected Final Value"
+                value={finalValue}
+                min={0}
+                max={bounds.invMax * 2}
+                step={bounds.invStep || 1}
+                onChange={setFinalValue}
+                isCurrency={true}
+              />
+              <FormattedSliderInput
+                label="Investment Period (Years)"
+                value={years}
+                min={1}
+                max={30}
+                step={1}
+                onChange={setYears}
+              />
+            </div>
 
-        {leadModalOpen && (
-          <div className="calc-modal-backdrop" onClick={() => setLeadModalOpen(false)}>
-            <div className="calc-modal-box" onClick={e => e.stopPropagation()}>
-              <h3 className="calc-modal-title">Get Your Detailed Report</h3>
-              <p className="calc-modal-desc">Enter your details to receive a comprehensive investment report via email.</p>
-              <form onSubmit={handleLeadSubmit}>
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Name"
-                    className="calc-field-input"
-                    value={leadForm.name}
-                    onChange={e => setLeadForm({ ...leadForm, name: e.target.value })}
-                  />
+            <div className="calc-results-col">
+              <div className="calc-results-grid">
+                <div className="calc-result-box main">
+                  <span className="result-label">XIRR (Annualized Return)</span>
+                  <span className="result-value notranslate" style={{ wordBreak: 'break-all' }}>{isFinite(xirrValue) ? xirrValue.toFixed(2) : 0}%</span>
                 </div>
-
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="your@email.com"
-                    className="calc-field-input"
-                    value={leadForm.email}
-                    onChange={e => setLeadForm({ ...leadForm, email: e.target.value })}
-                  />
+                <div className="calc-result-box secondary">
+                  <span className="result-label">Absolute ROI</span>
+                  <span className="result-value notranslate">{absoluteRoi.toFixed(2)}%</span>
                 </div>
-
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Phone Number (with Country Code)</label>
-                  <input
-                    type="tel"
-                    placeholder="+971 XX XXX XXXX"
-                    className="calc-field-input"
-                    value={leadForm.phone}
-                    onChange={e => setLeadForm({ ...leadForm, phone: e.target.value })}
-                  />
+                <div className="calc-result-box secondary">
+                  <span className="result-label">Total Profit</span>
+                  <span className="result-value notranslate">{currencySymbol} {formatCurrency(totalProfit)}</span>
                 </div>
+              </div>
 
-                <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}>
-                  <button type="submit" className="btn-calc-download-pdf">
-                    Download Report
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLeadModalOpen(false)}
-                    className="btn-calc-sub-action"
-                    style={{ width: '120px' }}
-                  >
-                    Cancel
-                  </button>
+              <div className="calc-chart-container">
+                <div className="calc-chart-header">
+                  <div className="calc-chart-title">Investment Growth Trajectory</div>
                 </div>
-              </form>
+                <div style={{ width: '100%', height: 200 }}>
+                  <ResponsiveContainer>
+                    <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                      <XAxis dataKey="year" tick={{fontSize: 10, fill: '#8b0000'}} axisLine={{stroke: '#e0e0e0'}} tickLine={false} />
+                      <YAxis tick={{fontSize: 10, fill: '#d4af37'}} axisLine={{stroke: '#e0e0e0'}} tickLine={false} />
+                      <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #eaeaea', fontSize: '12px' }}/>
+                      <Line type="monotone" dataKey="Value" stroke="#8b0000" strokeWidth={3} dot={{ r: 4 }} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+              
+              <CalculatorCTAs />
+
             </div>
           </div>
-        )}
+        </div>
+        <div className="calc-disclaimer" style={{ marginTop: '2.5rem' }}>
+          <h4 style={{ fontWeight: 700 }}>Important Disclaimer</h4>
+          <p style={{ fontWeight: 600 }}>
+            <strong style={{ color: '#b8962c' }}>AKR Financial and Real Estate Service LLC</strong> (SHAMS, Sharjah, UAE) and{' '}
+            <strong style={{ color: '#b8962c' }}>AKR Realty LLC</strong> (Al Garhoud, Dubai, UAE) operate within their licensed scopes under UAE regulatory guidelines. All calculator results are for strategic consultation, clear understanding, and educational purposes only—not formal financial or real estate advice. Please schedule a private consultation with our senior specialists for personalized guidance.
+          </p>
+        </div>
       </div>
     </div>
   );

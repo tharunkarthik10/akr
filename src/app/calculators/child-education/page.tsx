@@ -1,91 +1,151 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import ModernChildEducationCalculator from '@/components/calculator/ModernChildEducationCalculator';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { useCurrency } from '@/context/CurrencyContext';
+import FormattedSliderInput from '@/components/calculator/FormattedSliderInput';
+import CurrencySelector from '@/components/calculator/CurrencySelector';
+import CalculatorCTAs from '@/components/calculator/CalculatorCTAs';
+import InflationRateSelector from '@/components/calculator/InflationRateSelector';
 
-export default function ChildEducationPage() {
-  const [leadModalOpen, setLeadModalOpen] = useState(false);
-  const [leadForm, setLeadForm] = useState({ name: "", email: "", phone: "" });
+export default function ChildEducationCalculatorPage() {
+  const { currencySymbol, convertAmount } = useCurrency();
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Thank you ${leadForm.name || 'Valued Client'}! Your detailed report has been sent to ${leadForm.email || 'your email'}.`);
-    setLeadModalOpen(false);
-    setLeadForm({ name: "", email: "", phone: "" });
+  const [currentCost, setCurrentCost] = useState(250000);
+  const [currentAge, setCurrentAge] = useState(5);
+  const [collegeAge, setCollegeAge] = useState(18);
+  const [inflationRate, setInflationRate] = useState(6);
+  const [expectedReturn, setExpectedReturn] = useState(12);
+
+  const [bounds, setBounds] = useState({
+    costMax: 2000000,
+    costStep: 10000
+  });
+
+  const handleCurrencyChange = (oldCode: string, newCode: string) => {
+    setCurrentCost(Math.round(convertAmount(currentCost, oldCode, newCode)));
+    setBounds({
+      costMax: Math.round(convertAmount(2000000, 'AED', newCode)),
+      costStep: Math.round(convertAmount(10000, 'AED', newCode))
+    });
+  };
+
+  const yearsToCollege = Math.max(1, collegeAge - currentAge);
+  
+  // Future Value = Current Cost * (1 + inflation/100) ^ yearsToCollege
+  const futureCost = currentCost * Math.pow(1 + inflationRate / 100, yearsToCollege);
+  
+  // Required Monthly Investment (SIP) to reach futureCost
+  // FV = P * ({[1 + r]^n - 1} / r) * (1 + r)
+  // P = FV / (({[1 + r]^n - 1} / r) * (1 + r))
+  const months = yearsToCollege * 12;
+  const monthlyRate = expectedReturn / 100 / 12;
+  const monthlyInvestment = futureCost / (((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * (1 + monthlyRate));
+
+  const chartData = [
+    { name: 'Current Cost', Amount: currentCost },
+    { name: 'Future Inflated Cost', Amount: futureCost }
+  ];
+
+  const formatCurrency = (val: number) => {
+    return val.toLocaleString('en-US', { maximumFractionDigits: 0 });
   };
 
   return (
-    <div className="calc-landing-page" style={{ paddingTop: '2.5rem', paddingBottom: '4.5rem' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <Link href="/calculators" style={{ color: '#8b0000', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-            <span>←</span> Back to All Calculators
-          </Link>
-        </div>
+    <div className="calc-page-wrapper">
+      <div className="container" style={{ paddingTop: '2rem' }}>
+        <div className="calc-box">
+          <div className="calc-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <h1>Child Education Calculator</h1>
+              <p>Plan ahead for your child's higher education expenses considering inflation.</p>
+            </div>
+            <CurrencySelector onCurrencyChange={handleCurrencyChange} />
+          </div>
 
-        <div className="calc-main-panel-card">
-          <ModernChildEducationCalculator onShowLeadCapture={() => setLeadModalOpen(true)} />
-        </div>
+          <div className="calc-grid">
+            <div className="calc-inputs-col">
+              <FormattedSliderInput
+                label="Current Cost of Education"
+                value={currentCost}
+                min={0}
+                max={bounds.costMax}
+                step={bounds.costStep || 1000}
+                onChange={setCurrentCost}
+                isCurrency={true}
+              />
+              <FormattedSliderInput
+                label="Child's Current Age"
+                value={currentAge}
+                min={0}
+                max={17}
+                step={1}
+                onChange={setCurrentAge}
+              />
+              <FormattedSliderInput
+                label="Age Starting College"
+                value={collegeAge}
+                min={16}
+                max={25}
+                step={1}
+                onChange={(v) => setCollegeAge(Math.max(v, currentAge + 1))}
+              />
+              <InflationRateSelector
+                value={inflationRate}
+                onChange={setInflationRate}
+              />
+              <FormattedSliderInput
+                label="Expected Return on Investment (%)"
+                value={expectedReturn}
+                min={1}
+                max={20}
+                step={0.5}
+                onChange={setExpectedReturn}
+                isPercentage={true}
+              />
+            </div>
 
-        {leadModalOpen && (
-          <div className="calc-modal-backdrop" onClick={() => setLeadModalOpen(false)}>
-            <div className="calc-modal-box" onClick={e => e.stopPropagation()}>
-              <h3 className="calc-modal-title">Get Your Detailed Report</h3>
-              <p className="calc-modal-desc">Enter your details to receive a comprehensive investment report via email.</p>
-              <form onSubmit={handleLeadSubmit}>
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Name"
-                    className="calc-field-input"
-                    value={leadForm.name}
-                    onChange={e => setLeadForm({ ...leadForm, name: e.target.value })}
-                  />
+            <div className="calc-results-col">
+              <div className="calc-results-grid">
+                <div className="calc-result-box main">
+                  <span className="result-label">Monthly Investment Required</span>
+                  <span className="result-value notranslate">{currencySymbol} {formatCurrency(monthlyInvestment)}</span>
                 </div>
-
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="your@email.com"
-                    className="calc-field-input"
-                    value={leadForm.email}
-                    onChange={e => setLeadForm({ ...leadForm, email: e.target.value })}
-                  />
+                <div className="calc-result-box secondary">
+                  <span className="result-label">Future Cost of Education</span>
+                  <span className="result-value notranslate">{currencySymbol} {formatCurrency(futureCost)}</span>
+                  <span className="result-hint">In {yearsToCollege} years</span>
                 </div>
+              </div>
 
-                <div className="calc-form-group">
-                  <label className="calc-field-label">Phone Number (with Country Code)</label>
-                  <input
-                    type="tel"
-                    placeholder="+971 XX XXX XXXX"
-                    className="calc-field-input"
-                    value={leadForm.phone}
-                    onChange={e => setLeadForm({ ...leadForm, phone: e.target.value })}
-                  />
+              <div className="calc-chart-container">
+                <div className="calc-chart-header">
+                  <div className="calc-chart-title">Impact of Inflation</div>
                 </div>
+                <div style={{ width: '100%', height: 200 }}>
+                  <ResponsiveContainer>
+                    <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                      <XAxis dataKey="name" tick={{fontSize: 12, fill: '#8b0000'}} axisLine={{stroke: '#e0e0e0'}} tickLine={false} />
+                      <YAxis tick={{fontSize: 10, fill: '#d4af37'}} axisLine={{stroke: '#e0e0e0'}} tickLine={false} />
+                      <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #eaeaea', fontSize: '12px' }}/>
+                      <Bar dataKey="Amount" fill="#8b0000" barSize={50} radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
-                <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem' }}>
-                  <button type="submit" className="btn-calc-download-pdf">
-                    Download Report
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLeadModalOpen(false)}
-                    className="btn-calc-sub-action"
-                    style={{ width: '120px' }}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+              <CalculatorCTAs />
+
             </div>
           </div>
-        )}
+        </div>
+        <div className="calc-disclaimer" style={{ marginTop: '2.5rem' }}>
+          <h4 style={{ fontWeight: 700 }}>Important Disclaimer</h4>
+          <p style={{ fontWeight: 600 }}>
+            <strong style={{ color: '#b8962c' }}>AKR Financial and Real Estate Service LLC</strong> (SHAMS, Sharjah, UAE) and{' '}
+            <strong style={{ color: '#b8962c' }}>AKR Realty LLC</strong> (Al Garhoud, Dubai, UAE) operate within their licensed scopes under UAE regulatory guidelines. All calculator results are for strategic consultation, clear understanding, and educational purposes only—not formal financial or real estate advice. Please schedule a private consultation with our senior specialists for personalized guidance.
+          </p>
+        </div>
       </div>
     </div>
   );
