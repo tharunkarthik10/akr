@@ -28,12 +28,28 @@ export default function FinancialPage() {
       )
     },
     {
-      question: "Which UAE banking partners does AKR Group work with?",
-      answer: "We maintain 25+ years of strategic relationships across major UAE Tier-1 banks and international private banking institutions to secure preferred lending rates, fast-track approvals, and corporate facilities."
+      question: "Does AKR assist non-resident investors with UAE mortgage financing?",
+      answer: "Yes. AKR provides guidance on non-resident mortgage options, eligibility requirements, documentation and financing opportunities through relevant banking partners, subject to bank approval."
     },
     {
-      question: "Can non-resident expats apply for loans or bank accounts through AKR Financial?",
-      answer: "Yes. We specialize in non-resident mortgage structuring, international wealth accounts, and cross-border commercial credit for non-resident investors and global enterprise owners."
+      question: "Can AKR assist international investors with opening UAE bank accounts?",
+      answer: "Yes. AKR provides guidance on banking requirements, account-opening procedures and documentation for eligible non-residents and international investors, subject to individual bank policies and regulatory requirements."
+    },
+    {
+      question: "Does AKR assist international business owners with commercial financing?",
+      answer: "Yes. AKR assists eligible entrepreneurs and international business owners in exploring business financing and commercial credit options through relevant financial institutions, subject to eligibility and lender approval."
+    },
+    {
+      question: "Can AKR assist with residential and commercial mortgage solutions?",
+      answer: "Yes. AKR provides guidance on residential and commercial mortgage options, refinancing, equity release and related financing solutions through banking partners, subject to applicable eligibility criteria."
+    },
+    {
+      question: "Does AKR provide cross-border financial and investment guidance?",
+      answer: "AKR provides financial guidance covering banking solutions, personal and business finance, mutual funds and investment planning, within its licensed business activities and applicable regulatory permissions."
+    },
+    {
+      question: "Can non-resident investors access financial solutions through AKR?",
+      answer: "Yes. AKR assists eligible non-resident investors in understanding available UAE banking, mortgage and financial solutions, based on their residency status, financial profile and applicable institutional requirements."
     }
   ];
 
@@ -170,8 +186,8 @@ export default function FinancialPage() {
 
         {/* FAQs */}
         <FAQAccordion 
-          title="AKR Financial — Frequently Asked Questions"
-          subtitle="Essential insights into UAE loan structuring, banking compliance, and wealth management."
+          title="FAQ – International Banking, Mortgages & Business Finance"
+          subtitle="Essential insights into UAE banking, non-resident mortgages, commercial credit, and wealth solutions."
           items={financialFaqs}
         />
 
